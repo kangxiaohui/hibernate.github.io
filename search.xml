@@ -7,6 +7,9 @@
 <p><strong><font size=5 color=#ff0000>父类对应一个表的继承关系映射</strong></font></p>
 <p><strong><font size=5 color=#ff0000>每个类对应一个表的继承关系映射</strong></font></p>
 ]]></content>
+      <categories>
+        <category>hibernate</category>
+      </categories>
       <tags>
         <tag>mysterious</tag>
       </tags>
@@ -161,6 +164,9 @@ public class User {
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>hibernate</category>
+      </categories>
       <tags>
         <tag>mysterious</tag>
       </tags>
@@ -314,6 +320,9 @@ tx.commit();//提交事务
 session.close();关闭 Session,SessionFactory
 HibernateUtil.closeSessionFactory();</code></pre><p>}</p>
 ]]></content>
+      <categories>
+        <category>hibernate</category>
+      </categories>
       <tags>
         <tag>mysterious</tag>
       </tags>
