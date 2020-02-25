@@ -84,6 +84,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -98,8 +100,7 @@
       
 
       
-      <p><strong><font size=5 color=#ff0000>单实体的属性映射</strong></font></p>
-<ol>
+      <h2 id="单实体的属性映射"><a href="#单实体的属性映射" class="headerlink" title="单实体的属性映射"></a><font size=5 color=#ff0000>单实体的属性映射</font></h2><ol>
 <li><p>setter 和 getter 方法优点：有效控制属性的访问权限。<br></p>
 </li>
 <li><p>property元素的 access 属性；field : 不需要getset方法，通过Java反射机制绕过hibernate直接访问属性值。<br><code>&lt;property name=&quot;userName&quot; access=&quot;field&quot; /&gt;</code></p>
@@ -148,8 +149,7 @@ public void setUserName(String userName) {
 </tr>
 </tbody></table>
 <p><em>注：</em><br><br>    1. 会过滤过值为null的属性<br><br>    2. 如果在一个表有很多字段的时候,在做初次insert的时候有比较多的字段为空值,或者经常update某少部分字段,应该在配置文件的<class>元素上将dynamic-insert和dynamic-update设置为true.其默认值都为false.<br><br>    3. dynamic-insert，dynamic-update，提升了数据库的效率，只对需要插入修改的数据进行变动<br></p>
-<p><strong><font size=5 color=#ff0000>单实体的对象标识符映射</strong></font></p>
-<p>Java程序中区分不同对象：</p>
+<h2 id="单实体的对象标识符映射"><a href="#单实体的对象标识符映射" class="headerlink" title="单实体的对象标识符映射"></a><font size=5 color=#ff0000>单实体的对象标识符映射</font></h2><p>Java程序中区分不同对象：</p>
 <ol>
 <li>“==” 比较两个变量引用的内存地址是否相同；</li>
 <li>equals可以比较两个变量引用的对象的值是否相同。</li>
@@ -157,8 +157,7 @@ public void setUserName(String userName) {
 <li>Hibernate 采用对象标识符（OID）区分对象。</li>
 </ol>
 <p><img src="https://i.imgur.com/GoQES5W.png" alt=""></p>
-<p><strong><font size=5 color=#ff0000>使用注解映射单实体</strong></font></p>
-<p>User.java类：</p>
+<h2 id="使用注解映射单实体"><a href="#使用注解映射单实体" class="headerlink" title="使用注解映射单实体"></a><font size=5 color=#ff0000>使用注解映射单实体</font></h2><p>User.java类：</p>
 <pre><code>@Entity                                //声明一个实体类。
 @Table(name=&quot;USER&quot;)                    //为实体类指定对应的数据库表
 @DynamicInsert(true)
@@ -229,8 +228,7 @@ public class User {
             orders as o where o.userid=id)&quot;)</code></p>
 <p>@DynamicInsert：动态生成 INSERT 语句。<br/></p>
 <p>@DynamicUpdate：动态生成 UPDATE 语句。<br/></p>
-<p><font color=#0000FF size=10 >使用注解和xml方式的区别：</font></p>
-<ol>
+<h2 id="使用注解和xml方式的区别："><a href="#使用注解和xml方式的区别：" class="headerlink" title="使用注解和xml方式的区别："></a><font color=#0000FF size=10 >使用注解和xml方式的区别：</font></h2><ol>
 <li><p><font color=#0000FF size=4 >hibernate.hbm.xml 文件中把引用：xxx.hbm.xml改为引用实体类：</font></p>
 <p> 即把：&lt;mapping resource=”com/db/entity/Person.hbm.xml”/&gt;改为：&lt;mapping class=”com.db.entity.Person” /&gt;</p>
 </li>

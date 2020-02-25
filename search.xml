@@ -17,8 +17,7 @@
   <entry>
     <title>2.Hibernate的单实体映射</title>
     <url>/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/</url>
-    <content><![CDATA[<p><strong><font size=5 color=#ff0000>单实体的属性映射</strong></font></p>
-<ol>
+    <content><![CDATA[<h2 id="单实体的属性映射"><a href="#单实体的属性映射" class="headerlink" title="单实体的属性映射"></a><font size=5 color=#ff0000>单实体的属性映射</font></h2><ol>
 <li><p>setter 和 getter 方法优点：有效控制属性的访问权限。<br></p>
 </li>
 <li><p>property元素的 access 属性；field : 不需要getset方法，通过Java反射机制绕过hibernate直接访问属性值。<br><code>&lt;property name=&quot;userName&quot; access=&quot;field&quot; /&gt;</code></p>
@@ -67,8 +66,7 @@ public void setUserName(String userName) {
 </tr>
 </tbody></table>
 <p><em>注：</em><br><br>    1. 会过滤过值为null的属性<br><br>    2. 如果在一个表有很多字段的时候,在做初次insert的时候有比较多的字段为空值,或者经常update某少部分字段,应该在配置文件的<class>元素上将dynamic-insert和dynamic-update设置为true.其默认值都为false.<br><br>    3. dynamic-insert，dynamic-update，提升了数据库的效率，只对需要插入修改的数据进行变动<br></p>
-<p><strong><font size=5 color=#ff0000>单实体的对象标识符映射</strong></font></p>
-<p>Java程序中区分不同对象：</p>
+<h2 id="单实体的对象标识符映射"><a href="#单实体的对象标识符映射" class="headerlink" title="单实体的对象标识符映射"></a><font size=5 color=#ff0000>单实体的对象标识符映射</font></h2><p>Java程序中区分不同对象：</p>
 <ol>
 <li>“==” 比较两个变量引用的内存地址是否相同；</li>
 <li>equals可以比较两个变量引用的对象的值是否相同。</li>
@@ -76,8 +74,7 @@ public void setUserName(String userName) {
 <li>Hibernate 采用对象标识符（OID）区分对象。</li>
 </ol>
 <p><img src="https://i.imgur.com/GoQES5W.png" alt=""></p>
-<p><strong><font size=5 color=#ff0000>使用注解映射单实体</strong></font></p>
-<p>User.java类：</p>
+<h2 id="使用注解映射单实体"><a href="#使用注解映射单实体" class="headerlink" title="使用注解映射单实体"></a><font size=5 color=#ff0000>使用注解映射单实体</font></h2><p>User.java类：</p>
 <pre><code>@Entity                                //声明一个实体类。
 @Table(name=&quot;USER&quot;)                    //为实体类指定对应的数据库表
 @DynamicInsert(true)
@@ -148,8 +145,7 @@ public class User {
             orders as o where o.userid=id)&quot;)</code></p>
 <p>@DynamicInsert：动态生成 INSERT 语句。<br/></p>
 <p>@DynamicUpdate：动态生成 UPDATE 语句。<br/></p>
-<p><font color=#0000FF size=10 >使用注解和xml方式的区别：</font></p>
-<ol>
+<h2 id="使用注解和xml方式的区别："><a href="#使用注解和xml方式的区别：" class="headerlink" title="使用注解和xml方式的区别："></a><font color=#0000FF size=10 >使用注解和xml方式的区别：</font></h2><ol>
 <li><p><font color=#0000FF size=4 >hibernate.hbm.xml 文件中把引用：xxx.hbm.xml改为引用实体类：</font></p>
 <p> 即把：&lt;mapping resource=”com/db/entity/Person.hbm.xml”/&gt;改为：&lt;mapping class=”com.db.entity.Person” /&gt;</p>
 </li>
@@ -194,14 +190,9 @@ public class User {
 </li>
 <li>Hibernate是持久化层框架。</li>
 </ol>
-<blockquote>
-<p>软件的模型及ORM<br></p>
-</blockquote>
-<h2 id="不同类型的模型："><a href="#不同类型的模型：" class="headerlink" title="不同类型的模型："></a>不同类型的模型：</h2><p>分析阶段–创建概念模型<br/><br>设计阶段–域模型（面向对象）和数据模型（面向关系）——形成<strong>对象关系映射（ORM）</strong></p>
-<pre><code>通过ORM模式在操作实体对象的时候，就不需要再去和复杂的 SQL语句打交道，只需简单的操作实体对象的属性和方法</code></pre><blockquote>
-<p>Hibernate介绍<br></p>
-</blockquote>
-<ol>
+<h2 id="软件的模型及ORM"><a href="#软件的模型及ORM" class="headerlink" title="软件的模型及ORM"></a>软件的模型及ORM</h2><p><strong>不同类型的模型：</strong></p>
+<p>分析阶段–创建概念模型<br/><br>设计阶段–域模型（面向对象）和数据模型（面向关系）——形成<strong>对象关系映射（ORM）</strong></p>
+<pre><code>通过ORM模式在操作实体对象的时候，就不需要再去和复杂的 SQL语句打交道，只需简单的操作实体对象的属性和方法</code></pre><h2 id="Hibernate介绍"><a href="#Hibernate介绍" class="headerlink" title="Hibernate介绍"></a>Hibernate介绍</h2><ol>
 <li>在分层体系结构中Hibernate位于持久化层，是完成对象持久化的持久化层框架；<br/></li>
 <li>Hibernate是连接Java应用程序和关系型数据库的框架，能够建立对象模型和关系数据模型之间的映射，是一种自动ORM框架；<br/></li>
 <li>Hibernate是对JDBC API的封装，是JDBC轻量级封装框架。<br/></li>
