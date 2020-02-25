@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    2.Hibernate的单实体映射 |  Hexo
+    1.Hibernate框架的搭建 |  神秘的小胖纸
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -23,7 +23,7 @@
 
   
 
-<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="神秘的小胖纸" type="application/atom+xml">
 </head>
 
 </html>
@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-2-Hibernate的单实体映射" class="article article-type-post" itemscope
+  <article id="post-hibernate/1-Hibernate框架的搭建" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -40,7 +40,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  2.Hibernate的单实体映射
+  1.Hibernate框架的搭建
 </h1>
   
 
@@ -49,8 +49,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/" class="article-date">
-  <time datetime="2020-02-25T05:05:21.000Z" itemprop="datePublished">2020-02-25</time>
+      <a href="/2020/02/25/hibernate/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2020-02-25T04:06:04.000Z" itemprop="datePublished">2020-02-25</time>
 </a>
       
       
@@ -60,7 +60,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">0字</span>
+            <span class="post-count">28字</span>
         </span>
     </span>
 
@@ -80,6 +80,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -94,7 +96,13 @@
       
 
       
-      
+      <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
+<li>分层体系结构与持久化<br></li>
+<li>软件的模型及ORM<br></li>
+<li>Hibernate介绍<br></li>
+<li>第一个Hibernate程序<br></li>
+</ol>
+
       
       <!-- reward -->
       
@@ -163,13 +171,15 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/25/hibernate/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
+
 
     </footer>
 
@@ -179,19 +189,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/02/25/about/" class="article-nav-link">
+      <a href="/2020/02/25/hibernate/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            about
+            2.Hibernate的单实体映射
           
         </div>
       </a>
     
     
-      <a href="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/" class="article-nav-link">
+      <a href="/2020/02/25/hello-world/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">1.Hibernate框架的搭建</div>
+        <div class="article-nav-title">Hello World</div>
       </a>
     
   </nav>
@@ -264,7 +274,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2015-2020
+        2019-2020
         John Doe
       </li>
       <li>
@@ -306,7 +316,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Hexo"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="神秘的小胖纸"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -328,7 +338,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
+      <a class="nav-item-link" href="/about">关于我</a>
     </li>
     
   </ul>

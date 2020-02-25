@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>神秘的小胖纸</title>
   
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-25T09:38:27.347Z</updated>
+  <updated>2020-02-25T05:05:21.883Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,24 +17,9 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>about</title>
-    <link href="http://yoursite.com/2020/02/25/about/"/>
-    <id>http://yoursite.com/2020/02/25/about/</id>
-    <published>2020-02-25T09:38:27.000Z</published>
-    <updated>2020-02-25T09:38:27.347Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>2.Hibernate的单实体映射</title>
-    <link href="http://yoursite.com/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/"/>
-    <id>http://yoursite.com/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/</id>
+    <link href="http://yoursite.com/2020/02/25/hibernate/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/"/>
+    <id>http://yoursite.com/2020/02/25/hibernate/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/</id>
     <published>2020-02-25T05:05:21.000Z</published>
     <updated>2020-02-25T05:05:21.883Z</updated>
     
@@ -48,8 +33,8 @@
   
   <entry>
     <title>1.Hibernate框架的搭建</title>
-    <link href="http://yoursite.com/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
-    <id>http://yoursite.com/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/</id>
+    <link href="http://yoursite.com/2020/02/25/hibernate/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2020/02/25/hibernate/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/</id>
     <published>2020-02-25T04:06:04.000Z</published>
     <updated>2020-02-25T05:16:47.484Z</updated>
     
