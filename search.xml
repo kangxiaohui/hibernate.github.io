@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>3.Hibernate继承关系映射</title>
+    <url>/2020/02/25/3-Hibernate%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/</url>
+    <content><![CDATA[<p><strong><font size=5 color=#ff0000>每个具体的类实现继承关系映射</strong></font></p>
+<p><strong><font size=5 color=#ff0000>父类对应一个表的继承关系映射</strong></font></p>
+<p><strong><font size=5 color=#ff0000>每个类对应一个表的继承关系映射</strong></font></p>
+]]></content>
+      <tags>
+        <tag>mysterious</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2.Hibernate的单实体映射</title>
-    <url>/2020/02/25/hibernate/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/</url>
+    <url>/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/</url>
     <content><![CDATA[<p><strong><font size=5 color=#ff0000>单实体的属性映射</strong></font></p>
 <ol>
 <li><p>setter 和 getter 方法优点：有效控制属性的访问权限。<br></p>
@@ -150,10 +161,13 @@ public class User {
 </li>
 </ol>
 ]]></content>
+      <tags>
+        <tag>mysterious</tag>
+      </tags>
   </entry>
   <entry>
     <title>1.Hibernate框架的搭建</title>
-    <url>/2020/02/25/hibernate/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
+    <url>/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<p><strong><em>三层体系结构</em></strong></p>
 <p><img src="https://i.imgur.com/XOwibmV.png" alt=""></p>
 <ol>
