@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>about</title>
+    <url>/2020/02/25/about/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>2.Hibernate的单实体映射</title>
     <url>/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/</url>
     <content><![CDATA[]]></content>

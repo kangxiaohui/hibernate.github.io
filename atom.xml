@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-25T05:05:21.883Z</updated>
+  <updated>2020-02-25T09:38:27.347Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>about</title>
+    <link href="http://yoursite.com/2020/02/25/about/"/>
+    <id>http://yoursite.com/2020/02/25/about/</id>
+    <published>2020-02-25T09:38:27.000Z</published>
+    <updated>2020-02-25T09:38:27.347Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>2.Hibernate的单实体映射</title>
