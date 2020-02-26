@@ -205,8 +205,7 @@ public class Person {
     }
 }</code></pre><p><strong>关于上述代码解释：</strong></p>
 <ol>
-<li><p>xml：</p>
-<ol>
+<li>xml：<ol>
 <li>通过<one-to-one> 元素配置。—–（主键表）<ol>
 <li>ascade属性（级联属性）为 all：:对象所有操作进行级联操作  save,update,delete</li>
 <li>ascade属性（级联属性）为 save-update :  执行保存和更改操作时进行级联操作</li>
@@ -218,22 +217,18 @@ public class Person {
 <li>外键表实体类配置文件中 OID 使用 foreign 生成策略。—–（外键表）</li>
 </ol>
 </li>
-<li><p>注解：</p>
-<ol>
-<li><p>User端的person属性配置</p>
-<ol>
+<li>注解：<ol>
+<li>User端的person属性配置<ol>
 <li>@OneToOne(cascade=CascadeType.ALL) ：指定一对一关联关系，并设置级联属性。</li>
 <li>@PrimaryKeyJoinColumn(name=”ID”) ：指定Persion表主键列名。</li>
 </ol>
 </li>
-<li><p>在Person端的id属性上配置主键生成策略为 foreign<br><br> @GeneratedValue(generator=”foreign”)</p>
-<p> @GenericGenerator(name=”foreign”,</p>
-<pre><code>strategy=&quot;foreign&quot;,
-parameters={@Parameter(
-                name=&quot;property&quot;,
-                        value=&quot;user&quot;)})</code></pre></li>
-<li><p>在Person一端的user属性上配置一对一关联关系<br><br><code>@OneToOne(mappedBy=&quot;person&quot;)</code></p>
+<li>在Person端的id属性上配置主键生成策略为 foreign<br><ol>
+<li><code>@GeneratedValue(generator=&quot;foreign&quot;)</code></li>
+<li><code>@GenericGenerator(name=&quot;foreign&quot;,strategy=&quot;foreign&quot;,parameters={@Parameter(name=&quot;property&quot;,value=&quot;user&quot;)})</code></li>
+</ol>
 </li>
+<li>在Person一端的user属性上配置一对一关联关系<br><br><code>@OneToOne(mappedBy=&quot;person&quot;)</code></li>
 </ol>
 </li>
 </ol>
