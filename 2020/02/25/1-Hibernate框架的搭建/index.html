@@ -150,7 +150,8 @@
     private int sex;
     private int age;
     /*set，get方法*/
-}</code></pre><h3 id="8-编写持久化类的映射配置文件XXX-hbm-xml；"><a href="#8-编写持久化类的映射配置文件XXX-hbm-xml；" class="headerlink" title="8. 编写持久化类的映射配置文件XXX.hbm.xml；"></a>8. <font color=#FF0000 size=5 >编写持久化类的映射配置文件XXX.hbm.xml；</font></h3><h3 id="Customer-hbm-xml文件："><a href="#Customer-hbm-xml文件：" class="headerlink" title="Customer.hbm.xml文件："></a>Customer.hbm.xml文件：</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+}</code></pre><h3 id="8-编写持久化类的映射配置文件XXX-hbm-xml；"><a href="#8-编写持久化类的映射配置文件XXX-hbm-xml；" class="headerlink" title="8. 编写持久化类的映射配置文件XXX.hbm.xml；"></a>8. <font color=#FF0000 size=5 >编写持久化类的映射配置文件XXX.hbm.xml；</font></h3><p>Customer.hbm.xml文件：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;!DOCTYPE hibernate-mapping PUBLIC &quot;-//Hibernate/Hibernate Mapping DTD 3.0//EN&quot; &quot;http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&gt;
 
 &lt;hibernate-mapping package=&quot;com.hibernate.entity&quot;&gt;
@@ -163,7 +164,7 @@
         &lt;property name=&quot;sex&quot; type=&quot;int&quot; column=&quot;sex&quot; /&gt;
         &lt;property name=&quot;age&quot; type=&quot;int&quot; column=&quot;age&quot; /&gt;
     &lt;/class&gt;
-&lt;/hibernate-mapping&gt;</code></pre><h3 id="介绍配置文件"><a href="#介绍配置文件" class="headerlink" title="介绍配置文件"></a>介绍配置文件</h3><pre><code>1. class元素指定类与表之间的映射
+&lt;/hibernate-mapping&gt;</code></pre><h4 id="介绍配置文件"><a href="#介绍配置文件" class="headerlink" title="介绍配置文件"></a>介绍配置文件</h4><pre><code>1. class元素指定类与表之间的映射
     1. name：类名
     2. table：对应的表名
 2. id子元素设定持久化类的OID和表的主键的映射关系
@@ -180,7 +181,7 @@
     4. not-null：指定属性是否允许为空。</code></pre><ol start="9">
 <li><font color=#FF0000 size=5 >使用Hibernate API 完成对象的持久化。</font><br></li>
 </ol>
-<h3 id="HibernateUtil工具类"><a href="#HibernateUtil工具类" class="headerlink" title="HibernateUtil工具类"></a>HibernateUtil工具类</h3><pre><code>public class HibernateUtil {
+<h4 id="HibernateUtil工具类"><a href="#HibernateUtil工具类" class="headerlink" title="HibernateUtil工具类"></a>HibernateUtil工具类</h4><pre><code>public class HibernateUtil {
     //SessionFactory是线程安全的，多个应用线程间进行共享，一般整个应用有且只有一个SessionFactory
     private static SessionFactory sessionFactory = null;
     /**
@@ -209,7 +210,7 @@
 
     public static void closeSessionFactory() {
         sessionFactory.close();
-    }</code></pre><h3 id="测试类test-java"><a href="#测试类test-java" class="headerlink" title="测试类test.java"></a>测试类test.java</h3><pre><code>Session session = HibernateUtil.getSessionFactory().openSession();//打开Session
+    }</code></pre><h4 id="测试类test-java"><a href="#测试类test-java" class="headerlink" title="测试类test.java"></a>测试类test.java</h4><pre><code>Session session = HibernateUtil.getSessionFactory().openSession();//打开Session
 Transaction tx = session.beginTransaction();//开始一个事务
 Customer customer = new Customer();//创建需要持久化的对象
 customer.setName(&quot;胡宗南&quot;);
