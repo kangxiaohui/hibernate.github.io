@@ -16,20 +16,9 @@
 <li><a href="http://tool.chinaz.com/dns/" target="_blank" rel="noopener">http://tool.chinaz.com/dns/</a></li>
 </ol>
 <h2 id="体验域名查询"><a href="#体验域名查询" class="headerlink" title="体验域名查询"></a>体验域名查询</h2><p>根据查到的相关域名信息,再次查询出这些域名对应的 ip 地址,于是整理出以下内容.</p>
-<pre><code>#github related website
-192.30.253.113 github.com
-199.232.5.194 github.global.ssl.fastly.net
-192.30.253.119 gist.github.com
-192.30.253.120 nodeload.github.com
-199.232.28.133 raw.github.com
-140.82.113.17 training.github.com
-192.30.253.113 www.github.com
-99.232.68.133 avatars0.githubusercontent.com
-199.232.68.133 avatars1.githubusercontent.com
-151.101.184.133 assets-cdn.github.com
-185.199.108.153 documentcloud.github.com
-185.199.108.153 help.github.com
-18.204.240.114 status.github.com</code></pre><h2 id="加快访问github的方法"><a href="#加快访问github的方法" class="headerlink" title="加快访问github的方法"></a>加快访问github的方法</h2><ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#github related website</span><br><span class="line">192.30.253.113 github.com</span><br><span class="line">199.232.5.194 github.global.ssl.fastly.net</span><br><span class="line">192.30.253.119 gist.github.com</span><br><span class="line">192.30.253.120 nodeload.github.com</span><br><span class="line">199.232.28.133 raw.github.com</span><br><span class="line">140.82.113.17 training.github.com</span><br><span class="line">192.30.253.113 www.github.com</span><br><span class="line">99.232.68.133 avatars0.githubusercontent.com</span><br><span class="line">199.232.68.133 avatars1.githubusercontent.com</span><br><span class="line">151.101.184.133 assets-cdn.github.com</span><br><span class="line">185.199.108.153 documentcloud.github.com</span><br><span class="line">185.199.108.153 help.github.com</span><br><span class="line">18.204.240.114 status.github.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="加快访问github的方法"><a href="#加快访问github的方法" class="headerlink" title="加快访问github的方法"></a>加快访问github的方法</h2><ol>
 <li>VPN<ol>
 <li>购买vpn，作为学生党就算了吧</li>
 <li>使用一些免费的插件，这种就得自个搜（提醒：谷歌商店一大批免费的，哈哈哈）</li>
