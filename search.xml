@@ -9,16 +9,17 @@
 <li>一对多联系（1:n）</li>
 <li>多对多联系（m:n）</li>
 </ol>
-<h2 id="一对一的关联映射（主键关联方式）"><a href="#一对一的关联映射（主键关联方式）" class="headerlink" title="一对一的关联映射（主键关联方式）"></a>一对一的关联映射（主键关联方式）</h2><h3 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h3><p>实体类<br>User.java</p>
+<h2 id="一对一的关联映射（主键关联方式）"><a href="#一对一的关联映射（主键关联方式）" class="headerlink" title="一对一的关联映射（主键关联方式）"></a>一对一的关联映射（主键关联方式）</h2><p><strong>主键关联：</strong>原理是两张表的主键(ID)保持一致，在获取的时候根据两种表中的ID相同来作为关系判断的标准，这样的设计好处在于我们不用添加另外的字段来维护它们之间的关系。 </p>
+<h3 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h3><p>实体类<br>User.java</p>
 <pre><code>public class User {
-    private int id;
+    private int id;//主键
     private String userName;
     private String password;
     private Person person;
     ……
 }</code></pre><p>Persion.java</p>
 <pre><code>public class Person {
-    private Integer id;
+    private Integer id;//主键和外键，外键依赖user的主键id
     private String name;
     private String idNumber;
     private User user;
@@ -168,42 +169,8 @@ public class Person {
         this.user = user;
     }
 
-}</code></pre><p>Test.java</p>
-<pre><code>public static void saveUser() {
-    Session session = null;
-    Transaction tran = null;
-
-    try {
-        session = HibernateUtil.openSession();
-        tran = session.beginTransaction();// 开启事务
-
-        // 新建User对象
-        User user = new User();
-        user.setUserName(&quot;张三&quot;);
-        user.setPassword(&quot;111112&quot;);
-
-        // 新建Person对象
-        Person person = new Person();
-        person.setName(&quot;zs&quot;);
-        person.setIdNumber(&quot;111345199002031234&quot;);
-
-        // 建立联系
-        user.setPerson(person);
-        person.setUser(user);
-
-        // 保存user并级联保存person
-        session.save(user);
-
-        tran.commit();// 提交事务
-
-    } catch (Exception e) {
-        tran.rollback();// 回滚事务
-        e.printStackTrace();
-    } finally {
-        session.close();// 关闭session
-        HibernateUtil.closeSessionFactory();
-    }
-}</code></pre><p><strong>关于上述代码解释：</strong></p>
+}</code></pre><p>测试类同上</p>
+<p><strong>关于上述代码解释：</strong></p>
 <ol>
 <li>xml：<ol>
 <li>通过<one-to-one> 元素配置。—–（主键表）<ol>
@@ -234,7 +201,7 @@ public class Person {
 </ol>
 <h2 id="一对一的关联映射（唯一外键关联方式）"><a href="#一对一的关联映射（唯一外键关联方式）" class="headerlink" title="一对一的关联映射（唯一外键关联方式）"></a>一对一的关联映射（唯一外键关联方式）</h2><h3 id="xml方式-1"><a href="#xml方式-1" class="headerlink" title="xml方式"></a>xml方式</h3><p>User.java</p>
 <pre><code>public class User {
-    private int id;
+    private int id;//主键，外键（外键依赖persion类的id）
     private String userName;
     private String password;
     private Person person;
@@ -252,9 +219,9 @@ public class Person {
     &lt;many-to-one name=&quot;person&quot; column=&quot;PERSONID&quot; cascade=&quot;all&quot; unique=&quot;true&quot;/&gt;
 &lt;/class&gt;</code></pre><p>Persion.java</p>
 <pre><code>public class Person {
-    private Integer id;
-    private String name;//姓名
-    private String idNumber;//身份证号
+    private Integer id;//主键
+    private String name;
+    private String idNumber;
     private User user;
     ......
 }</code></pre><p>Persion.hbm.xml</p>
