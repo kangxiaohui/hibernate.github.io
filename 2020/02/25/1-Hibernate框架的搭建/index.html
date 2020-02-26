@@ -137,22 +137,35 @@
 <h3 id="8-编写持久化类的映射配置文件XXX-hbm-xml；"><a href="#8-编写持久化类的映射配置文件XXX-hbm-xml；" class="headerlink" title="8. 编写持久化类的映射配置文件XXX.hbm.xml；"></a>8. <font color=#FF0000 size=5 >编写持久化类的映射配置文件XXX.hbm.xml；</font></h3><p>Customer.hbm.xml文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;</span><br><span class="line">	&lt;!DOCTYPE hibernate-mapping PUBLIC &quot;-&#x2F;&#x2F;Hibernate&#x2F;Hibernate Mapping DTD 3.0&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;hibernate.sourceforge.net&#x2F;hibernate-mapping-3.0.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;hibernate-mapping package&#x3D;&quot;com.hibernate.entity&quot;&gt;</span><br><span class="line">		&lt;class name&#x3D;&quot;Customer&quot; table&#x3D;&quot;customer&quot;&gt;</span><br><span class="line">			&lt;id name&#x3D;&quot;id&quot; type&#x3D;&quot;int&quot; column&#x3D;&quot;id&quot;&gt;</span><br><span class="line">				&lt;generator class&#x3D;&quot;native&quot; &#x2F;&gt;</span><br><span class="line">			&lt;&#x2F;id&gt;</span><br><span class="line">		</span><br><span class="line">			&lt;property name&#x3D;&quot;name&quot; not-null&#x3D;&quot;true&quot; type&#x3D;&quot;java.lang.String&quot; column&#x3D;&quot;name&quot; &#x2F;&gt;</span><br><span class="line">			&lt;property name&#x3D;&quot;sex&quot; type&#x3D;&quot;int&quot; column&#x3D;&quot;sex&quot; &#x2F;&gt;</span><br><span class="line">			&lt;property name&#x3D;&quot;age&quot; type&#x3D;&quot;int&quot; column&#x3D;&quot;age&quot; &#x2F;&gt;</span><br><span class="line">		&lt;&#x2F;class&gt;</span><br><span class="line">&lt;&#x2F;hibernate-mapping&gt;</span><br></pre></td></tr></table></figure>
 
-<h4 id="介绍配置文件"><a href="#介绍配置文件" class="headerlink" title="介绍配置文件"></a>介绍配置文件</h4><pre><code>1. class元素指定类与表之间的映射
-    1. name：类名
-    2. table：对应的表名
-2. id子元素设定持久化类的OID和表的主键的映射关系
-    1. column：指定表字段的名称
-    2. generator：元素指定OID的生成器
-        1. increment：采用 Hibernate 数值递增的方式；（不适合集群情况）
-        2. identity：采用数据库提供的自增长方式；（需设置数据库自增字段）
-        3. assigned：主键由应用逻辑产生；（自个设置ID）
-        4. native：自动选择合适的标识符生成器；
-3. property 子元素设定类的其他属性和表的字段的映射关系
-    1. name：对应类的属性名称；
-    2. type：指定属性的类型；
-    3. column：指定表字段的名称；
-    4. not-null：指定属性是否允许为空。</code></pre><ol start="9">
-<li><font color=#FF0000 size=5 >使用Hibernate API 完成对象的持久化。</font><br></li>
+<h4 id="介绍配置文件"><a href="#介绍配置文件" class="headerlink" title="介绍配置文件"></a>介绍配置文件</h4><ol>
+<li><p>class元素指定类与表之间的映射</p>
+<ol>
+<li>name：类名</li>
+<li>table：对应的表名</li>
+</ol>
+</li>
+<li><p>id子元素设定持久化类的OID和表的主键的映射关系</p>
+<ol>
+<li>column：指定表字段的名称</li>
+<li>generator：元素指定OID的生成器<ol>
+<li>increment：采用 Hibernate 数值递增的方式；（不适合集群情况）</li>
+<li>identity：采用数据库提供的自增长方式；（需设置数据库自增字段）</li>
+<li>assigned：主键由应用逻辑产生；（自个设置ID）</li>
+<li>native：自动选择合适的标识符生成器；</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>property 子元素设定类的其他属性和表的字段的映射关系</p>
+<ol>
+<li>name：对应类的属性名称；</li>
+<li>type：指定属性的类型；</li>
+<li>column：指定表字段的名称；</li>
+<li>not-null：指定属性是否允许为空。</li>
+</ol>
+</li>
+<li><p><font color=#FF0000 size=5 >使用Hibernate API 完成对象的持久化。</font><br></p>
+</li>
 </ol>
 <h4 id="HibernateUtil工具类"><a href="#HibernateUtil工具类" class="headerlink" title="HibernateUtil工具类"></a>HibernateUtil工具类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class HibernateUtil &#123;</span><br><span class="line">	&#x2F;&#x2F;SessionFactory是线程安全的，多个应用线程间进行共享，一般整个应用有且只有一个SessionFactory</span><br><span class="line">	private static SessionFactory sessionFactory &#x3D; null;</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * 静态初始化 Hibernate：创建 StandardServiceRegistry 实例（标准注册服务）</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	static &#123;</span><br><span class="line">		StandardServiceRegistry registry &#x3D; new StandardServiceRegistryBuilder()&#x2F;&#x2F;创建 StandardServiceRegistryBuilder 实例（标准注册服务生成器）</span><br><span class="line">												.configure()&#x2F;&#x2F;从 hibernate.cfg.xml 配置文件中读取配置信息</span><br><span class="line">												.build();&#x2F;&#x2F;构建 StandardServiceRegistry实例（标准注册服务）</span><br><span class="line">		try &#123;</span><br><span class="line">			&#x2F;&#x2F; 2 创建 SessionFactory 实例（会话工厂）</span><br><span class="line">			&#x2F;&#x2F; 2.1 根据标准注册服务创建一个 MetadataSources 实例（元数据资源集）</span><br><span class="line">			&#x2F;&#x2F; 2.2 构建元数据</span><br><span class="line">			&#x2F;&#x2F; 2.3 生成SessionFactory 实例（会话工厂）</span><br><span class="line">			sessionFactory &#x3D; new MetadataSources(registry)</span><br><span class="line">									.buildMetadata().buildSessionFactory();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			&#x2F;&#x2F; 2.4 创建失败手动释放 StandardServiceRegistry</span><br><span class="line">			StandardServiceRegistryBuilder.destroy(registry);</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public static SessionFactory getSessionFactory() &#123;</span><br><span class="line">		return sessionFactory;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	public static void closeSessionFactory() &#123;</span><br><span class="line">		sessionFactory.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
