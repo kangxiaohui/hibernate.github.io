@@ -9,6 +9,8 @@
 </ol>
 <h2 id="主域名和多个子域名"><a href="#主域名和多个子域名" class="headerlink" title="主域名和多个子域名"></a>主域名和多个子域名</h2><p>正常来说,网站的主域名下会存在多个子域名,由这些域名组合在一起提供完整的服务.</p>
 <p>而 github.com 也不例外,其中 github.com是一级域名,也是主域名,其他的域名基本上都是二级域名或者说次域名. 所以我们不仅要告诉本机 github.com 的主域名,还要把相关的子域名也告诉本机,帮人帮到底,送福送到西! 那到哪里去查询域名和 ip 的对应关系呢?</p>
+<a id="more"></a>
+
 <h2 id="推荐几个查询域名解析的网站"><a href="#推荐几个查询域名解析的网站" class="headerlink" title="推荐几个查询域名解析的网站"></a>推荐几个查询域名解析的网站</h2><ol>
 <li><a href="https://www.ipaddress.com/" target="_blank" rel="noopener">https://www.ipaddress.com/</a></li>
 <li><a href="http://tool.chinaz.com/dns/" target="_blank" rel="noopener">http://tool.chinaz.com/dns/</a></li>
@@ -59,7 +61,9 @@
 <li>多对多联系（m:n）</li>
 </ol>
 <h2 id="一对一的关联映射（主键关联方式）"><a href="#一对一的关联映射（主键关联方式）" class="headerlink" title="一对一的关联映射（主键关联方式）"></a>一对一的关联映射（主键关联方式）</h2><p><strong>主键关联：</strong>原理是两张表的主键(ID)保持一致，在获取的时候根据两种表中的ID相同来作为关系判断的标准，这样的设计好处在于我们不用添加另外的字段来维护它们之间的关系。 </p>
-<h3 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h3><p>实体类<br>User.java</p>
+<h3 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h3><a id="more"></a>
+
+<p>实体类<br>User.java</p>
 <pre><code>public class User {
     private int id;//主键
     private String userName;
@@ -683,6 +687,8 @@ public class Address {
     <title>3.Hibernate继承关系映射</title>
     <url>/2020/02/25/3-Hibernate%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/</url>
     <content><![CDATA[<p><strong><font size=5 color=#ff0000>每个具体的类实现继承关系映射</strong></font></p>
+<a id="more"></a>
+
 <p><strong><font size=5 color=#ff0000>父类对应一个表的继承关系映射</strong></font></p>
 <p><strong><font size=5 color=#ff0000>每个类对应一个表的继承关系映射</strong></font></p>
 ]]></content>
@@ -711,6 +717,10 @@ public void setUserName(String userName) {
     this.firstName = strName[0];
     this.lastName = strName[1];
 }</code></pre></li>
+</ol>
+<a id="more"></a>
+
+<ol start="4">
 <li><p>特殊需求：<br> 例：User 需要订单总额属性，但数据库表中没有这个字段，在property元素的 formula 属性设置查询语句</p>
 <pre><code>&lt;property name=&quot;totalPrice&quot; formula=&quot;(select sum(o.price) from orders as o where o.userId=id)&quot;/&gt;</code></pre></li>
 <li><p>控制持久化类的insert和update</p>
@@ -869,6 +879,8 @@ public class User {
 </li>
 <li>Hibernate是持久化层框架。</li>
 </ol>
+<a id="more"></a>
+
 <h2 id="软件的模型及ORM"><a href="#软件的模型及ORM" class="headerlink" title="软件的模型及ORM"></a>软件的模型及ORM</h2><p><strong>不同类型的模型：</strong></p>
 <p>分析阶段–创建概念模型<br/><br>设计阶段–域模型（面向对象）和数据模型（面向关系）——形成<strong>对象关系映射（ORM）</strong></p>
 <pre><code>通过ORM模式在操作实体对象的时候，就不需要再去和复杂的 SQL语句打交道，只需简单的操作实体对象的属性和方法</code></pre><h2 id="Hibernate介绍"><a href="#Hibernate介绍" class="headerlink" title="Hibernate介绍"></a>Hibernate介绍</h2><ol>
@@ -984,23 +996,5 @@ HibernateUtil.closeSessionFactory();</code></pre><p>}</p>
       <tags>
         <tag>mysterious</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/02/25/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
   </entry>
 </search>

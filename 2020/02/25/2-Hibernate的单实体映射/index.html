@@ -115,6 +115,10 @@ public void setUserName(String userName) {
     this.firstName = strName[0];
     this.lastName = strName[1];
 }</code></pre></li>
+</ol>
+<a id="more"></a>
+
+<ol start="4">
 <li><p>特殊需求：<br> 例：User 需要订单总额属性，但数据库表中没有这个字段，在property元素的 formula 属性设置查询语句</p>
 <pre><code>&lt;property name=&quot;totalPrice&quot; formula=&quot;(select sum(o.price) from orders as o where o.userId=id)&quot;/&gt;</code></pre></li>
 <li><p>控制持久化类的insert和update</p>

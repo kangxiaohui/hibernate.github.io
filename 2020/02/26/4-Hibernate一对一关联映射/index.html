@@ -107,7 +107,9 @@
 <li>多对多联系（m:n）</li>
 </ol>
 <h2 id="一对一的关联映射（主键关联方式）"><a href="#一对一的关联映射（主键关联方式）" class="headerlink" title="一对一的关联映射（主键关联方式）"></a>一对一的关联映射（主键关联方式）</h2><p><strong>主键关联：</strong>原理是两张表的主键(ID)保持一致，在获取的时候根据两种表中的ID相同来作为关系判断的标准，这样的设计好处在于我们不用添加另外的字段来维护它们之间的关系。 </p>
-<h3 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h3><p>实体类<br>User.java</p>
+<h3 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h3><a id="more"></a>
+
+<p>实体类<br>User.java</p>
 <pre><code>public class User {
     private int id;//主键
     private String userName;
