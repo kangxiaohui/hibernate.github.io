@@ -3,7 +3,7 @@
   <entry>
     <title>4-Hibernate一对一关联映射</title>
     <url>/2020/02/26/4-Hibernate%E4%B8%80%E5%AF%B9%E4%B8%80%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/</url>
-    <content><![CDATA[<p>#Hibernate一对一关联映射<br>实体之间的联系：<br/></p>
+    <content><![CDATA[<p>实体之间的联系：<br/></p>
 <ol>
 <li><p>一对一联系（1:1）</p>
 </li>
