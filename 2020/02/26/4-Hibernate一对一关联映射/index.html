@@ -84,6 +84,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -98,14 +100,13 @@
       
 
       
-      <p>实体之间的联系：<br/></p>
+      <h1 id="Hibernate一对一关联映射"><a href="#Hibernate一对一关联映射" class="headerlink" title="Hibernate一对一关联映射"></a>Hibernate一对一关联映射</h1><p>实体之间的联系：<br/></p>
 <ol>
 <li>一对一联系（1:1）</li>
 <li>一对多联系（1:n）</li>
 <li>多对多联系（m:n）</li>
 </ol>
-<p>##一对一的关联映射（主键关联方式）</p>
-<p>###xml方式<br>实体类<br>User.java</p>
+<h2 id="一对一的关联映射（主键关联方式）"><a href="#一对一的关联映射（主键关联方式）" class="headerlink" title="一对一的关联映射（主键关联方式）"></a>一对一的关联映射（主键关联方式）</h2><h3 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h3><p>实体类<br>User.java</p>
 <pre><code>public class User {
     private int id;
     private String userName;
@@ -176,8 +177,7 @@
         session.close();// 关闭session
         HibernateUtil.closeSessionFactory();
     }
-}</code></pre><p>###注释方法</p>
-<p>User.java</p>
+}</code></pre><h3 id="注释方法"><a href="#注释方法" class="headerlink" title="注释方法"></a>注释方法</h3><p>User.java</p>
 <pre><code>@Entity
 @Table(name=&quot;user&quot;)
 public class User {
@@ -328,9 +328,7 @@ parameters={@Parameter(
 </ol>
 </li>
 </ol>
-<p>##一对一的关联映射（唯一外键关联方式）</p>
-<p>###xml方式</p>
-<p>User.java</p>
+<h2 id="一对一的关联映射（唯一外键关联方式）"><a href="#一对一的关联映射（唯一外键关联方式）" class="headerlink" title="一对一的关联映射（唯一外键关联方式）"></a>一对一的关联映射（唯一外键关联方式）</h2><h3 id="xml方式-1"><a href="#xml方式-1" class="headerlink" title="xml方式"></a>xml方式</h3><p>User.java</p>
 <pre><code>public class User {
     private int id;
     private String userName;
@@ -366,8 +364,7 @@ parameters={@Parameter(
     &lt;!-- 外键关联方式映射与User的一对一关系   property-ref:外键列对应的属性名 --&gt;
     &lt;one-to-one name=&quot;user&quot; property-ref=&quot;person&quot; /&gt;
 &lt;/class&gt;</code></pre><p>测试类同上</p>
-<p>###注解方式</p>
-<p>User.java</p>
+<h3 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h3><p>User.java</p>
 <pre><code>@Entity
 @Table(name=&quot;USER&quot;)
 public class User {
@@ -485,8 +482,7 @@ public class Person {
 </ol>
 </li>
 </ol>
-<p>##组合关系映射</p>
-<p>问题：</p>
+<h2 id="组合关系映射"><a href="#组合关系映射" class="headerlink" title="组合关系映射"></a>组合关系映射</h2><p>问题：</p>
 <p>某单位职工档案管理系统的需求中，希望能够保存职工的各种联系方式，包括：家庭地址、工作地址、籍贯地址、<br>手机号、邮箱等，每个地址又需包含省、市、县、详细街道信息，应该如何实现？</p>
 <table>
 <thead>
@@ -588,8 +584,7 @@ public class Person {
 <td align="left"></td>
 </tr>
 </tbody></table>
-<p>###xml方式：</p>
-<p>Contact.java</p>
+<h3 id="xml方式："><a href="#xml方式：" class="headerlink" title="xml方式："></a>xml方式：</h3><p>Contact.java</p>
 <pre><code>public class Contact {
     private int id;
     private String phoneNum;
@@ -665,8 +660,7 @@ public class Person {
         session.close();
         HibernateUtil.closeSessionFactory();
     }
-}</code></pre><p>###注解方式</p>
-<p>Contact.java</p>
+}</code></pre><h3 id="注解方式-1"><a href="#注解方式-1" class="headerlink" title="注解方式"></a>注解方式</h3><p>Contact.java</p>
 <pre><code>@Entity
 public class Contact {
 
