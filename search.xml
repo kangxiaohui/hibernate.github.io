@@ -859,8 +859,10 @@ public class User {
 <li>Hibernate是连接Java应用程序和关系型数据库的框架，能够建立对象模型和关系数据模型之间的映射，是一种自动ORM框架；<br/></li>
 <li>Hibernate是对JDBC API的封装，是JDBC轻量级封装框架。<br/></li>
 </ol>
-<h2 id="第一个Hibernate程序"><a href="#第一个Hibernate程序" class="headerlink" title="第一个Hibernate程序"></a>第一个Hibernate程序<br></h2><h3 id="1-安装Eclipse、Mysql；"><a href="#1-安装Eclipse、Mysql；" class="headerlink" title="1.安装Eclipse、Mysql；"></a>1.安装Eclipse、Mysql；<br></h3><h3 id="2-下载Hibernate，并解压缩-获得jar包；"><a href="#2-下载Hibernate，并解压缩-获得jar包；" class="headerlink" title="2.下载Hibernate，并解压缩,获得jar包；"></a>2.下载Hibernate，并解压缩,获得jar包；<br></h3><h3 id="3-使用Eclipse创建新的项目；"><a href="#3-使用Eclipse创建新的项目；" class="headerlink" title="3.使用Eclipse创建新的项目；"></a>3.使用Eclipse创建新的项目；<br></h3><h3 id="4-引入Hibernate及其依赖库（jar包）；"><a href="#4-引入Hibernate及其依赖库（jar包）；" class="headerlink" title="4.引入Hibernate及其依赖库（jar包）；"></a>4.引入Hibernate及其依赖库（jar包）；<br></h3><h3 id="5-引入Mysql数据库驱动包；"><a href="#5-引入Mysql数据库驱动包；" class="headerlink" title="5.引入Mysql数据库驱动包；"></a>5.引入Mysql数据库驱动包；<br></h3><h3 id="6-编写Hibernate配置文件-hibernate-cfg-xml"><a href="#6-编写Hibernate配置文件-hibernate-cfg-xml" class="headerlink" title="6.编写Hibernate配置文件(hibernate.cfg.xml"></a>6.<font color=#FF0000 size=5 >编写Hibernate配置文件(hibernate.cfg.xml</h3><p>)；</font><br><br>    <?xml version="1.0" encoding="UTF-8"?><br>    <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"></p>
-<pre><code>&lt;hibernate-configuration&gt;
+<h2 id="第一个Hibernate程序"><a href="#第一个Hibernate程序" class="headerlink" title="第一个Hibernate程序"></a>第一个Hibernate程序</h2><h3 id="1-安装Eclipse、Mysql；"><a href="#1-安装Eclipse、Mysql；" class="headerlink" title="1.安装Eclipse、Mysql；"></a>1.安装Eclipse、Mysql；</h3><h3 id="2-下载Hibernate，并解压缩-获得jar包；"><a href="#2-下载Hibernate，并解压缩-获得jar包；" class="headerlink" title="2.下载Hibernate，并解压缩,获得jar包；"></a>2.下载Hibernate，并解压缩,获得jar包；</h3><h3 id="3-使用Eclipse创建新的项目；"><a href="#3-使用Eclipse创建新的项目；" class="headerlink" title="3.使用Eclipse创建新的项目；"></a>3.使用Eclipse创建新的项目；</h3><h3 id="4-引入Hibernate及其依赖库（jar包）；"><a href="#4-引入Hibernate及其依赖库（jar包）；" class="headerlink" title="4.引入Hibernate及其依赖库（jar包）；"></a>4.引入Hibernate及其依赖库（jar包）；</h3><h3 id="5-引入Mysql数据库驱动包；"><a href="#5-引入Mysql数据库驱动包；" class="headerlink" title="5.引入Mysql数据库驱动包；"></a>5.引入Mysql数据库驱动包；</h3><h3 id="6-编写Hibernate配置文件-hibernate-cfg-xml-；"><a href="#6-编写Hibernate配置文件-hibernate-cfg-xml-；" class="headerlink" title="6.编写Hibernate配置文件(hibernate.cfg.xml)；"></a>6.<font color=#FF0000 size=5 >编写Hibernate配置文件(hibernate.cfg.xml)；</font></h3><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE hibernate-configuration PUBLIC &quot;-//Hibernate/Hibernate Configuration DTD 3.0//EN&quot; &quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&gt;
+
+&lt;hibernate-configuration&gt;
 &lt;session-factory&gt;
     &lt;property name=&quot;hibernate.dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;
     &lt;property name=&quot;hibernate.connection.driver_class&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;
@@ -873,14 +875,14 @@ public class User {
 
     &lt;mapping resource=&quot;com/hibernate/entity/Customer.hbm.xml&quot; /&gt;
 &lt;/session-factory&gt;
-&lt;/hibernate-configuration&gt;</code></pre><h3 id="7-创建Java持久化类XXX-java；"><a href="#7-创建Java持久化类XXX-java；" class="headerlink" title="7. 创建Java持久化类XXX.java；"></a>7. <font color=#FF0000 size=5 >创建Java持久化类XXX.java；</font><br></h3><p><em>持久化类与数据库之间是一一对应关系</em><br/><br><em>Custom.java文件：</em></p>
+&lt;/hibernate-configuration&gt;</code></pre><h3 id="7-创建Java持久化类XXX-java；"><a href="#7-创建Java持久化类XXX-java；" class="headerlink" title="7. 创建Java持久化类XXX.java；"></a>7. <font color=#FF0000 size=5 >创建Java持久化类XXX.java；</font></h3><p><em>持久化类与数据库之间是一一对应关系</em><br/><br><em>Custom.java文件：</em></p>
 <pre><code>public class Customer {
     private int id;
     private String name;
     private int sex;
     private int age;
     /*set，get方法*/
-}</code></pre><h3 id="8-编写持久化类的映射配置文件XXX-hbm-xml；"><a href="#8-编写持久化类的映射配置文件XXX-hbm-xml；" class="headerlink" title="8. 编写持久化类的映射配置文件XXX.hbm.xml；"></a>8. <font color=#FF0000 size=5 >编写持久化类的映射配置文件XXX.hbm.xml；</font><br></h3><h3 id="Customer-hbm-xml文件："><a href="#Customer-hbm-xml文件：" class="headerlink" title="Customer.hbm.xml文件："></a>Customer.hbm.xml文件：</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+}</code></pre><h3 id="8-编写持久化类的映射配置文件XXX-hbm-xml；"><a href="#8-编写持久化类的映射配置文件XXX-hbm-xml；" class="headerlink" title="8. 编写持久化类的映射配置文件XXX.hbm.xml；"></a>8. <font color=#FF0000 size=5 >编写持久化类的映射配置文件XXX.hbm.xml；</font></h3><h3 id="Customer-hbm-xml文件："><a href="#Customer-hbm-xml文件：" class="headerlink" title="Customer.hbm.xml文件："></a>Customer.hbm.xml文件：</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;!DOCTYPE hibernate-mapping PUBLIC &quot;-//Hibernate/Hibernate Mapping DTD 3.0//EN&quot; &quot;http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&gt;
 
 &lt;hibernate-mapping package=&quot;com.hibernate.entity&quot;&gt;
@@ -908,7 +910,8 @@ public class User {
     2. type：指定属性的类型；
     3. column：指定表字段的名称；
     4. not-null：指定属性是否允许为空。</code></pre><ol start="9">
-<li><p><font color=#FF0000 size=5 >使用Hibernate API 完成对象的持久化。</font><br></p>
+<li><font color=#FF0000 size=5 >使用Hibernate API 完成对象的持久化。</font><br></li>
+</ol>
 <h3 id="HibernateUtil工具类"><a href="#HibernateUtil工具类" class="headerlink" title="HibernateUtil工具类"></a>HibernateUtil工具类</h3><pre><code>public class HibernateUtil {
     //SessionFactory是线程安全的，多个应用线程间进行共享，一般整个应用有且只有一个SessionFactory
     private static SessionFactory sessionFactory = null;
@@ -956,8 +959,6 @@ session.save(customer); //保存
 tx.commit();//提交事务
 session.close();关闭 Session,SessionFactory
 HibernateUtil.closeSessionFactory();</code></pre><p>}</p>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>hibernate</category>
