@@ -225,7 +225,7 @@ public class Person {
 </li>
 <li>在Person端的id属性上配置主键生成策略为 foreign<br><ol>
 <li><code>@GeneratedValue(generator=&quot;foreign&quot;)</code></li>
-<li><code>@GenericGenerator(name=&quot;foreign&quot;,strategy=&quot;foreign&quot;,parameters={@Parameters(name=&quot;property&quot;,value=&quot;user&quot;)})</code></li>
+<li><code>@GenericGenerator(name=&quot;foreign&quot;,strategy=&quot;foreign&quot;,parameters={@Parameter(name=&quot;property&quot;,value=&quot;user&quot;)})</code></li>
 </ol>
 </li>
 <li>在Person一端的user属性上配置一对一关联关系<br><br><code>@OneToOne(mappedBy=&quot;person&quot;)</code></li>
