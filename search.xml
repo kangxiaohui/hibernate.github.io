@@ -1,6 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>5-SpringMVC1</title>
+    <url>/2020/02/27/5-SpringMVC1/</url>
+    <content><![CDATA[<h2 id="程序搭建过程"><a href="#程序搭建过程" class="headerlink" title="程序搭建过程"></a>程序搭建过程</h2><ol>
+<li>创建web工程，导入jar</li>
+<li>配置xml文件 3个(web.xml，spring-mvc.xml，applicationContext.xml)<a id="more"></a>
+web.xml</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">id</span>=<span class="string">"WebApp_ID"</span> <span class="attr">version</span>=<span class="string">"3.1"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">display-name</span>&gt;</span>springmvcdemo1<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">welcome-file-list</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.jsp<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">welcome-file-list</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span></span><br><span class="line">			classpath*:/applicationContext.xml</span><br><span class="line">		<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/spring-mvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>spring-mvc.xml，与web.xml在同一目录下</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/mvc </span></span></span><br><span class="line"><span class="tag"><span class="string">	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd </span></span></span><br><span class="line"><span class="tag"><span class="string">	http://www.springframework.org/schema/beans </span></span></span><br><span class="line"><span class="tag"><span class="string">	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd </span></span></span><br><span class="line"><span class="tag"><span class="string">	http://www.springframework.org/schema/context </span></span></span><br><span class="line"><span class="tag"><span class="string">	http://www.springframework.org/schema/context/spring-context-4.0.xsd"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 自动扫描且只扫描@Controller --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.cakeonline"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">context:include-filter</span> <span class="attr">type</span>=<span class="string">"annotation"</span></span></span><br><span class="line"><span class="tag">			<span class="attr">expression</span>=<span class="string">"org.springframework.stereotype.Controller"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 基于注解驱动的SpringMVC --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- mvc:annotation-driven enable-matrix-variables="true" / --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 定义JSP文件的位置 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span></span></span><br><span class="line"><span class="tag">		<span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>applicationContext.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:jdbc</span>=<span class="string">"http://www.springframework.org/schema/jdbc"</span> <span class="attr">xmlns:jee</span>=<span class="string">"http://www.springframework.org/schema/jee"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span> <span class="attr">xmlns:task</span>=<span class="string">"http://www.springframework.org/schema/task"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:p</span>=<span class="string">"http://www.springframework.org/schema/p"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></span></span><br><span class="line"><span class="tag"><span class="string">		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">description</span>&gt;</span>Spring公共配置 <span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- 配置Spring上下文的注解 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">context:annotation-config</span> /&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.cakeonline"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">context:exclude-filter</span> <span class="attr">type</span>=<span class="string">"annotation"</span></span></span><br><span class="line"><span class="tag">			<span class="attr">expression</span>=<span class="string">"org.springframework.stereotype.Controller"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>编写JSP页面和Controller（@Controller,@RequestMapping,@PathVariable,@RequestParam）</li>
+</ol>
+<h2 id="Spring概述"><a href="#Spring概述" class="headerlink" title="Spring概述"></a>Spring概述</h2><h3 id="回顾MVC"><a href="#回顾MVC" class="headerlink" title="回顾MVC"></a>回顾MVC</h3><p><img src="https://i.imgur.com/xt94A0F.png" alt="MVC图片"></p>
+<h3 id="SpringMVC体系结构"><a href="#SpringMVC体系结构" class="headerlink" title="SpringMVC体系结构"></a>SpringMVC体系结构</h3><p>SpringMVC是基于请求驱动，围绕一个核心Servlet 转发请求到对应的Controller而设计的</p>
+<p>优点：</p>
+<ol>
+<li>是一个典型的MVC构架，易学易用</li>
+<li>提供了清晰的角色划分，比如Controller、validator、handler mapping、view resolver等</li>
+<li>业务代码可重用</li>
+<li>可定制的数据绑定和验证，可定制的视图解决方案</li>
+<li>提供了一套强大又使用简单的标签库</li>
+<li>支持Restful风格</li>
+</ol>
+<p><img src="https://i.imgur.com/UFWwkTf.png" alt="MVC体系结构图片"></p>
+<p>步骤：</p>
+<ol>
+<li>客户端发出请求，交给DispatcherServlet处理</li>
+<li>DispatcherServlet根据请求信息及HandlerMapping的配置找到处理请求的处理器（Handler）</li>
+<li>DispatcherServlet通过HandlerAdapter对Handler进行封装，再以统一的适配器接口调用Handler</li>
+<li>处理器完成业务逻辑，返回一个ModelAndVIew给DispatcherServlet，ModelAndView包含视图逻辑名和模型数据信息</li>
+<li>DispatcherServlet借由ViewResolver完成逻辑视图名到真实视图的解析工作</li>
+<li>得到View真实视图后，DispatcherServlet就使用这个View对象对ModelAndView中的模型数据进行渲染</li>
+<li>最终客户得到响应</li>
+</ol>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="https://i.imgur.com/u8ZmDks.png" alt="生命周期图片"></p>
+<h2 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h2><h3 id="DispatcherServlet"><a href="#DispatcherServlet" class="headerlink" title="DispatcherServlet"></a>DispatcherServlet</h3><ol>
+<li><p>DispatcherServlet继承自HttpServlet，是整个SpringMVC中的前端控制器，主要负责流程控制</p>
+</li>
+<li><p>DispatcherServlet使用了专有的Bean来处理请求和渲染视图，可以在WebApplicationContext中进行配置，这些Bean包括：</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">Bean类型</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HandlerMapping</td>
+<td align="left">将传入请求映射到处理器</td>
+</tr>
+<tr>
+<td align="left">HandlerAdapter</td>
+<td align="left">将处理器包装为适配器，从而支持多种类型的处理器</td>
+</tr>
+<tr>
+<td align="left">ViewResolver</td>
+<td align="left">将逻辑视图名解析为具体的View</td>
+</tr>
+<tr>
+<td align="left">LocaleResolver &amp; LocaleContextResolver</td>
+<td align="left">解释客户端所在地区和其时区(本地化)，以便提供国际化的视图</td>
+</tr>
+<tr>
+<td align="left">ThemeResolver</td>
+<td align="left">解释Web程序可用主题，比如提供个性化布局</td>
+</tr>
+<tr>
+<td align="left">MultipartResolver</td>
+<td align="left">解释multi-part请求，比如表单里支持文件上传</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>当一个请求传进来后，DispatcherServlet会按以下顺序处理：<ol>
+<li>寻找 WebApplicationContext，并将 WebApplicationContext作为一个属性绑定到请求里，以便控制器或其他原件在后续中使用。默认会以DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE 键绑定到请求里</li>
+<li>将本地化解析器绑定到请求里，以便在处理这个请求时，原件可以解析到客户端的地区（为了渲染视图，准备日期等）</li>
+<li>将主题解析其绑定到请求里，让原件（如视图）决定去使用哪一种主题</li>
+<li>若指定一个multipart file解析器，会检查这个请求包含multiparts请求</li>
+<li>寻找合适的 handler。如何找到这个 handler，执行与这个 handler 关联的执行链</li>
+<li>如果返回一个 model，渲染相对应的视图</li>
+</ol>
+</li>
+</ol>
+<h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h3><ol>
+<li>@Controller表明被注解的类为控制器，该类不需要继承任何Controller的基类或者引用任意的ServletAPI，当然如果需要可以使用ServletAPI</li>
+<li>spring-mvc.xml</li>
+<li>Controller类<h4 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h4></li>
+</ol>
+<ul>
+<li>@RequestMapping用于映射URL，该注解可以写在类级别上，也可以写在方法级别上</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"helloworld!"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hi"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相对于该路径的，上面的方法映射的URL路径是：/user/hello，<strong>推荐使用</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"helloworld!"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hi"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接映射方法注解上的路径，上面的方法映射的URL路径是：/hello</p>
+<ul>
+<li>@RequestMapping中，还可以使用method来限制请求的类型，执行不同操作</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"add"</span>, method=RequestMethod.GET)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toAdd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//数据库查询，查蛋糕类型，存入到request</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"cake"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"add"</span>, method=RequestMethod.POST)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">add</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//获取蛋糕的相关参数，插入数据库</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"list"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>URI模版是一个类似于URI的字符串，其中包含了一个或多个变量。当你将这些变量替换掉时，就变回了URI</li>
+</ul>
+<p>例：/cake/get/3</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/cake"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CakeController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@RequestMapping</span>(value=<span class="string">"get/&#123;cakeId&#125;"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">(@PathVariable <span class="keyword">int</span> cakeId)</span> </span>&#123;</span><br><span class="line">		System.out.println(cakeId);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"list"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h4><p>@RequestParam将请求参数绑定到方法参法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(@RequestParam(value = <span class="string">"name"</span>, required=<span class="keyword">true</span>, defaultValue=<span class="string">"1"</span>)</span> String name,</span></span><br><span class="line"><span class="function">			 @<span class="title">RequestParam</span><span class="params">(value=<span class="string">"pageNum"</span>, defaultValue=<span class="string">"1"</span>)</span><span class="keyword">int</span> pageNum) </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"helloworld!"</span>+name);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hi"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="RequestParam和-PathVariable的区别"><a href="#RequestParam和-PathVariable的区别" class="headerlink" title="@RequestParam和@PathVariable的区别"></a>@RequestParam和@PathVariable的区别</h4><ol>
+<li>@RequestParam拿到的是传统的传参方式，例：form表单</li>
+<li>@PathVariable页面请求路径中的参数，例：/user/login/zs</li>
+</ol>
+<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2>]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>mysterious</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>4-AOP</title>
+    <url>/2020/02/27/4-AOP/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>mysterious</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>3-SpringEL和数据验证</title>
+    <url>/2020/02/27/3-SpringEL%E5%92%8C%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>mysterious</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2-Spring_Beans和生命周期</title>
+    <url>/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>mysterious</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1-Spring介绍和IOC&amp;DI</title>
+    <url>/2020/02/27/1-Spring%E4%BB%8B%E7%BB%8D%E5%92%8CIOC-DI/</url>
+    <content><![CDATA[<p>暂无</p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>mysterious</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>加速访问Github</title>
     <url>/2020/02/26/speed-github/</url>
     <content><![CDATA[<h1 id="说一下访问慢的原因"><a href="#说一下访问慢的原因" class="headerlink" title="说一下访问慢的原因"></a>说一下访问慢的原因</h1><ol>
@@ -52,165 +224,20 @@
 <h3 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h3><a id="more"></a>
 
 <p>实体类<br>User.java</p>
-<pre><code>public class User {
-    private int id;//主键
-    private String userName;
-    private String password;
-    private Person person;
-    ……
-}</code></pre><p>Persion.java</p>
-<pre><code>public class Person {
-    private Integer id;//主键和外键，外键依赖user的主键id
-    private String name;
-    private String idNumber;
-    private User user;
-    ……
-}</code></pre><p>User.hbm.xml</p>
-<pre><code>&lt;class name=&quot;User&quot;&gt;
-    &lt;id name=&quot;id&quot; &gt;
-        &lt;generator class=&quot;increment&quot;&gt;&lt;/generator&gt;
-    &lt;/id&gt;
-    &lt;property name=&quot;userName&quot;  /&gt;
-    &lt;property name=&quot;password&quot;/&gt;
-
-    &lt;!-- 主键关联方式映射与Person的一对一关系 --&gt;
-    &lt;one-to-one name=&quot;person&quot; class=&quot;Person&quot; cascade=&quot;all&quot;/&gt;
-&lt;/class&gt;</code></pre><p>Persion.hbm.xml</p>
-<pre><code>&lt;class name=&quot;Person&quot;&gt;
-    &lt;id name=&quot;id&quot; &gt;
-        &lt;generator class=&quot;foreign&quot;&gt;
-            &lt;param name=&quot;property&quot;&gt;user&lt;/param&gt;
-        &lt;/generator&gt;
-    &lt;/id&gt;
-
-    &lt;!-- 主键关联方式映射与User的一对一关系 --&gt;
-    &lt;one-to-one name=&quot;user&quot; constrained=&quot;true&quot; /&gt;
-    &lt;property name=&quot;name&quot; /&gt;
-    &lt;property name=&quot;idNumber&quot;/&gt;
-
-&lt;/class&gt;</code></pre><p>Test.java</p>
-<pre><code>public static void saveUser() {
-    Session session = null;
-    Transaction tran = null;
-    try {
-        session = HibernateUtil.openSession();
-        tran = session.beginTransaction();// 开启事务
-
-        // 新建User对象
-        User user = new User();
-        user.setUserName(&quot;张三&quot;);
-        user.setPassword(&quot;111111&quot;);
-
-        //新建Person对象
-        Person person = new Person();
-        person.setName(&quot;张三&quot;);
-        person.setIdNumber(&quot;100345199002031234&quot;);
-
-        //建立联系
-        user.setPerson(person);
-        person.setUser(user);
-
-        // 保存user并级联保存person
-        session.save(user);
-
-        tran.commit();// 提交事务
-
-    } catch (Exception e) {
-        tran.rollback();// 回滚事务
-        e.printStackTrace();
-    } finally {
-        session.close();// 关闭session
-        HibernateUtil.closeSessionFactory();
-    }
-}</code></pre><h3 id="注释方法"><a href="#注释方法" class="headerlink" title="注释方法"></a>注释方法</h3><p>User.java</p>
-<pre><code>@Entity
-@Table(name=&quot;user&quot;)
-public class User {
-    //注解写在属性上使用的是反射机制
-    //注解写在get方法上，是setget机制
-    private int id;
-    private String userName;
-    private String password;
-    private Person person;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name=&quot;my_gen&quot;, strategy=&quot;increment&quot;)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @OneToOne(cascade=CascadeType.ALL)
-    @PrimaryKeyJoinColumn(name=&quot;id&quot;)
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-}</code></pre><p>Persion.java</p>
-<pre><code>@Entity
-@Table(name=&quot;person&quot;)
-public class Person {
-
-    private Integer id;
-    private String name;//姓名
-    private String idNumber;//身份证号
-    private User user;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name=&quot;my_gen&quot;, strategy = &quot;foreign&quot;, parameters= {@Parameter(name = &quot;property&quot;, value = &quot;user&quot;)})
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getIdNumber() {
-        return idNumber;
-    }
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    @OneToOne(mappedBy=&quot;person&quot;)
-    public User getUser() {
-        return user;
-    }
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-}</code></pre><p>测试类同上</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;<span class="comment">//主键</span></span><br><span class="line">	<span class="keyword">private</span> String userName;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="keyword">private</span> Person person;</span><br><span class="line">	……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Persion.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer id;<span class="comment">//主键和外键，外键依赖user的主键id</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String idNumber;</span><br><span class="line">	<span class="keyword">private</span> User user;</span><br><span class="line">	……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>User.hbm.xml</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> <span class="title">name</span></span>=<span class="string">"User"</span>&gt;</span><br><span class="line">	&lt;id name=<span class="string">"id"</span> &gt;</span><br><span class="line">		&lt;generator class="increment"&gt;&lt;/generator&gt;</span><br><span class="line">	&lt;/id&gt;</span><br><span class="line">	&lt;property name=<span class="string">"userName"</span>  /&gt;</span><br><span class="line">	&lt;property name=<span class="string">"password"</span>/&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 主键关联方式映射与Person的一对一关系 --&gt;</span><br><span class="line">	&lt;one-to-one name=<span class="string">"person"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"Person"</span> cascade=<span class="string">"all"</span>/&gt;</span><br><span class="line">&lt;/class&gt;</span><br></pre></td></tr></table></figure>
+<p>Persion.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Person"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> &gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"foreign"</span>&gt;</span></span><br><span class="line">		    <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"property"</span>&gt;</span>user<span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- 主键关联方式映射与User的一对一关系 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">constrained</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"idNumber"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Test.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">saveUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       Session session = <span class="keyword">null</span>;</span><br><span class="line">       Transaction tran = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           session = HibernateUtil.openSession();</span><br><span class="line">           tran = session.beginTransaction();<span class="comment">// 开启事务</span></span><br><span class="line"></span><br><span class="line">           <span class="comment">// 新建User对象</span></span><br><span class="line">           User user = <span class="keyword">new</span> User();</span><br><span class="line">           user.setUserName(<span class="string">"张三"</span>);</span><br><span class="line">           user.setPassword(<span class="string">"111111"</span>);</span><br><span class="line">           </span><br><span class="line">           <span class="comment">//新建Person对象</span></span><br><span class="line">           Person person = <span class="keyword">new</span> Person();</span><br><span class="line">           person.setName(<span class="string">"张三"</span>);</span><br><span class="line">           person.setIdNumber(<span class="string">"100345199002031234"</span>);</span><br><span class="line">           </span><br><span class="line">           <span class="comment">//建立联系</span></span><br><span class="line">           user.setPerson(person);</span><br><span class="line">           person.setUser(user);</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 保存user并级联保存person</span></span><br><span class="line">           session.save(user);</span><br><span class="line"></span><br><span class="line">           tran.commit();<span class="comment">// 提交事务</span></span><br><span class="line"></span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           tran.rollback();<span class="comment">// 回滚事务</span></span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">           session.close();<span class="comment">// 关闭session</span></span><br><span class="line">           HibernateUtil.closeSessionFactory();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注释方法"><a href="#注释方法" class="headerlink" title="注释方法"></a>注释方法</h3><p>User.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">	<span class="comment">//注解写在属性上使用的是反射机制</span></span><br><span class="line">	<span class="comment">//注解写在get方法上，是setget机制</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> Person person;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name=<span class="string">"my_gen"</span>, strategy=<span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OneToOne</span>(cascade=CascadeType.ALL)</span><br><span class="line">    <span class="meta">@PrimaryKeyJoinColumn</span>(name=<span class="string">"id"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">getPerson</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPerson</span><span class="params">(Person person)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.person = person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Persion.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"person"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">private</span> String idNumber;<span class="comment">//身份证号</span></span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name=<span class="string">"my_gen"</span>, strategy = <span class="string">"foreign"</span>, parameters= &#123;<span class="meta">@Parameter</span>(name = <span class="string">"property"</span>, value = <span class="string">"user"</span>)&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getIdNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> idNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIdNumber</span><span class="params">(String idNumber)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.idNumber = idNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@OneToOne</span>(mappedBy=<span class="string">"person"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.user = user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类同上</p>
 <p><strong>关于上述代码解释：</strong></p>
 <ol>
 <li>xml：<ol>
@@ -241,129 +268,19 @@ public class Person {
 </li>
 </ol>
 <h2 id="一对一的关联映射（唯一外键关联方式）"><a href="#一对一的关联映射（唯一外键关联方式）" class="headerlink" title="一对一的关联映射（唯一外键关联方式）"></a>一对一的关联映射（唯一外键关联方式）</h2><h3 id="xml方式-1"><a href="#xml方式-1" class="headerlink" title="xml方式"></a>xml方式</h3><p>User.java</p>
-<pre><code>public class User {
-    private int id;//主键，外键（外键依赖persion类的id）
-    private String userName;
-    private String password;
-    private Person person;
-    ......
-
-}</code></pre><p>User.hbm.xml</p>
-<pre><code>&lt;class name=&quot;User&quot; table=&quot;USER&quot;&gt;
-    &lt;id name=&quot;id&quot; &gt;
-        &lt;generator class=&quot;increment&quot;&gt;&lt;/generator&gt;
-    &lt;/id&gt;
-    &lt;property name=&quot;userName&quot;  /&gt;
-    &lt;property name=&quot;password&quot;/&gt;
-
-    &lt;!-- 外键关联方式映射与Person的一对一关系 --&gt;
-    &lt;many-to-one name=&quot;person&quot; column=&quot;PERSONID&quot; cascade=&quot;all&quot; unique=&quot;true&quot;/&gt;
-&lt;/class&gt;</code></pre><p>Persion.java</p>
-<pre><code>public class Person {
-    private Integer id;//主键
-    private String name;
-    private String idNumber;
-    private User user;
-    ......
-}</code></pre><p>Persion.hbm.xml</p>
-<pre><code>&lt;class name=&quot;Person&quot; table=&quot;PERSON&quot;&gt;
-    &lt;id name=&quot;id&quot;&gt;
-        &lt;generator class=&quot;increment&quot;&gt;&lt;/generator&gt;
-    &lt;/id&gt;
-    &lt;property name=&quot;name&quot; /&gt;
-    &lt;property name=&quot;idNumber&quot; /&gt;
-
-    &lt;!-- 外键关联方式映射与User的一对一关系   property-ref:外键列对应的属性名 --&gt;
-    &lt;one-to-one name=&quot;user&quot; property-ref=&quot;person&quot; /&gt;
-&lt;/class&gt;</code></pre><p>测试类同上</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;<span class="comment">//主键，外键（外键依赖persion类的id）</span></span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> Person person;</span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>User.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"User"</span> <span class="attr">table</span>=<span class="string">"USER"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> &gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userName"</span>  /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- 外键关联方式映射与Person的一对一关系 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"person"</span> <span class="attr">column</span>=<span class="string">"PERSONID"</span> <span class="attr">cascade</span>=<span class="string">"all"</span> <span class="attr">unique</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Persion.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;<span class="comment">//主键</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String idNumber;</span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Persion.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Person"</span> <span class="attr">table</span>=<span class="string">"PERSON"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"idNumber"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- 外键关联方式映射与User的一对一关系   property-ref:外键列对应的属性名 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">property-ref</span>=<span class="string">"person"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>测试类同上</p>
 <h3 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h3><p>User.java</p>
-<pre><code>@Entity
-@Table(name=&quot;USER&quot;)
-public class User {
-
-    private int id;
-    private String userName;
-    private String password;
-    private Person person;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name=&quot;my_gen&quot;, strategy = &quot;increment&quot;)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name=&quot;PERSONID&quot;)
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-}</code></pre><p>Persion.java</p>
-<pre><code>@Entity
-@Table(name=&quot;PERSON&quot;)
-public class Person {
-
-    private Integer id;
-    private String name;//姓名
-    private String idNumber;//身份证号
-    private User user;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name = &quot;my_gen&quot;, strategy = &quot;increment&quot;)
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getIdNumber() {
-        return idNumber;
-    }
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    @OneToOne(mappedBy=&quot;person&quot;)
-    public User getUser() {
-        return user;
-    }
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-}</code></pre><p>测试类同上</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"USER"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> Person person;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name=<span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OneToOne</span>(cascade=CascadeType.ALL)</span><br><span class="line">    <span class="meta">@JoinColumn</span>(name=<span class="string">"PERSONID"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">getPerson</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPerson</span><span class="params">(Person person)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.person = person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Persion.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"PERSON"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">private</span> String idNumber;<span class="comment">//身份证号</span></span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name = <span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getIdNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> idNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIdNumber</span><span class="params">(String idNumber)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.idNumber = idNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@OneToOne</span>(mappedBy=<span class="string">"person"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.user = user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类同上</p>
 <p><strong>关于上述代码解释：</strong></p>
 <ol>
 <li>xml<ol>
@@ -497,175 +414,21 @@ public class Person {
 </tr>
 </tbody></table>
 <h3 id="xml方式："><a href="#xml方式：" class="headerlink" title="xml方式："></a>xml方式：</h3><p>Contact.java</p>
-<pre><code>public class Contact {
-    private int id;
-    private String phoneNum;
-    private String email;
-    private Address homeAddress;
-    private Address workAddress;
-    ...
-}</code></pre><p>Contact.hbm.xml</p>
-<pre><code>&lt;class name=&quot;Contact&quot;&gt;
-    &lt;id name=&quot;id&quot;&gt;
-        &lt;generator class=&quot;increment&quot; /&gt;
-    &lt;/id&gt;
-    &lt;property name=&quot;phoneNum&quot; /&gt;
-    &lt;property name=&quot;email&quot; /&gt;
-
-    &lt;!-- component映射组合关系 --&gt;
-    &lt;component name=&quot;homeAddress&quot; class=&quot;Address&quot;&gt;
-        &lt;property name=&quot;province&quot; column=&quot;HOMEPROVINCE&quot; /&gt;
-        &lt;property name=&quot;city&quot; column=&quot;HOMECITY&quot; /&gt;
-        &lt;property name=&quot;district&quot; column=&quot;HOMEDISTRICT&quot; /&gt;
-        &lt;property name=&quot;detail&quot; column=&quot;HOMEDETAIL&quot; /&gt;
-    &lt;/component&gt;
-    &lt;component name=&quot;workAddress&quot; class=&quot;Address&quot;&gt;
-        &lt;property name=&quot;province&quot; column=&quot;WORKPROVINCE&quot; /&gt;
-        &lt;property name=&quot;city&quot; column=&quot;WORKCITY&quot; /&gt;
-        &lt;property name=&quot;district&quot; column=&quot;WORKDISTRICT&quot; /&gt;
-        &lt;property name=&quot;detail&quot; column=&quot;WORKDETAIL&quot; /&gt;
-    &lt;/component&gt;
-
-&lt;/class&gt;</code></pre><p>Address.java</p>
-<pre><code>public class Address {
-    private String province;//省
-    private String city;//市
-    private String district;//区
-    private String detail;//详细地址
-    ...
-}</code></pre><p>Test.java</p>
-<pre><code>public static void saveContact() {
-    Session session = null;
-    Transaction tran = null;
-
-    try {
-        session = HibernateUtil.openSession();
-        tran = session.beginTransaction();
-
-        Contact contact = new Contact();
-        contact.setPhoneNum(&quot;12345678910&quot;);
-        contact.setEmail(&quot;abcxxx@123.com&quot;);
-
-        Address homeAddress = new Address();
-        homeAddress.setProvince(&quot;河北省&quot;);
-        homeAddress.setCity(&quot;xx市&quot;);
-        homeAddress.setDistrict(&quot;xx区&quot;);
-        homeAddress.setDetail(&quot;xx路xx号&quot;);
-
-        Address workAddress = new Address();
-        workAddress.setProvince(&quot;河北省&quot;);
-        workAddress.setCity(&quot;xx市&quot;);
-        workAddress.setDistrict(&quot;xx区&quot;);
-        workAddress.setDetail(&quot;xx路xx号&quot;);
-
-        //建立联系
-        contact.setHomeAddress(homeAddress);
-        contact.setWorkAddress(workAddress);
-
-        // 保存contact同时保存地址信息
-        session.save(contact);
-        tran.commit();
-    } catch (Exception e) {
-        tran.rollback();
-        e.printStackTrace();
-    } finally {    
-        session.close();
-        HibernateUtil.closeSessionFactory();
-    }
-}</code></pre><h3 id="注解方式-1"><a href="#注解方式-1" class="headerlink" title="注解方式"></a>注解方式</h3><p>Contact.java</p>
-<pre><code>@Entity
-public class Contact {
-
-    private int id;
-    private String phoneNum;
-    private String email;
-    private Address homeAddress;
-    private Address workAddress;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name = &quot;my_gen&quot;, strategy = &quot;increment&quot;)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Embedded
-    @AttributeOverrides(value={
-            @AttributeOverride(
-                    name = &quot;province&quot;, 
-                    column = @Column(name=&quot;HOMEPROVINCE&quot;)),
-            @AttributeOverride(
-                    name = &quot;city&quot;,
-                    column = @Column(name=&quot;HOMECITY&quot;)),
-            @AttributeOverride(
-                    column = @Column(name=&quot;HOMEDISTRICT&quot;),
-                    name = &quot;district&quot;),
-            @AttributeOverride(
-                    column = @Column(name=&quot;HOMEDETAIL&quot;),
-                    name = &quot;detail&quot;)})
-    public Address getHomeAddress() {
-        return homeAddress;
-    }
-
-    public void setHomeAddress(Address homeAddress) {
-        this.homeAddress = homeAddress;
-    }
-
-    @Embedded  //注意与嵌入式类注解@Embeddable区分
-    @AttributeOverrides(value={
-            @AttributeOverride(
-                    name = &quot;province&quot;, 
-                    column = @Column(name=&quot;WORKPROVINCE&quot;)),
-            @AttributeOverride(
-                    name = &quot;city&quot;,
-                    column = @Column(name=&quot;WORKCITY&quot;)),
-            @AttributeOverride(
-                    column = @Column(name=&quot;WORKDISTRICT&quot;),
-                    name = &quot;district&quot;),
-            @AttributeOverride(
-                    column = @Column(name=&quot;WORKDETAIL&quot;),
-                    name = &quot;detail&quot;)})
-    public Address getWorkAddress() {
-        return workAddress;
-    }
-
-    public void setWorkAddress(Address workAddress) {
-        this.workAddress = workAddress;
-    }
-
-}</code></pre><p>Address.java</p>
-<pre><code>@Embeddable        //指明为嵌入式类，不需要单独进行映射
-public class Address {
-    private String province;//省
-    private String city;//市
-    private String district;//区
-    private String detail;//详细地址
-    ...
-
-}</code></pre><p>测试类同上</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Contact</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String phoneNum;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="keyword">private</span> Address homeAddress;</span><br><span class="line">    <span class="keyword">private</span> Address workAddress;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Contact.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Contact"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"phoneNum"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"email"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- component映射组合关系 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">"homeAddress"</span> <span class="attr">class</span>=<span class="string">"Address"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"province"</span> <span class="attr">column</span>=<span class="string">"HOMEPROVINCE"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"city"</span> <span class="attr">column</span>=<span class="string">"HOMECITY"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"district"</span> <span class="attr">column</span>=<span class="string">"HOMEDISTRICT"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"detail"</span> <span class="attr">column</span>=<span class="string">"HOMEDETAIL"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">"workAddress"</span> <span class="attr">class</span>=<span class="string">"Address"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"province"</span> <span class="attr">column</span>=<span class="string">"WORKPROVINCE"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"city"</span> <span class="attr">column</span>=<span class="string">"WORKCITY"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"district"</span> <span class="attr">column</span>=<span class="string">"WORKDISTRICT"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"detail"</span> <span class="attr">column</span>=<span class="string">"WORKDETAIL"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Address.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String province;<span class="comment">//省</span></span><br><span class="line">    <span class="keyword">private</span> String city;<span class="comment">//市</span></span><br><span class="line">    <span class="keyword">private</span> String district;<span class="comment">//区</span></span><br><span class="line">    <span class="keyword">private</span> String detail;<span class="comment">//详细地址</span></span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Test.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">saveContact</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       Session session = <span class="keyword">null</span>;</span><br><span class="line">       Transaction tran = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           session = HibernateUtil.openSession();</span><br><span class="line">           tran = session.beginTransaction();</span><br><span class="line"></span><br><span class="line">           Contact contact = <span class="keyword">new</span> Contact();</span><br><span class="line">           contact.setPhoneNum(<span class="string">"12345678910"</span>);</span><br><span class="line">           contact.setEmail(<span class="string">"abcxxx@123.com"</span>);</span><br><span class="line">           </span><br><span class="line">           Address homeAddress = <span class="keyword">new</span> Address();</span><br><span class="line">           homeAddress.setProvince(<span class="string">"河北省"</span>);</span><br><span class="line">           homeAddress.setCity(<span class="string">"xx市"</span>);</span><br><span class="line">           homeAddress.setDistrict(<span class="string">"xx区"</span>);</span><br><span class="line">           homeAddress.setDetail(<span class="string">"xx路xx号"</span>);</span><br><span class="line">           </span><br><span class="line">           Address workAddress = <span class="keyword">new</span> Address();</span><br><span class="line">           workAddress.setProvince(<span class="string">"河北省"</span>);</span><br><span class="line">           workAddress.setCity(<span class="string">"xx市"</span>);</span><br><span class="line">           workAddress.setDistrict(<span class="string">"xx区"</span>);</span><br><span class="line">           workAddress.setDetail(<span class="string">"xx路xx号"</span>);</span><br><span class="line">           </span><br><span class="line">           <span class="comment">//建立联系</span></span><br><span class="line">           contact.setHomeAddress(homeAddress);</span><br><span class="line">           contact.setWorkAddress(workAddress);</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 保存contact同时保存地址信息</span></span><br><span class="line">           session.save(contact);</span><br><span class="line">           tran.commit();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           tran.rollback();</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123;	</span><br><span class="line">           session.close();</span><br><span class="line">           HibernateUtil.closeSessionFactory();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注解方式-1"><a href="#注解方式-1" class="headerlink" title="注解方式"></a>注解方式</h3><p>Contact.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Contact</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String phoneNum;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="keyword">private</span> Address homeAddress;</span><br><span class="line">    <span class="keyword">private</span> Address workAddress;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name = <span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPhoneNum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> phoneNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhoneNum</span><span class="params">(String phoneNum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.phoneNum = phoneNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEmail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmail</span><span class="params">(String email)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.email = email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Embedded</span></span><br><span class="line">    <span class="meta">@AttributeOverrides</span>(value=&#123;</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    name = <span class="string">"province"</span>, </span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"HOMEPROVINCE"</span>)),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    name = <span class="string">"city"</span>,</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"HOMECITY"</span>)),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"HOMEDISTRICT"</span>),</span><br><span class="line">                    name = <span class="string">"district"</span>),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"HOMEDETAIL"</span>),</span><br><span class="line">                    name = <span class="string">"detail"</span>)&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Address <span class="title">getHomeAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> homeAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHomeAddress</span><span class="params">(Address homeAddress)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.homeAddress = homeAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Embedded</span>  <span class="comment">//注意与嵌入式类注解@Embeddable区分</span></span><br><span class="line">    <span class="meta">@AttributeOverrides</span>(value=&#123;</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    name = <span class="string">"province"</span>, </span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"WORKPROVINCE"</span>)),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    name = <span class="string">"city"</span>,</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"WORKCITY"</span>)),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"WORKDISTRICT"</span>),</span><br><span class="line">                    name = <span class="string">"district"</span>),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"WORKDETAIL"</span>),</span><br><span class="line">                    name = <span class="string">"detail"</span>)&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Address <span class="title">getWorkAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> workAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWorkAddress</span><span class="params">(Address workAddress)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.workAddress = workAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Address.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Embeddable</span>		<span class="comment">//指明为嵌入式类，不需要单独进行映射</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String province;<span class="comment">//省</span></span><br><span class="line">    <span class="keyword">private</span> String city;<span class="comment">//市</span></span><br><span class="line">    <span class="keyword">private</span> String district;<span class="comment">//区</span></span><br><span class="line">    <span class="keyword">private</span> String detail;<span class="comment">//详细地址</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类同上</p>
 ]]></content>
       <categories>
-        <category>hibernate</category>
+        <category>Hibernate</category>
       </categories>
       <tags>
         <tag>mysterious</tag>
@@ -681,7 +444,7 @@ public class Address {
 <p><strong><font size=5 color=#ff0000>每个类对应一个表的继承关系映射</strong></font></p>
 ]]></content>
       <categories>
-        <category>hibernate</category>
+        <category>Hibernate</category>
       </categories>
       <tags>
         <tag>mysterious</tag>
@@ -838,7 +601,7 @@ public class User {
 </ol>
 ]]></content>
       <categories>
-        <category>hibernate</category>
+        <category>Hibernate</category>
       </categories>
       <tags>
         <tag>mysterious</tag>
@@ -918,7 +681,7 @@ public class User {
 
 <h4 id="测试类test-java"><a href="#测试类test-java" class="headerlink" title="测试类test.java"></a>测试类test.java</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Session session &#x3D; HibernateUtil.getSessionFactory().openSession();&#x2F;&#x2F;打开Session</span><br><span class="line">Transaction tx &#x3D; session.beginTransaction();&#x2F;&#x2F;开始一个事务</span><br><span class="line">Customer customer &#x3D; new Customer();&#x2F;&#x2F;创建需要持久化的对象</span><br><span class="line">customer.setName(&quot;胡宗南&quot;);</span><br><span class="line">customer.setSex(2);</span><br><span class="line">customer.setAge(30);</span><br><span class="line">session.save(customer); &#x2F;&#x2F;保存</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;Customer customer2&#x3D;session.get(Customer.class, new Integer(1));&#x2F;&#x2F;查询</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;customer2.setName(&quot;李四&quot;);&#x2F;&#x2F;修改</span><br><span class="line">	&#x2F;&#x2F;session.update(customer2);</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;session.delete(customer2);&#x2F;&#x2F;删除</span><br><span class="line">	</span><br><span class="line">tx.commit();&#x2F;&#x2F;提交事务</span><br><span class="line">session.close();关闭 Session,SessionFactory</span><br><span class="line">HibernateUtil.closeSessionFactory();</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>hibernate</category>
+        <category>Hibernate</category>
       </categories>
       <tags>
         <tag>mysterious</tag>

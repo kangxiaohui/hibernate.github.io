@@ -54,7 +54,7 @@
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/hibernate/">hibernate</a>
+    <a class="article-category-link" href="/categories/Hibernate/">Hibernate</a>
   </div>
 
       
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.3k字</span>
+            <span class="post-count">2.2k字</span>
         </span>
     </span>
 
@@ -73,7 +73,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">12分钟</span>
+            <span class="post-count">11分钟</span>
         </span>
     </span>
 </div>
@@ -110,165 +110,20 @@
 <h3 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h3><a id="more"></a>
 
 <p>实体类<br>User.java</p>
-<pre><code>public class User {
-    private int id;//主键
-    private String userName;
-    private String password;
-    private Person person;
-    ……
-}</code></pre><p>Persion.java</p>
-<pre><code>public class Person {
-    private Integer id;//主键和外键，外键依赖user的主键id
-    private String name;
-    private String idNumber;
-    private User user;
-    ……
-}</code></pre><p>User.hbm.xml</p>
-<pre><code>&lt;class name=&quot;User&quot;&gt;
-    &lt;id name=&quot;id&quot; &gt;
-        &lt;generator class=&quot;increment&quot;&gt;&lt;/generator&gt;
-    &lt;/id&gt;
-    &lt;property name=&quot;userName&quot;  /&gt;
-    &lt;property name=&quot;password&quot;/&gt;
-
-    &lt;!-- 主键关联方式映射与Person的一对一关系 --&gt;
-    &lt;one-to-one name=&quot;person&quot; class=&quot;Person&quot; cascade=&quot;all&quot;/&gt;
-&lt;/class&gt;</code></pre><p>Persion.hbm.xml</p>
-<pre><code>&lt;class name=&quot;Person&quot;&gt;
-    &lt;id name=&quot;id&quot; &gt;
-        &lt;generator class=&quot;foreign&quot;&gt;
-            &lt;param name=&quot;property&quot;&gt;user&lt;/param&gt;
-        &lt;/generator&gt;
-    &lt;/id&gt;
-
-    &lt;!-- 主键关联方式映射与User的一对一关系 --&gt;
-    &lt;one-to-one name=&quot;user&quot; constrained=&quot;true&quot; /&gt;
-    &lt;property name=&quot;name&quot; /&gt;
-    &lt;property name=&quot;idNumber&quot;/&gt;
-
-&lt;/class&gt;</code></pre><p>Test.java</p>
-<pre><code>public static void saveUser() {
-    Session session = null;
-    Transaction tran = null;
-    try {
-        session = HibernateUtil.openSession();
-        tran = session.beginTransaction();// 开启事务
-
-        // 新建User对象
-        User user = new User();
-        user.setUserName(&quot;张三&quot;);
-        user.setPassword(&quot;111111&quot;);
-
-        //新建Person对象
-        Person person = new Person();
-        person.setName(&quot;张三&quot;);
-        person.setIdNumber(&quot;100345199002031234&quot;);
-
-        //建立联系
-        user.setPerson(person);
-        person.setUser(user);
-
-        // 保存user并级联保存person
-        session.save(user);
-
-        tran.commit();// 提交事务
-
-    } catch (Exception e) {
-        tran.rollback();// 回滚事务
-        e.printStackTrace();
-    } finally {
-        session.close();// 关闭session
-        HibernateUtil.closeSessionFactory();
-    }
-}</code></pre><h3 id="注释方法"><a href="#注释方法" class="headerlink" title="注释方法"></a>注释方法</h3><p>User.java</p>
-<pre><code>@Entity
-@Table(name=&quot;user&quot;)
-public class User {
-    //注解写在属性上使用的是反射机制
-    //注解写在get方法上，是setget机制
-    private int id;
-    private String userName;
-    private String password;
-    private Person person;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name=&quot;my_gen&quot;, strategy=&quot;increment&quot;)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @OneToOne(cascade=CascadeType.ALL)
-    @PrimaryKeyJoinColumn(name=&quot;id&quot;)
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-}</code></pre><p>Persion.java</p>
-<pre><code>@Entity
-@Table(name=&quot;person&quot;)
-public class Person {
-
-    private Integer id;
-    private String name;//姓名
-    private String idNumber;//身份证号
-    private User user;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name=&quot;my_gen&quot;, strategy = &quot;foreign&quot;, parameters= {@Parameter(name = &quot;property&quot;, value = &quot;user&quot;)})
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getIdNumber() {
-        return idNumber;
-    }
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    @OneToOne(mappedBy=&quot;person&quot;)
-    public User getUser() {
-        return user;
-    }
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-}</code></pre><p>测试类同上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;<span class="comment">//主键</span></span><br><span class="line">	<span class="keyword">private</span> String userName;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="keyword">private</span> Person person;</span><br><span class="line">	……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Persion.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer id;<span class="comment">//主键和外键，外键依赖user的主键id</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String idNumber;</span><br><span class="line">	<span class="keyword">private</span> User user;</span><br><span class="line">	……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>User.hbm.xml</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> <span class="title">name</span></span>=<span class="string">"User"</span>&gt;</span><br><span class="line">	&lt;id name=<span class="string">"id"</span> &gt;</span><br><span class="line">		&lt;generator class="increment"&gt;&lt;/generator&gt;</span><br><span class="line">	&lt;/id&gt;</span><br><span class="line">	&lt;property name=<span class="string">"userName"</span>  /&gt;</span><br><span class="line">	&lt;property name=<span class="string">"password"</span>/&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 主键关联方式映射与Person的一对一关系 --&gt;</span><br><span class="line">	&lt;one-to-one name=<span class="string">"person"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"Person"</span> cascade=<span class="string">"all"</span>/&gt;</span><br><span class="line">&lt;/class&gt;</span><br></pre></td></tr></table></figure>
+<p>Persion.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Person"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> &gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"foreign"</span>&gt;</span></span><br><span class="line">		    <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"property"</span>&gt;</span>user<span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- 主键关联方式映射与User的一对一关系 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">constrained</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"idNumber"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Test.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">saveUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       Session session = <span class="keyword">null</span>;</span><br><span class="line">       Transaction tran = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           session = HibernateUtil.openSession();</span><br><span class="line">           tran = session.beginTransaction();<span class="comment">// 开启事务</span></span><br><span class="line"></span><br><span class="line">           <span class="comment">// 新建User对象</span></span><br><span class="line">           User user = <span class="keyword">new</span> User();</span><br><span class="line">           user.setUserName(<span class="string">"张三"</span>);</span><br><span class="line">           user.setPassword(<span class="string">"111111"</span>);</span><br><span class="line">           </span><br><span class="line">           <span class="comment">//新建Person对象</span></span><br><span class="line">           Person person = <span class="keyword">new</span> Person();</span><br><span class="line">           person.setName(<span class="string">"张三"</span>);</span><br><span class="line">           person.setIdNumber(<span class="string">"100345199002031234"</span>);</span><br><span class="line">           </span><br><span class="line">           <span class="comment">//建立联系</span></span><br><span class="line">           user.setPerson(person);</span><br><span class="line">           person.setUser(user);</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 保存user并级联保存person</span></span><br><span class="line">           session.save(user);</span><br><span class="line"></span><br><span class="line">           tran.commit();<span class="comment">// 提交事务</span></span><br><span class="line"></span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           tran.rollback();<span class="comment">// 回滚事务</span></span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">           session.close();<span class="comment">// 关闭session</span></span><br><span class="line">           HibernateUtil.closeSessionFactory();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注释方法"><a href="#注释方法" class="headerlink" title="注释方法"></a>注释方法</h3><p>User.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">	<span class="comment">//注解写在属性上使用的是反射机制</span></span><br><span class="line">	<span class="comment">//注解写在get方法上，是setget机制</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> Person person;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name=<span class="string">"my_gen"</span>, strategy=<span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OneToOne</span>(cascade=CascadeType.ALL)</span><br><span class="line">    <span class="meta">@PrimaryKeyJoinColumn</span>(name=<span class="string">"id"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">getPerson</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPerson</span><span class="params">(Person person)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.person = person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Persion.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"person"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">private</span> String idNumber;<span class="comment">//身份证号</span></span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name=<span class="string">"my_gen"</span>, strategy = <span class="string">"foreign"</span>, parameters= &#123;<span class="meta">@Parameter</span>(name = <span class="string">"property"</span>, value = <span class="string">"user"</span>)&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getIdNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> idNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIdNumber</span><span class="params">(String idNumber)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.idNumber = idNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@OneToOne</span>(mappedBy=<span class="string">"person"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.user = user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类同上</p>
 <p><strong>关于上述代码解释：</strong></p>
 <ol>
 <li>xml：<ol>
@@ -299,129 +154,19 @@ public class Person {
 </li>
 </ol>
 <h2 id="一对一的关联映射（唯一外键关联方式）"><a href="#一对一的关联映射（唯一外键关联方式）" class="headerlink" title="一对一的关联映射（唯一外键关联方式）"></a>一对一的关联映射（唯一外键关联方式）</h2><h3 id="xml方式-1"><a href="#xml方式-1" class="headerlink" title="xml方式"></a>xml方式</h3><p>User.java</p>
-<pre><code>public class User {
-    private int id;//主键，外键（外键依赖persion类的id）
-    private String userName;
-    private String password;
-    private Person person;
-    ......
-
-}</code></pre><p>User.hbm.xml</p>
-<pre><code>&lt;class name=&quot;User&quot; table=&quot;USER&quot;&gt;
-    &lt;id name=&quot;id&quot; &gt;
-        &lt;generator class=&quot;increment&quot;&gt;&lt;/generator&gt;
-    &lt;/id&gt;
-    &lt;property name=&quot;userName&quot;  /&gt;
-    &lt;property name=&quot;password&quot;/&gt;
-
-    &lt;!-- 外键关联方式映射与Person的一对一关系 --&gt;
-    &lt;many-to-one name=&quot;person&quot; column=&quot;PERSONID&quot; cascade=&quot;all&quot; unique=&quot;true&quot;/&gt;
-&lt;/class&gt;</code></pre><p>Persion.java</p>
-<pre><code>public class Person {
-    private Integer id;//主键
-    private String name;
-    private String idNumber;
-    private User user;
-    ......
-}</code></pre><p>Persion.hbm.xml</p>
-<pre><code>&lt;class name=&quot;Person&quot; table=&quot;PERSON&quot;&gt;
-    &lt;id name=&quot;id&quot;&gt;
-        &lt;generator class=&quot;increment&quot;&gt;&lt;/generator&gt;
-    &lt;/id&gt;
-    &lt;property name=&quot;name&quot; /&gt;
-    &lt;property name=&quot;idNumber&quot; /&gt;
-
-    &lt;!-- 外键关联方式映射与User的一对一关系   property-ref:外键列对应的属性名 --&gt;
-    &lt;one-to-one name=&quot;user&quot; property-ref=&quot;person&quot; /&gt;
-&lt;/class&gt;</code></pre><p>测试类同上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;<span class="comment">//主键，外键（外键依赖persion类的id）</span></span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> Person person;</span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>User.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"User"</span> <span class="attr">table</span>=<span class="string">"USER"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> &gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userName"</span>  /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- 外键关联方式映射与Person的一对一关系 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"person"</span> <span class="attr">column</span>=<span class="string">"PERSONID"</span> <span class="attr">cascade</span>=<span class="string">"all"</span> <span class="attr">unique</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Persion.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;<span class="comment">//主键</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String idNumber;</span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Persion.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Person"</span> <span class="attr">table</span>=<span class="string">"PERSON"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"idNumber"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- 外键关联方式映射与User的一对一关系   property-ref:外键列对应的属性名 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">property-ref</span>=<span class="string">"person"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>测试类同上</p>
 <h3 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h3><p>User.java</p>
-<pre><code>@Entity
-@Table(name=&quot;USER&quot;)
-public class User {
-
-    private int id;
-    private String userName;
-    private String password;
-    private Person person;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name=&quot;my_gen&quot;, strategy = &quot;increment&quot;)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name=&quot;PERSONID&quot;)
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-}</code></pre><p>Persion.java</p>
-<pre><code>@Entity
-@Table(name=&quot;PERSON&quot;)
-public class Person {
-
-    private Integer id;
-    private String name;//姓名
-    private String idNumber;//身份证号
-    private User user;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name = &quot;my_gen&quot;, strategy = &quot;increment&quot;)
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getIdNumber() {
-        return idNumber;
-    }
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    @OneToOne(mappedBy=&quot;person&quot;)
-    public User getUser() {
-        return user;
-    }
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-}</code></pre><p>测试类同上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"USER"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> Person person;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name=<span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OneToOne</span>(cascade=CascadeType.ALL)</span><br><span class="line">    <span class="meta">@JoinColumn</span>(name=<span class="string">"PERSONID"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">getPerson</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPerson</span><span class="params">(Person person)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.person = person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Persion.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"PERSON"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">private</span> String idNumber;<span class="comment">//身份证号</span></span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name = <span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getIdNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> idNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIdNumber</span><span class="params">(String idNumber)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.idNumber = idNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@OneToOne</span>(mappedBy=<span class="string">"person"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.user = user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类同上</p>
 <p><strong>关于上述代码解释：</strong></p>
 <ol>
 <li>xml<ol>
@@ -555,172 +300,18 @@ public class Person {
 </tr>
 </tbody></table>
 <h3 id="xml方式："><a href="#xml方式：" class="headerlink" title="xml方式："></a>xml方式：</h3><p>Contact.java</p>
-<pre><code>public class Contact {
-    private int id;
-    private String phoneNum;
-    private String email;
-    private Address homeAddress;
-    private Address workAddress;
-    ...
-}</code></pre><p>Contact.hbm.xml</p>
-<pre><code>&lt;class name=&quot;Contact&quot;&gt;
-    &lt;id name=&quot;id&quot;&gt;
-        &lt;generator class=&quot;increment&quot; /&gt;
-    &lt;/id&gt;
-    &lt;property name=&quot;phoneNum&quot; /&gt;
-    &lt;property name=&quot;email&quot; /&gt;
-
-    &lt;!-- component映射组合关系 --&gt;
-    &lt;component name=&quot;homeAddress&quot; class=&quot;Address&quot;&gt;
-        &lt;property name=&quot;province&quot; column=&quot;HOMEPROVINCE&quot; /&gt;
-        &lt;property name=&quot;city&quot; column=&quot;HOMECITY&quot; /&gt;
-        &lt;property name=&quot;district&quot; column=&quot;HOMEDISTRICT&quot; /&gt;
-        &lt;property name=&quot;detail&quot; column=&quot;HOMEDETAIL&quot; /&gt;
-    &lt;/component&gt;
-    &lt;component name=&quot;workAddress&quot; class=&quot;Address&quot;&gt;
-        &lt;property name=&quot;province&quot; column=&quot;WORKPROVINCE&quot; /&gt;
-        &lt;property name=&quot;city&quot; column=&quot;WORKCITY&quot; /&gt;
-        &lt;property name=&quot;district&quot; column=&quot;WORKDISTRICT&quot; /&gt;
-        &lt;property name=&quot;detail&quot; column=&quot;WORKDETAIL&quot; /&gt;
-    &lt;/component&gt;
-
-&lt;/class&gt;</code></pre><p>Address.java</p>
-<pre><code>public class Address {
-    private String province;//省
-    private String city;//市
-    private String district;//区
-    private String detail;//详细地址
-    ...
-}</code></pre><p>Test.java</p>
-<pre><code>public static void saveContact() {
-    Session session = null;
-    Transaction tran = null;
-
-    try {
-        session = HibernateUtil.openSession();
-        tran = session.beginTransaction();
-
-        Contact contact = new Contact();
-        contact.setPhoneNum(&quot;12345678910&quot;);
-        contact.setEmail(&quot;abcxxx@123.com&quot;);
-
-        Address homeAddress = new Address();
-        homeAddress.setProvince(&quot;河北省&quot;);
-        homeAddress.setCity(&quot;xx市&quot;);
-        homeAddress.setDistrict(&quot;xx区&quot;);
-        homeAddress.setDetail(&quot;xx路xx号&quot;);
-
-        Address workAddress = new Address();
-        workAddress.setProvince(&quot;河北省&quot;);
-        workAddress.setCity(&quot;xx市&quot;);
-        workAddress.setDistrict(&quot;xx区&quot;);
-        workAddress.setDetail(&quot;xx路xx号&quot;);
-
-        //建立联系
-        contact.setHomeAddress(homeAddress);
-        contact.setWorkAddress(workAddress);
-
-        // 保存contact同时保存地址信息
-        session.save(contact);
-        tran.commit();
-    } catch (Exception e) {
-        tran.rollback();
-        e.printStackTrace();
-    } finally {    
-        session.close();
-        HibernateUtil.closeSessionFactory();
-    }
-}</code></pre><h3 id="注解方式-1"><a href="#注解方式-1" class="headerlink" title="注解方式"></a>注解方式</h3><p>Contact.java</p>
-<pre><code>@Entity
-public class Contact {
-
-    private int id;
-    private String phoneNum;
-    private String email;
-    private Address homeAddress;
-    private Address workAddress;
-
-    @Id
-    @GeneratedValue(generator=&quot;my_gen&quot;)
-    @GenericGenerator(name = &quot;my_gen&quot;, strategy = &quot;increment&quot;)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Embedded
-    @AttributeOverrides(value={
-            @AttributeOverride(
-                    name = &quot;province&quot;, 
-                    column = @Column(name=&quot;HOMEPROVINCE&quot;)),
-            @AttributeOverride(
-                    name = &quot;city&quot;,
-                    column = @Column(name=&quot;HOMECITY&quot;)),
-            @AttributeOverride(
-                    column = @Column(name=&quot;HOMEDISTRICT&quot;),
-                    name = &quot;district&quot;),
-            @AttributeOverride(
-                    column = @Column(name=&quot;HOMEDETAIL&quot;),
-                    name = &quot;detail&quot;)})
-    public Address getHomeAddress() {
-        return homeAddress;
-    }
-
-    public void setHomeAddress(Address homeAddress) {
-        this.homeAddress = homeAddress;
-    }
-
-    @Embedded  //注意与嵌入式类注解@Embeddable区分
-    @AttributeOverrides(value={
-            @AttributeOverride(
-                    name = &quot;province&quot;, 
-                    column = @Column(name=&quot;WORKPROVINCE&quot;)),
-            @AttributeOverride(
-                    name = &quot;city&quot;,
-                    column = @Column(name=&quot;WORKCITY&quot;)),
-            @AttributeOverride(
-                    column = @Column(name=&quot;WORKDISTRICT&quot;),
-                    name = &quot;district&quot;),
-            @AttributeOverride(
-                    column = @Column(name=&quot;WORKDETAIL&quot;),
-                    name = &quot;detail&quot;)})
-    public Address getWorkAddress() {
-        return workAddress;
-    }
-
-    public void setWorkAddress(Address workAddress) {
-        this.workAddress = workAddress;
-    }
-
-}</code></pre><p>Address.java</p>
-<pre><code>@Embeddable        //指明为嵌入式类，不需要单独进行映射
-public class Address {
-    private String province;//省
-    private String city;//市
-    private String district;//区
-    private String detail;//详细地址
-    ...
-
-}</code></pre><p>测试类同上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Contact</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String phoneNum;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="keyword">private</span> Address homeAddress;</span><br><span class="line">    <span class="keyword">private</span> Address workAddress;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Contact.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Contact"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"phoneNum"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"email"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- component映射组合关系 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">"homeAddress"</span> <span class="attr">class</span>=<span class="string">"Address"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"province"</span> <span class="attr">column</span>=<span class="string">"HOMEPROVINCE"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"city"</span> <span class="attr">column</span>=<span class="string">"HOMECITY"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"district"</span> <span class="attr">column</span>=<span class="string">"HOMEDISTRICT"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"detail"</span> <span class="attr">column</span>=<span class="string">"HOMEDETAIL"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">"workAddress"</span> <span class="attr">class</span>=<span class="string">"Address"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"province"</span> <span class="attr">column</span>=<span class="string">"WORKPROVINCE"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"city"</span> <span class="attr">column</span>=<span class="string">"WORKCITY"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"district"</span> <span class="attr">column</span>=<span class="string">"WORKDISTRICT"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"detail"</span> <span class="attr">column</span>=<span class="string">"WORKDETAIL"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Address.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String province;<span class="comment">//省</span></span><br><span class="line">    <span class="keyword">private</span> String city;<span class="comment">//市</span></span><br><span class="line">    <span class="keyword">private</span> String district;<span class="comment">//区</span></span><br><span class="line">    <span class="keyword">private</span> String detail;<span class="comment">//详细地址</span></span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Test.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">saveContact</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       Session session = <span class="keyword">null</span>;</span><br><span class="line">       Transaction tran = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           session = HibernateUtil.openSession();</span><br><span class="line">           tran = session.beginTransaction();</span><br><span class="line"></span><br><span class="line">           Contact contact = <span class="keyword">new</span> Contact();</span><br><span class="line">           contact.setPhoneNum(<span class="string">"12345678910"</span>);</span><br><span class="line">           contact.setEmail(<span class="string">"abcxxx@123.com"</span>);</span><br><span class="line">           </span><br><span class="line">           Address homeAddress = <span class="keyword">new</span> Address();</span><br><span class="line">           homeAddress.setProvince(<span class="string">"河北省"</span>);</span><br><span class="line">           homeAddress.setCity(<span class="string">"xx市"</span>);</span><br><span class="line">           homeAddress.setDistrict(<span class="string">"xx区"</span>);</span><br><span class="line">           homeAddress.setDetail(<span class="string">"xx路xx号"</span>);</span><br><span class="line">           </span><br><span class="line">           Address workAddress = <span class="keyword">new</span> Address();</span><br><span class="line">           workAddress.setProvince(<span class="string">"河北省"</span>);</span><br><span class="line">           workAddress.setCity(<span class="string">"xx市"</span>);</span><br><span class="line">           workAddress.setDistrict(<span class="string">"xx区"</span>);</span><br><span class="line">           workAddress.setDetail(<span class="string">"xx路xx号"</span>);</span><br><span class="line">           </span><br><span class="line">           <span class="comment">//建立联系</span></span><br><span class="line">           contact.setHomeAddress(homeAddress);</span><br><span class="line">           contact.setWorkAddress(workAddress);</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 保存contact同时保存地址信息</span></span><br><span class="line">           session.save(contact);</span><br><span class="line">           tran.commit();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           tran.rollback();</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123;	</span><br><span class="line">           session.close();</span><br><span class="line">           HibernateUtil.closeSessionFactory();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注解方式-1"><a href="#注解方式-1" class="headerlink" title="注解方式"></a>注解方式</h3><p>Contact.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Contact</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String phoneNum;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="keyword">private</span> Address homeAddress;</span><br><span class="line">    <span class="keyword">private</span> Address workAddress;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name = <span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPhoneNum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> phoneNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhoneNum</span><span class="params">(String phoneNum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.phoneNum = phoneNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEmail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmail</span><span class="params">(String email)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.email = email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Embedded</span></span><br><span class="line">    <span class="meta">@AttributeOverrides</span>(value=&#123;</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    name = <span class="string">"province"</span>, </span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"HOMEPROVINCE"</span>)),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    name = <span class="string">"city"</span>,</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"HOMECITY"</span>)),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"HOMEDISTRICT"</span>),</span><br><span class="line">                    name = <span class="string">"district"</span>),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"HOMEDETAIL"</span>),</span><br><span class="line">                    name = <span class="string">"detail"</span>)&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Address <span class="title">getHomeAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> homeAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHomeAddress</span><span class="params">(Address homeAddress)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.homeAddress = homeAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Embedded</span>  <span class="comment">//注意与嵌入式类注解@Embeddable区分</span></span><br><span class="line">    <span class="meta">@AttributeOverrides</span>(value=&#123;</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    name = <span class="string">"province"</span>, </span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"WORKPROVINCE"</span>)),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    name = <span class="string">"city"</span>,</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"WORKCITY"</span>)),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"WORKDISTRICT"</span>),</span><br><span class="line">                    name = <span class="string">"district"</span>),</span><br><span class="line">            <span class="meta">@AttributeOverride</span>(</span><br><span class="line">                    column = <span class="meta">@Column</span>(name=<span class="string">"WORKDETAIL"</span>),</span><br><span class="line">                    name = <span class="string">"detail"</span>)&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Address <span class="title">getWorkAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> workAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWorkAddress</span><span class="params">(Address workAddress)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.workAddress = workAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Address.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Embeddable</span>		<span class="comment">//指明为嵌入式类，不需要单独进行映射</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String province;<span class="comment">//省</span></span><br><span class="line">    <span class="keyword">private</span> String city;<span class="comment">//市</span></span><br><span class="line">    <span class="keyword">private</span> String district;<span class="comment">//区</span></span><br><span class="line">    <span class="keyword">private</span> String detail;<span class="comment">//详细地址</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类同上</p>
 
       
       <!-- reward -->
