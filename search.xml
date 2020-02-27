@@ -7,7 +7,7 @@
   </entry>
   <entry>
     <title>5-SpringMVC1</title>
-    <url>/2020/02/27/5-SpringMVC1/</url>
+    <url>/2020/02/27/5-SpringMVC1/5-SpringMVC1/</url>
     <content><![CDATA[<h2 id="程序搭建过程"><a href="#程序搭建过程" class="headerlink" title="程序搭建过程"></a>程序搭建过程</h2><ol>
 <li>创建web工程，导入jar</li>
 <li>配置xml文件 3个(web.xml，spring-mvc.xml，applicationContext.xml)<a id="more"></a>
