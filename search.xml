@@ -464,21 +464,11 @@ web.xml</li>
 <li><p>property元素的 access 属性；field : 不需要getset方法，通过Java反射机制绕过hibernate直接访问属性值。<br><code>&lt;property name=&quot;userName&quot; access=&quot;field&quot; /&gt;</code></p>
 </li>
 <li><p>实体映射技巧：实体类属性与表字段不对称时，可以在 setter 和 getter 方法中加入程序逻辑<br><br> 例：User 类中没有 username 属性，而是改为了 firstName 和 lastName 两个属性</p>
-<pre><code>public String getUserName() {
-    return firstName + &quot; &quot; + lastName;
-}
-
-public void setUserName(String userName) {
-    String[] strName = userName.split(&quot; &quot;);
-    this.firstName = strName[0];
-    this.lastName = strName[1];
-}</code></pre></li>
-</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">  		String[] strName = userName.split(<span class="string">" "</span>);</span><br><span class="line">  		<span class="keyword">this</span>.firstName = strName[<span class="number">0</span>];</span><br><span class="line">  		<span class="keyword">this</span>.lastName = strName[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
-<ol start="4">
-<li><p>特殊需求：<br> 例：User 需要订单总额属性，但数据库表中没有这个字段，在property元素的 formula 属性设置查询语句</p>
-<pre><code>&lt;property name=&quot;totalPrice&quot; formula=&quot;(select sum(o.price) from orders as o where o.userId=id)&quot;/&gt;</code></pre></li>
+</li>
+<li><p>特殊需求：<br>例：User 需要订单总额属性，但数据库表中没有这个字段，在property元素的 formula 属性设置查询语句</p>
+ <property name="totalPrice" formula="(select sum(o.price) from orders as o where o.userId=id)"></property></li>
 <li><p>控制持久化类的insert和update</p>
 </li>
 </ol>
@@ -518,56 +508,10 @@ public void setUserName(String userName) {
 <li>用户自定义的类也可以覆盖Object的equals方法实现对象按值进行比较</li>
 <li>Hibernate 采用对象标识符（OID）区分对象。</li>
 </ol>
-<p><img src="https://i.imgur.com/GoQES5W.png" alt></p>
+<p><img src="/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/session.png" alt></p>
 <h2 id="使用注解映射单实体"><a href="#使用注解映射单实体" class="headerlink" title="使用注解映射单实体"></a><font size="5" color="#ff0000">使用注解映射单实体</font></h2><p>User.java类：</p>
-<pre><code>@Entity                                //声明一个实体类。
-@Table(name=&quot;USER&quot;)                    //为实体类指定对应的数据库表
-@DynamicInsert(true)
-@DynamicUpdate(true)
-public class User {
-    @Id                       //声明实体类的OID属性
-    @GeneratedValue(generator=&quot;my_gen&quot;)        //声明OID的生成策略
-    @GenericGenerator(name = &quot;my_gen&quot;, strategy = &quot;increment&quot;)    //使用Hibernate提供的生成策略
-    private int id;
-    @Column(name=&quot;USERNAME&quot;, insertable=true)
-    private String userName;
-    @Access(AccessType.FIELD)
-    private String password;
-    @Formula(value = &quot;(select sum(o.price) from orders as o where o.userid=id)&quot;)//查询语句
-    private Double totalPrice;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-}</code></pre><p>@Column(name=”columnName”) ：将属性映射到列。<br></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span>								<span class="comment">//声明一个实体类。</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"USER"</span>)					<span class="comment">//为实体类指定对应的数据库表</span></span><br><span class="line"><span class="meta">@DynamicInsert</span>(<span class="keyword">true</span>)</span><br><span class="line"><span class="meta">@DynamicUpdate</span>(<span class="keyword">true</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span>                       <span class="comment">//声明实体类的OID属性</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)		<span class="comment">//声明OID的生成策略</span></span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name = <span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)	<span class="comment">//使用Hibernate提供的生成策略</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"USERNAME"</span>, insertable=<span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="meta">@Access</span>(AccessType.FIELD)</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="meta">@Formula</span>(value = <span class="string">"(select sum(o.price) from orders as o where o.userid=id)"</span>)<span class="comment">//查询语句</span></span><br><span class="line">    <span class="keyword">private</span> Double totalPrice;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Double <span class="title">getTotalPrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> totalPrice;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTotalPrice</span><span class="params">(Double totalPrice)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.totalPrice = totalPrice;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Column(name=”columnName”) ：将属性映射到列。<br></p>
 <ol>
 <li>name=”columnName”    字段名称；<br></li>
 <li>unique=false            是否在该字段上设置唯一约束；<br></li>
@@ -591,8 +535,7 @@ public class User {
 <p>@DynamicInsert：动态生成 INSERT 语句。<br></p>
 <p>@DynamicUpdate：动态生成 UPDATE 语句。<br></p>
 <h2 id="使用注解和xml方式的区别："><a href="#使用注解和xml方式的区别：" class="headerlink" title="使用注解和xml方式的区别："></a><font color="#0000FF" size="10">使用注解和xml方式的区别：</font></h2><ol>
-<li><p><font color="#0000FF" size="4">hibernate.hbm.xml 文件中把引用：xxx.hbm.xml改为引用实体类：</font></p>
-<p> 即把：&lt;mapping resource=”com/db/entity/Person.hbm.xml”/&gt;改为：&lt;mapping class=”com.db.entity.Person” /&gt;</p>
+<li><p><font color="#0000FF" size="4">hibernate.hbm.xml 文件中把引用：xxx.hbm.xml改为引用实体类：</font>即把：&lt;mapping resource=”com/db/entity/Person.hbm.xml”/&gt;改为：&lt;mapping class=”com.db.entity.Person” /&gt;</p>
 </li>
 <li><p><font color="#0000FF" size="4">注解方式不需要在xxx.hbm.xml把实体类与表进行映射。而采用在实体类中进行注解。</font></p>
 <ol>
@@ -615,7 +558,7 @@ public class User {
   <entry>
     <title>1.Hibernate框架的搭建</title>
     <url>/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1><h2 id="三层体系结构"><a href="#三层体系结构" class="headerlink" title="三层体系结构"></a>三层体系结构</h2><p><img src="https://i.imgur.com/XOwibmV.png" alt></p>
+    <content><![CDATA[<h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1><h2 id="三层体系结构"><a href="#三层体系结构" class="headerlink" title="三层体系结构"></a>三层体系结构</h2><p>![](1-Hibernate框架的搭建/three-layer architecture.png)</p>
 <ol>
 <li>定义：将系统的组件<strong>分隔到不同的层</strong>中，每一层中的组件应保持内聚性； 每一层都应与它下面的各层保持松散耦合。<br></li>
 <li>层与层之间存在自上而下的<strong>依赖关系</strong>，即上层组件会访问下层组件的API，而下层组件不应该依赖上层组件。<br></li>

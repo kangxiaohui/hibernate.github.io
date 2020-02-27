@@ -784,16 +784,7 @@
 <li><p>property元素的 access 属性；field : 不需要getset方法，通过Java反射机制绕过hibernate直接访问属性值。<br><code>&lt;property name=&quot;userName&quot; access=&quot;field&quot; /&gt;</code></p>
 </li>
 <li><p>实体映射技巧：实体类属性与表字段不对称时，可以在 setter 和 getter 方法中加入程序逻辑<br><br> 例：User 类中没有 username 属性，而是改为了 firstName 和 lastName 两个属性</p>
-<pre><code>public String getUserName() {
-    return firstName + &quot; &quot; + lastName;
-}
-
-public void setUserName(String userName) {
-    String[] strName = userName.split(&quot; &quot;);
-    this.firstName = strName[0];
-    this.lastName = strName[1];
-}</code></pre></li>
-</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">  		String[] strName = userName.split(<span class="string">" "</span>);</span><br><span class="line">  		<span class="keyword">this</span>.firstName = strName[<span class="number">0</span>];</span><br><span class="line">  		<span class="keyword">this</span>.lastName = strName[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol>
       
       <a class="article-more-link" href="/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/">阅读更多...</a>
       
