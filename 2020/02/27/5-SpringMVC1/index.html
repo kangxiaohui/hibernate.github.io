@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-5-SpringMVC1/5-SpringMVC1" class="article article-type-post" itemscope
+  <article id="post-5-SpringMVC1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -49,7 +49,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/02/27/5-SpringMVC1/5-SpringMVC1/" class="article-date">
+      <a href="/2020/02/27/5-SpringMVC1/" class="article-date">
   <time datetime="2020-02-27T02:48:08.000Z" itemprop="datePublished">2020-02-27</time>
 </a>
       
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">739字</span>
+            <span class="post-count">1.8k字</span>
         </span>
     </span>
 
@@ -73,7 +73,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4分钟</span>
+            <span class="post-count">8分钟</span>
         </span>
     </span>
 </div>
@@ -113,7 +113,110 @@ web.xml</li>
 <ol start="3">
 <li>编写JSP页面和Controller（@Controller,@RequestMapping,@PathVariable,@RequestParam）</li>
 </ol>
-<h2 id="Spring概述"><a href="#Spring概述" class="headerlink" title="Spring概述"></a>Spring概述</h2><h3 id="回顾MVC"><a href="#回顾MVC" class="headerlink" title="回顾MVC"></a>回顾MVC</h3><p></p>
+<h2 id="Spring概述"><a href="#Spring概述" class="headerlink" title="Spring概述"></a>Spring概述</h2><h3 id="回顾MVC"><a href="#回顾MVC" class="headerlink" title="回顾MVC"></a>回顾MVC</h3><p><img src="/2020/02/27/5-SpringMVC1/MVC.png" alt> </p>
+<h3 id="SpringMVC体系结构"><a href="#SpringMVC体系结构" class="headerlink" title="SpringMVC体系结构"></a>SpringMVC体系结构</h3><p>SpringMVC是基于请求驱动，围绕一个核心Servlet 转发请求到对应的Controller而设计的</p>
+<p>优点：</p>
+<ol>
+<li>是一个典型的MVC构架，易学易用</li>
+<li>提供了清晰的角色划分，比如Controller、validator、handler mapping、view resolver等</li>
+<li>业务代码可重用</li>
+<li>可定制的数据绑定和验证，可定制的视图解决方案</li>
+<li>提供了一套强大又使用简单的标签库</li>
+<li>支持Restful风格</li>
+</ol>
+<p><img src="/2020/02/27/5-SpringMVC1/mvc_architecture.png" alt> </p>
+<p>步骤：</p>
+<ol>
+<li>客户端发出请求，交给DispatcherServlet处理</li>
+<li>DispatcherServlet根据请求信息及HandlerMapping的配置找到处理请求的处理器（Handler）</li>
+<li>DispatcherServlet通过HandlerAdapter对Handler进行封装，再以统一的适配器接口调用Handler</li>
+<li>处理器完成业务逻辑，返回一个ModelAndVIew给DispatcherServlet，ModelAndView包含视图逻辑名和模型数据信息</li>
+<li>DispatcherServlet借由ViewResolver完成逻辑视图名到真实视图的解析工作</li>
+<li>得到View真实视图后，DispatcherServlet就使用这个View对象对ModelAndView中的模型数据进行渲染</li>
+<li>最终客户得到响应</li>
+</ol>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="/2020/02/27/5-SpringMVC1/mvc_lifestyle.png" alt> </p>
+<h2 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h2><h3 id="DispatcherServlet"><a href="#DispatcherServlet" class="headerlink" title="DispatcherServlet"></a>DispatcherServlet</h3><ol>
+<li><p>DispatcherServlet继承自HttpServlet，是整个SpringMVC中的前端控制器，主要负责流程控制</p>
+</li>
+<li><p>DispatcherServlet使用了专有的Bean来处理请求和渲染视图，可以在WebApplicationContext中进行配置，这些Bean包括：</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">Bean类型</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HandlerMapping</td>
+<td align="left">将传入请求映射到处理器</td>
+</tr>
+<tr>
+<td align="left">HandlerAdapter</td>
+<td align="left">将处理器包装为适配器，从而支持多种类型的处理器</td>
+</tr>
+<tr>
+<td align="left">ViewResolver</td>
+<td align="left">将逻辑视图名解析为具体的View</td>
+</tr>
+<tr>
+<td align="left">LocaleResolver &amp; LocaleContextResolver</td>
+<td align="left">解释客户端所在地区和其时区(本地化)，以便提供国际化的视图</td>
+</tr>
+<tr>
+<td align="left">ThemeResolver</td>
+<td align="left">解释Web程序可用主题，比如提供个性化布局</td>
+</tr>
+<tr>
+<td align="left">MultipartResolver</td>
+<td align="left">解释multi-part请求，比如表单里支持文件上传</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>当一个请求传进来后，DispatcherServlet会按以下顺序处理：<ol>
+<li>寻找 WebApplicationContext，并将 WebApplicationContext作为一个属性绑定到请求里，以便控制器或其他原件在后续中使用。默认会以DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE 键绑定到请求里</li>
+<li>将本地化解析器绑定到请求里，以便在处理这个请求时，原件可以解析到客户端的地区（为了渲染视图，准备日期等）</li>
+<li>将主题解析其绑定到请求里，让原件（如视图）决定去使用哪一种主题</li>
+<li>若指定一个multipart file解析器，会检查这个请求包含multiparts请求</li>
+<li>寻找合适的 handler。如何找到这个 handler，执行与这个 handler 关联的执行链</li>
+<li>如果返回一个 model，渲染相对应的视图</li>
+</ol>
+</li>
+</ol>
+<h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h3><ol>
+<li>@Controller表明被注解的类为控制器，该类不需要继承任何Controller的基类或者引用任意的ServletAPI，当然如果需要可以使用ServletAPI</li>
+<li>spring-mvc.xml</li>
+<li>Controller类<h4 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h4></li>
+</ol>
+<ul>
+<li>@RequestMapping用于映射URL，该注解可以写在类级别上，也可以写在方法级别上</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"helloworld!"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hi"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相对于该路径的，上面的方法映射的URL路径是：/user/hello，<strong>推荐使用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"helloworld!"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hi"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接映射方法注解上的路径，上面的方法映射的URL路径是：/hello</p>
+<ul>
+<li>@RequestMapping中，还可以使用method来限制请求的类型，执行不同操作</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"add"</span>, method=RequestMethod.GET)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toAdd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//数据库查询，查蛋糕类型，存入到request</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"cake"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"add"</span>, method=RequestMethod.POST)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">add</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//获取蛋糕的相关参数，插入数据库</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"list"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>URI模版是一个类似于URI的字符串，其中包含了一个或多个变量。当你将这些变量替换掉时，就变回了URI</li>
+</ul>
+<p>例：/cake/get/3</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/cake"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CakeController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@RequestMapping</span>(value=<span class="string">"get/&#123;cakeId&#125;"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">(@PathVariable <span class="keyword">int</span> cakeId)</span> </span>&#123;</span><br><span class="line">		System.out.println(cakeId);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"list"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h4><p>@RequestParam将请求参数绑定到方法参法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(@RequestParam(value = <span class="string">"name"</span>, required=<span class="keyword">true</span>, defaultValue=<span class="string">"1"</span>)</span> String name,</span></span><br><span class="line"><span class="function">			 @<span class="title">RequestParam</span><span class="params">(value=<span class="string">"pageNum"</span>, defaultValue=<span class="string">"1"</span>)</span><span class="keyword">int</span> pageNum) </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"helloworld!"</span>+name);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hi"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="RequestParam和-PathVariable的区别"><a href="#RequestParam和-PathVariable的区别" class="headerlink" title="@RequestParam和@PathVariable的区别"></a>@RequestParam和@PathVariable的区别</h4><ol>
+<li>@RequestParam拿到的是传统的传参方式，例：form表单</li>
+<li>@PathVariable页面请求路径中的参数，例：/user/login/zs</li>
+</ol>
+<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2>
       
       <!-- reward -->
       
@@ -182,7 +285,7 @@ web.xml</li>
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/27/5-SpringMVC1/5-SpringMVC1/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/27/5-SpringMVC1/" alt="微信分享二维码">
     </div>
 </div>
 
