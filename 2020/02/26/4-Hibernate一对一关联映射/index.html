@@ -100,7 +100,7 @@
       
 
       
-      <h1 id="Hibernate一对一关联映射"><a href="#Hibernate一对一关联映射" class="headerlink" title="Hibernate一对一关联映射"></a>Hibernate一对一关联映射</h1><p>实体之间的联系：<br/></p>
+      <h1 id="Hibernate一对一关联映射"><a href="#Hibernate一对一关联映射" class="headerlink" title="Hibernate一对一关联映射"></a>Hibernate一对一关联映射</h1><p>实体之间的联系：<br></p>
 <ol>
 <li>一对一联系（1:1）</li>
 <li>一对多联系（1:n）</li>
@@ -133,7 +133,7 @@
 <li>ascade属性（级联属性）为 delete :  执行删除操作时进行级联操作</li>
 <li>ascade属性（级联属性）为 none : 对所有操作不进行级联操作       默认</li>
 </ol>
-</li>
+</one-to-one></li>
 <li>constrained 属性为 true，表明 PERSON 表ID为外键，参照主表USER—–（外键表）</li>
 <li>外键表实体类配置文件中 OID 使用 foreign 生成策略。—–（外键表）</li>
 </ol>
@@ -176,12 +176,12 @@
 <li>cascade 属性设置为 all，表明删除 USER 时同时删除PERSON</li>
 <li><code>&lt;many-to-one name=&quot;person&quot; column=&quot;persionId&quot; cascade=&quot;all&quot; unique=&quot;true&quot;/&gt;</code></li>
 </ol>
-</li>
+</many-to-one></li>
 <li>通过<one-to-one> 元素配置。—–（主键表）<ol>
 <li>property-ref 属性，表明建立了从User到Person的一对一关联关系</li>
 <li><code>&lt;one-to-one name=&quot;user&quot; property-ref=&quot;person&quot;/&gt;</code></li>
 </ol>
-</li>
+</one-to-one></li>
 </ol>
 </li>
 <li>注解<ol>

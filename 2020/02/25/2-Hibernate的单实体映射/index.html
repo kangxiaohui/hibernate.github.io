@@ -100,7 +100,7 @@
       
 
       
-      <h1 id="Hibernate的单实体映射"><a href="#Hibernate的单实体映射" class="headerlink" title="Hibernate的单实体映射"></a>Hibernate的单实体映射</h1><h2 id="单实体的属性映射"><a href="#单实体的属性映射" class="headerlink" title="单实体的属性映射"></a><font size=5 color=#ff0000>单实体的属性映射</font></h2><ol>
+      <h1 id="Hibernate的单实体映射"><a href="#Hibernate的单实体映射" class="headerlink" title="Hibernate的单实体映射"></a>Hibernate的单实体映射</h1><h2 id="单实体的属性映射"><a href="#单实体的属性映射" class="headerlink" title="单实体的属性映射"></a><font size="5" color="#ff0000">单实体的属性映射</font></h2><ol>
 <li><p>setter 和 getter 方法优点：有效控制属性的访问权限。<br></p>
 </li>
 <li><p>property元素的 access 属性；field : 不需要getset方法，通过Java反射机制绕过hibernate直接访问属性值。<br><code>&lt;property name=&quot;userName&quot; access=&quot;field&quot; /&gt;</code></p>
@@ -152,16 +152,16 @@ public void setUserName(String userName) {
 <td align="left">值为true等价于所有的property元素dynamic-update属性为true</td>
 </tr>
 </tbody></table>
-<p><em>注：</em><br><br>    1. 会过滤过值为null的属性<br><br>    2. 如果在一个表有很多字段的时候,在做初次insert的时候有比较多的字段为空值,或者经常update某少部分字段,应该在配置文件的<class>元素上将dynamic-insert和dynamic-update设置为true.其默认值都为false.<br><br>    3. dynamic-insert，dynamic-update，提升了数据库的效率，只对需要插入修改的数据进行变动<br></p>
-<h2 id="单实体的对象标识符映射"><a href="#单实体的对象标识符映射" class="headerlink" title="单实体的对象标识符映射"></a><font size=5 color=#ff0000>单实体的对象标识符映射</font></h2><p>Java程序中区分不同对象：</p>
+<p><em>注：</em><br><br>    1. 会过滤过值为null的属性<br><br>    2. 如果在一个表有很多字段的时候,在做初次insert的时候有比较多的字段为空值,或者经常update某少部分字段,应该在配置文件的<class>元素上将dynamic-insert和dynamic-update设置为true.其默认值都为false.<br><br>    3. dynamic-insert，dynamic-update，提升了数据库的效率，只对需要插入修改的数据进行变动<br></class></p>
+<h2 id="单实体的对象标识符映射"><a href="#单实体的对象标识符映射" class="headerlink" title="单实体的对象标识符映射"></a><font size="5" color="#ff0000">单实体的对象标识符映射</font></h2><p>Java程序中区分不同对象：</p>
 <ol>
 <li>“==” 比较两个变量引用的内存地址是否相同；</li>
 <li>equals可以比较两个变量引用的对象的值是否相同。</li>
 <li>用户自定义的类也可以覆盖Object的equals方法实现对象按值进行比较</li>
 <li>Hibernate 采用对象标识符（OID）区分对象。</li>
 </ol>
-<p><img src="https://i.imgur.com/GoQES5W.png" alt=""></p>
-<h2 id="使用注解映射单实体"><a href="#使用注解映射单实体" class="headerlink" title="使用注解映射单实体"></a><font size=5 color=#ff0000>使用注解映射单实体</font></h2><p>User.java类：</p>
+<p><img src="https://i.imgur.com/GoQES5W.png" alt></p>
+<h2 id="使用注解映射单实体"><a href="#使用注解映射单实体" class="headerlink" title="使用注解映射单实体"></a><font size="5" color="#ff0000">使用注解映射单实体</font></h2><p>User.java类：</p>
 <pre><code>@Entity                                //声明一个实体类。
 @Table(name=&quot;USER&quot;)                    //为实体类指定对应的数据库表
 @DynamicInsert(true)
@@ -209,36 +209,36 @@ public class User {
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
-}</code></pre><p>@Column(name=”columnName”) ：将属性映射到列。<br/></p>
+}</code></pre><p>@Column(name=”columnName”) ：将属性映射到列。<br></p>
 <ol>
-<li>name=”columnName”    字段名称；<br/></li>
-<li>unique=false            是否在该字段上设置唯一约束；<br/></li>
-<li>nullable=true            字段是否能为空；<br/></li>
-<li>insertable=true        控制 insert语句；<br/></li>
-<li>updatable=true        控制 update语句；<br/></li>
-<li>length=255            指定字段长度。<br/></li>
+<li>name=”columnName”    字段名称；<br></li>
+<li>unique=false            是否在该字段上设置唯一约束；<br></li>
+<li>nullable=true            字段是否能为空；<br></li>
+<li>insertable=true        控制 insert语句；<br></li>
+<li>updatable=true        控制 update语句；<br></li>
+<li>length=255            指定字段长度。<br></li>
 </ol>
-<p>@Access(AccessType.PROPERTY)：<br/></p>
+<p>@Access(AccessType.PROPERTY)：<br></p>
 <ol>
-<li>通过 getter 和 setter 方法访问实体类的属性；<br/></li>
-<li>需要在 getter 方法上定义字段的属性。<br/></li>
+<li>通过 getter 和 setter 方法访问实体类的属性；<br></li>
+<li>需要在 getter 方法上定义字段的属性。<br></li>
 </ol>
-<p>@Access(AccessType.FIELD)：<br/></p>
+<p>@Access(AccessType.FIELD)：<br></p>
 <ol>
-<li>直接访问实体类的属性，可以不定义 getter 和 setter 方法，但是需要将变量定义为public；<br/></li>
-<li>需要在变量上定义字段的属性。<br/></li>
+<li>直接访问实体类的属性，可以不定义 getter 和 setter 方法，但是需要将变量定义为public；<br></li>
+<li>需要在变量上定义字段的属性。<br></li>
 </ol>
-<p>@Formula：将属性映射到SQL语句。<br/><br><code>@Formula(value = &quot;(select sum(o.price) from     
+<p>@Formula：将属性映射到SQL语句。<br><br><code>@Formula(value = &quot;(select sum(o.price) from     
             orders as o where o.userid=id)&quot;)</code></p>
-<p>@DynamicInsert：动态生成 INSERT 语句。<br/></p>
-<p>@DynamicUpdate：动态生成 UPDATE 语句。<br/></p>
-<h2 id="使用注解和xml方式的区别："><a href="#使用注解和xml方式的区别：" class="headerlink" title="使用注解和xml方式的区别："></a><font color=#0000FF size=10 >使用注解和xml方式的区别：</font></h2><ol>
-<li><p><font color=#0000FF size=4 >hibernate.hbm.xml 文件中把引用：xxx.hbm.xml改为引用实体类：</font></p>
+<p>@DynamicInsert：动态生成 INSERT 语句。<br></p>
+<p>@DynamicUpdate：动态生成 UPDATE 语句。<br></p>
+<h2 id="使用注解和xml方式的区别："><a href="#使用注解和xml方式的区别：" class="headerlink" title="使用注解和xml方式的区别："></a><font color="#0000FF" size="10">使用注解和xml方式的区别：</font></h2><ol>
+<li><p><font color="#0000FF" size="4">hibernate.hbm.xml 文件中把引用：xxx.hbm.xml改为引用实体类：</font></p>
 <p> 即把：&lt;mapping resource=”com/db/entity/Person.hbm.xml”/&gt;改为：&lt;mapping class=”com.db.entity.Person” /&gt;</p>
 </li>
-<li><p><font color=#0000FF size=4 >注解方式不需要在xxx.hbm.xml把实体类与表进行映射。而采用在实体类中进行注解。</font></p>
+<li><p><font color="#0000FF" size="4">注解方式不需要在xxx.hbm.xml把实体类与表进行映射。而采用在实体类中进行注解。</font></p>
 <ol>
-<li>实体类属性注解的时候，都注解在<font color=#ff0000>get方法前</font></li>
+<li>实体类属性注解的时候，都注解在<font color="#ff0000">get方法前</font></li>
 <li>如果在实体类中某些属性不注解：（属性和get都不写注解），默认为表字段名与实体类属性名一致。</li>
 <li>如果实体类的某个成员属性不需要存入数据库中，使用@Transient 进行注解就可以了。即类似于：(xxx.hbm.Xml配置中的某些字段不写(就是不需要对这个成员属性进行映射))</li>
 <li>表名称可以在实体类前进行注解。</li>
