@@ -558,7 +558,7 @@ web.xml</li>
   <entry>
     <title>1.Hibernate框架的搭建</title>
     <url>/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1><h2 id="三层体系结构"><a href="#三层体系结构" class="headerlink" title="三层体系结构"></a>三层体系结构</h2><p>![](1-Hibernate框架的搭建/three-layer architecture.png)</p>
+    <content><![CDATA[<h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1><h2 id="三层体系结构"><a href="#三层体系结构" class="headerlink" title="三层体系结构"></a>三层体系结构</h2><p><img src="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/three-layer_architecture.png" alt></p>
 <ol>
 <li>定义：将系统的组件<strong>分隔到不同的层</strong>中，每一层中的组件应保持内聚性； 每一层都应与它下面的各层保持松散耦合。<br></li>
 <li>层与层之间存在自上而下的<strong>依赖关系</strong>，即上层组件会访问下层组件的API，而下层组件不应该依赖上层组件。<br></li>
