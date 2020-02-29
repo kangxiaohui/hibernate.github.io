@@ -190,26 +190,7 @@
       
 
       
-      <h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1><h2 id="三层体系结构"><a href="#三层体系结构" class="headerlink" title="三层体系结构"></a>三层体系结构</h2><p><img src="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/three-layer_architecture.png" alt></p>
-<ol>
-<li>定义：将系统的组件<strong>分隔到不同的层</strong>中，每一层中的组件应保持内聚性； 每一层都应与它下面的各层保持松散耦合。<br></li>
-<li>层与层之间存在自上而下的<strong>依赖关系</strong>，即上层组件会访问下层组件的API，而下层组件不应该依赖上层组件。<br></li>
-<li>每个层对上层<strong>公开AP</strong>I，但具体的实现细节对外透明。当某一层的实现发生变化，只要它的API不变，不会影响其他层的实现。</li>
-<li>持久层：将数据访问细节和业务逻辑分开（也就是在业务逻辑层和数据库层新添持久层）</li>
-<li>持久化：将程序数据在瞬时状态和持久化状态之间转换的机制<ol>
-<li>瞬时状态：保存在内存中的数据</li>
-<li>持久状态：保存在数据库（磁盘）的程序数据</li>
-</ol>
-</li>
-<li>持久层的作用：为业务逻辑层提供面向对象的API，<strong><em>使业务逻辑层可以专注于实现业务逻辑</em></strong></li>
-<li>持久层的目标：<ol>
-<li>代码可重用性高，能够完成对象持久化操作；</li>
-<li>支持多种数据库平台；</li>
-<li>具有相对独立性，当持久层发生变化时，不会影响上层实现。</li>
-</ol>
-</li>
-<li>Hibernate是持久化层框架。</li>
-</ol>
+      <h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1>
       
       <a class="article-more-link" href="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/">阅读更多...</a>
       

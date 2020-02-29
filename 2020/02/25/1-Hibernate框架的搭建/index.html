@@ -100,7 +100,8 @@
       
 
       
-      <h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1><h2 id="三层体系结构"><a href="#三层体系结构" class="headerlink" title="三层体系结构"></a>三层体系结构</h2><p><img src="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/three-layer_architecture.png" alt></p>
+      <h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1><a id="more"></a>
+<h2 id="三层体系结构"><a href="#三层体系结构" class="headerlink" title="三层体系结构"></a>三层体系结构</h2><p><img src="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/three-layer_architecture.png" alt></p>
 <ol>
 <li>定义：将系统的组件<strong>分隔到不同的层</strong>中，每一层中的组件应保持内聚性； 每一层都应与它下面的各层保持松散耦合。<br></li>
 <li>层与层之间存在自上而下的<strong>依赖关系</strong>，即上层组件会访问下层组件的API，而下层组件不应该依赖上层组件。<br></li>
@@ -120,8 +121,6 @@
 </li>
 <li>Hibernate是持久化层框架。</li>
 </ol>
-<a id="more"></a>
-
 <h2 id="软件的模型及ORM"><a href="#软件的模型及ORM" class="headerlink" title="软件的模型及ORM"></a>软件的模型及ORM</h2><p><strong>不同类型的模型：</strong></p>
 <p>分析阶段–创建概念模型<br><br>设计阶段–域模型（面向对象）和数据模型（面向关系）——形成<strong>对象关系映射（ORM）</strong></p>
 <p>通过ORM模式在操作实体对象的时候，就不需要再去和复杂的 SQL语句打交道，只需简单的操作实体对象的属性和方法</p>

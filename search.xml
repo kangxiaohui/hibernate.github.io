@@ -27,7 +27,7 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">hibernate-mapping</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span> <span class="meta-string">"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.hibernate.entity"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"User"</span> <span class="attr">table</span>=<span class="string">"user5"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> &gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userName"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span>/&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">&lt;!-- 映射与Order的一对多关系 </span></span><br><span class="line"><span class="comment">		     key:指定Order中的外键列名</span></span><br><span class="line"><span class="comment">		     one-to-many中class:指定关联属性的类型--&gt;</span></span><br><span class="line">		     </span><br><span class="line">		<span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"orderSet"</span> <span class="attr">cascade</span>=<span class="string">"delete"</span>&gt;</span></span><br><span class="line">		    <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"userId"</span>/&gt;</span></span><br><span class="line">		    <span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"Order"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>Order.java</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ublic <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> Double price;</span><br><span class="line">    <span class="keyword">private</span> User user;<span class="comment">//新添加一个User对象，实现映射</span></span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> Double price;</span><br><span class="line">    <span class="keyword">private</span> User user;<span class="comment">//新添加一个User对象，实现映射</span></span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Order.hbn.xml</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">hibernate-mapping</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span> <span class="meta-string">"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.hibernate.entity"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Order"</span> <span class="attr">table</span>=<span class="string">"orders5"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> &gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"price"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 映射与User的多对一关联关系 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">column</span>=<span class="string">"userId"</span> <span class="attr">class</span>=<span class="string">"User"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -205,7 +205,8 @@ web.xml</li>
   <entry>
     <title>2-Spring_Beans和生命周期</title>
     <url>/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="Beans概述"><a href="#Beans概述" class="headerlink" title="Beans概述"></a>Beans概述</h2><p>概念：Bean，确保当需要时可以使用</p>
+<a id="more"></a>]]></content>
       <categories>
         <category>Spring</category>
       </categories>
@@ -216,7 +217,82 @@ web.xml</li>
   <entry>
     <title>1-Spring介绍和IOC&amp;DI</title>
     <url>/2020/02/27/1-Spring%E4%BB%8B%E7%BB%8D%E5%92%8CIOC-DI/</url>
-    <content><![CDATA[<p>暂无</p>
+    <content><![CDATA[<h2 id="IoC和DI"><a href="#IoC和DI" class="headerlink" title="IoC和DI"></a>IoC和DI</h2><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><ul>
+<li>IoC（Inversion of Control，控制反转）：<ul>
+<li>设计原则，解耦组件之间的依赖关系</li>
+</ul>
+</li>
+<li>DI（ DI(Dependency Injection ，依赖注入）<ul>
+<li>具体的设计模式，体现了IoC的设计原则</li>
+<li>因为DI是IoC最典型的实现，所以术语IoC与DI经常被混用</li>
+</ul>
+</li>
+<li>应用IoC：<ul>
+<li>由容器主动将资源推送到它所管理的组件里，组件要有接受资源的方式</li>
+<li>查找的被动形式</li>
+<li>好的获取资源的解决方案</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="不同类型的依赖注入"><a href="#不同类型的依赖注入" class="headerlink" title="不同类型的依赖注入"></a>不同类型的依赖注入</h3><ul>
+<li>主要的三种类型的DI（接口注入，setter注入，构造器注入）</li>
+<li>流行程度最广的：setter注入<ul>
+<li>有可能忘记注入，会抛出空指针</li>
+<li>代码安全有可能存在问题，依赖会被修改</li>
+</ul>
+</li>
+<li>构造器注入<ul>
+<li>可避免setter注入的一些缺点</li>
+<li>没有含义明确的方法名，对参数位置与数量有要求</li>
+</ul>
+</li>
+</ul>
+<h2 id="Spring框架实现IoC"><a href="#Spring框架实现IoC" class="headerlink" title="Spring框架实现IoC"></a>Spring框架实现IoC</h2><ol>
+<li>Spring提供了IoC容器</li>
+<li>Beans均由Spring IoC容器来管理和组装</li>
+<li>Bean是一个由Spring IoC容器进行实例化、装配和管理的对象</li>
+<li>Beans以及他们之间的依赖关系是通过容器使用配置元数据反应出来</li>
+<li>配置元数据：（基于Xml的配置，基于注解的配置，基于Java的配置）</li>
+</ol>
+<h2 id="Spring容器"><a href="#Spring容器" class="headerlink" title="Spring容器"></a>Spring容器</h2><p>工作视图</p>
+<p><img src="/2020/02/27/1-Spring%E4%BB%8B%E7%BB%8D%E5%92%8CIOC-DI/IOC-DI.png" alt></p>
+<p>org.springframework.beans和org.springframework.context包是Spring框架IoC容器的基础</p>
+<p><img src="/2020/02/27/1-Spring%E4%BB%8B%E7%BB%8D%E5%92%8CIOC-DI/IOC_base.png" alt></p>
+<ul>
+<li><p>BeanFactory</p>
+<ul>
+<li>BeanFactory提供了一个先进的配置机制能够管理任何类型的对象</li>
+<li>BeanFactory负责对Bean对象的实例化、装配和生命周期的管理</li>
+<li>BeanFactory的实现： <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BeanFactory beanFactory = <span class="keyword">new</span> XmlBeanFactory(<span class="keyword">new</span> ClassPathResource(<span class="string">"beans.xml"</span>));<span class="comment">//创建该工厂需要传入一个Resource实例</span></span><br><span class="line">MyBean bean = (MyBean)factory.getBean(<span class="string">"myBean"</span>)<span class="comment">//获取Bean实例</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>ApplicationContext</p>
+<ul>
+<li>ApplicationContext是BeanFactory的一个子接口</li>
+<li>ApplicationContext添加了更多的企业特定的功能：</li>
+<li>实现<ul>
+<li>ClassPathXmlApplicationContext</li>
+<li>FileSystemXmlApplicationContext</li>
+<li>XmlWebApplicationContext</li>
+<li>AnnotationConfigApplicationContext</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>区别</p>
+<ul>
+<li>BeanFactory提供了配置框架和基本功能，ApplicationContext则添加了更多的企业特定功能</li>
+<li>ApplicationContext是BeanFactory的一个子接口，同时也是它的一个完整的超集</li>
+<li>实例Bean的载入方式不同：<ul>
+<li>BeanFactory延迟载入所有Bean，直到getBean()方法调用时才被创建</li>
+<li>ApplicationContext启动后载入所有单实例Bean。通过预载入单实例Bean，确保当需要时可以使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>Spring</category>
@@ -606,7 +682,8 @@ web.xml</li>
   <entry>
     <title>1.Hibernate框架的搭建</title>
     <url>/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1><h2 id="三层体系结构"><a href="#三层体系结构" class="headerlink" title="三层体系结构"></a>三层体系结构</h2><p><img src="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/three-layer_architecture.png" alt></p>
+    <content><![CDATA[<h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1><a id="more"></a>
+<h2 id="三层体系结构"><a href="#三层体系结构" class="headerlink" title="三层体系结构"></a>三层体系结构</h2><p><img src="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/three-layer_architecture.png" alt></p>
 <ol>
 <li>定义：将系统的组件<strong>分隔到不同的层</strong>中，每一层中的组件应保持内聚性； 每一层都应与它下面的各层保持松散耦合。<br></li>
 <li>层与层之间存在自上而下的<strong>依赖关系</strong>，即上层组件会访问下层组件的API，而下层组件不应该依赖上层组件。<br></li>
@@ -626,8 +703,6 @@ web.xml</li>
 </li>
 <li>Hibernate是持久化层框架。</li>
 </ol>
-<a id="more"></a>
-
 <h2 id="软件的模型及ORM"><a href="#软件的模型及ORM" class="headerlink" title="软件的模型及ORM"></a>软件的模型及ORM</h2><p><strong>不同类型的模型：</strong></p>
 <p>分析阶段–创建概念模型<br><br>设计阶段–域模型（面向对象）和数据模型（面向关系）——形成<strong>对象关系映射（ORM）</strong></p>
 <p>通过ORM模式在操作实体对象的时候，就不需要再去和复杂的 SQL语句打交道，只需简单的操作实体对象的属性和方法</p>
