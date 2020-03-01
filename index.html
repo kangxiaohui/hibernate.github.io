@@ -328,6 +328,19 @@
       
 
       
+      <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><p>代理对象与被代理对象必须实现同一个接口，在代理对象中实现日志等服务<br>问题：</p>
+<ol>
+<li>代理对象的一个接口只服务于一种类型的对象</li>
+<li>如果要代理的方法很多，要为每种方法进行代理</li>
+<li>静态代理在程序规模稍大时无法胜任</li>
+</ol>
+<h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><ul>
+<li>InvocationHandler接口</li>
+<li>关键：使用Proxy.newProxyInstance()静态方法建立一个代理对象(建立代理对象必须告知要代理的接口)</li>
+<li>操作代理对象时会执行invoke()方法</li>
+</ul>
+      
+      <a class="article-more-link" href="/2020/02/27/4-AOP/">阅读更多...</a>
       
       
       <!-- reward -->
