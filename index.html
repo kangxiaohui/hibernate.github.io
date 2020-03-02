@@ -413,6 +413,18 @@
       
 
       
+      <h2 id="数据验证"><a href="#数据验证" class="headerlink" title="数据验证"></a>数据验证</h2><ul>
+<li>数据验证不应该被限定在web层去处理，它应该在任何需要做数据验证的地方做验证</li>
+<li>基于以上考虑，Spring设计了一个既方便又可以在所有层使用的Validator接口</li>
+<li>Spring提供了Validator接口来进行对对象的验证，该接口实现2个方法<ul>
+<li>supports(Class)-判断该validator是否能校验提供的class的实例</li>
+<li>validate(Object, org.springframework.validation.Errors)- 校验给定的对象，如果有校验失败信息，将其放入Errors对象</li>
+</ul>
+</li>
+<li>SpringMVC还支持声明式验证@Controller输入</li>
+</ul>
+      
+      <a class="article-more-link" href="/2020/02/27/3-SpringEL%E5%92%8C%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/">阅读更多...</a>
       
       
       <!-- reward -->
