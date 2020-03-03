@@ -66,6 +66,92 @@
     
     
     
+    <article id="post-2-Spring-Beans和生命周期" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"
+    >2-Spring_Beans和生命周期</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-date">
+  <time datetime="2020-02-27T02:46:48.000Z" itemprop="datePublished">2020-02-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="实例化Bean"><a href="#实例化Bean" class="headerlink" title="实例化Bean"></a>实例化Bean</h2><ul>
+<li>通过构造方法实例化：<br>当使用基于XML的元数据配置文件，可以这样来指定bean类：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">"exampleBean"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"examples.ExampleBean"</span>&gt;</span><br><span class="line">&lt;bean name=<span class="string">"anotherExample"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"examples.ExampleBeanTwo"</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用静态工厂方法实例化：<ul>
+<li>当采用静态工厂方法创建bean时，除了需要指定class属性外，还需要通过factory-method属性来指定创建bean实例的工厂方法</li>
+<li>注意，此定义并未指定返回对象的类型，仅指定该类包含的工厂方法，此例中createInstance方法必须是静态的</li>
+</ul>
+</li>
+</ul>
+      
+      <a class="article-more-link" href="/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-1-Spring介绍和IOC-DI" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
