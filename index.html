@@ -66,6 +66,104 @@
     
     
     
+    <article id="post-6-Hibernate多对多关联映射" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/03/6-Hibernate%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/"
+    >6-Hibernate多对多关联映射</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/03/6-Hibernate%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/" class="article-date">
+  <time datetime="2020-03-03T01:07:15.000Z" itemprop="datePublished">2020-03-03</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hibernate/">hibernate</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p>在某高校选课系统中，一个学生可以同时选修多门课程，一门课程可以被若干个学生选修，像这样的多对多关联关系，应该如何实现？</p>
+<p>域模型：<br><img src="/2020/03/03/6-Hibernate%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/manytomany.png" alt></p>
+<p>数据关系模型：<br><img src="/2020/03/03/6-Hibernate%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/manytomany_data.png" alt></p>
+<h2 id="多对多关联映射"><a href="#多对多关联映射" class="headerlink" title="多对多关联映射"></a>多对多关联映射</h2><h3 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h3><p>Student.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String studentNo;</span><br><span class="line">    <span class="keyword">private</span> Set&lt;Course&gt; courseSet = <span class="keyword">new</span> HashSet&lt;Course&gt;();</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Course.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name; <span class="comment">// 课程名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> credit;  <span class="comment">// 学分</span></span><br><span class="line">    <span class="keyword">private</span> Set&lt;Student&gt; studentSet = <span class="keyword">new</span> HashSet&lt;Student&gt;();</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Student.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"course"</span> <span class="attr">table</span>=<span class="string">"studentcourse"</span> <span class="attr">cascade</span>=<span class="string">"all"</span> <span class="attr">inverse</span>=<span class="string">"false"</span>&gt;</span><span class="comment">&lt;!-- inverse表示控制方，course是被控方 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"studentId"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">class</span>=<span class="string">"Course"</span> <span class="attr">column</span>=<span class="string">"courseId"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Course.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"student"</span> <span class="attr">table</span>=<span class="string">"studentcourse"</span> <span class="attr">inverse</span>=<span class="string">"true"</span>&gt;</span><span class="comment">&lt;!-- inverse表示控制方，course是主控方 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"courseId"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">class</span>=<span class="string">"Student"</span> <span class="attr">column</span>=<span class="string">"studentId"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Test.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        save();</span><br><span class="line">        getStudent();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 保存学生和课程信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Session session = <span class="keyword">null</span>;</span><br><span class="line">        Transaction tran = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            session = HibernateUtil.openSession();</span><br><span class="line">            tran = session.beginTransaction();<span class="comment">// 开启事务</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        	createCourses(session);//新建Course对象，保证course的唯一性</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 新建Student对象</span></span><br><span class="line">            Student student = <span class="keyword">new</span> Student();</span><br><span class="line">            student.setName(<span class="string">"张三"</span>);</span><br><span class="line">            student.setStudentNo(<span class="string">"123456"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 选出course对象</span></span><br><span class="line">            Course course = session.get(Course<span class="class">.<span class="keyword">class</span>, <span class="title">new</span> <span class="title">Integer</span>(1))</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//建立关联</span></span><br><span class="line">            student.getCourse().add(course);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 保存</span></span><br><span class="line">            session.save(student);</span><br><span class="line">            session.save(course);</span><br><span class="line"></span><br><span class="line">            tran.commit();<span class="comment">// 提交事务</span></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            tran.rollback();<span class="comment">// 回滚事务</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            session.close();<span class="comment">// 关闭session</span></span><br><span class="line">            HibernateUtil.closeSessionFactory();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">createCourses</span><span class="params">(Session session)</span> </span>&#123;</span><br><span class="line">    	Course course = <span class="keyword">new</span> Course();</span><br><span class="line">        course.setName(<span class="string">"程序设计"</span>);</span><br><span class="line">        course.setCredit(<span class="number">3</span>);</span><br><span class="line">        session.save(course);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 检索学生，并得到该学生选修的课程信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getStudent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Session session = <span class="keyword">null</span>;</span><br><span class="line">        Transaction tran = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            session = HibernateUtil.openSession();</span><br><span class="line">            tran = session.beginTransaction();<span class="comment">// 开启事务</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 通过OID检索对象</span></span><br><span class="line">            Student student = session.get(Student<span class="class">.<span class="keyword">class</span>, <span class="title">new</span> <span class="title">Integer</span>(1))</span>;</span><br><span class="line">            <span class="keyword">for</span>(Course cour : student.getCourse())&#123;</span><br><span class="line">                System.out.println(cour.getName());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            tran.commit();<span class="comment">// 提交事务</span></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            tran.rollback();<span class="comment">// 回滚事务</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            session.close();<span class="comment">// 关闭session</span></span><br><span class="line">            HibernateUtil.closeSessionFactory();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p>Student.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"student"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String studentNo;</span><br><span class="line">    <span class="keyword">private</span> Set&lt;Course&gt; course = <span class="keyword">new</span> HashSet&lt;Course&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name = <span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getStudentNo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> studentNo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStudentNo</span><span class="params">(String studentNum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.studentNo = studentNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ManyToMany</span></span><br><span class="line">    <span class="meta">@JoinTable</span>(name=<span class="string">"studentcourse"</span>, <span class="comment">//指定关联表</span></span><br><span class="line">        joinColumns=<span class="meta">@JoinColumn</span>(name=<span class="string">"studentId"</span>),<span class="comment">//指向实体对应表的外键</span></span><br><span class="line">        inverseJoinColumns=<span class="meta">@JoinColumn</span>(name=<span class="string">"courseId"</span>))<span class="comment">//指向所关联的实体对应表的外键</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Course&gt; <span class="title">getCourse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> course;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCourse</span><span class="params">(Set&lt;Course&gt; course)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.course = course;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Course.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"course"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//课程名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> credit;<span class="comment">//学分</span></span><br><span class="line">    <span class="keyword">private</span> Set&lt;Student&gt; student = <span class="keyword">new</span> HashSet&lt;Student&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name = <span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCredit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> credit;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCredit</span><span class="params">(<span class="keyword">int</span> credit)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.credit = credit;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@ManyToMany</span>(mappedBy=<span class="string">"course"</span>)<span class="comment">//表示关联关系由Student维护</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Student&gt; <span class="title">getStudent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> student;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStudent</span><span class="params">(Set&lt;Student&gt; student)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.student = student;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试类同上</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-5-Hibernate一对多关联映射" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -125,7 +223,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
 
     </footer>
@@ -268,7 +366,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
 
     </footer>
@@ -353,7 +451,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
 
     </footer>
@@ -437,7 +535,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
 
     </footer>
@@ -523,7 +621,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
 
     </footer>
@@ -599,7 +697,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
 
     </footer>
@@ -685,7 +783,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
 
     </footer>
@@ -776,87 +874,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-speed-github" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/26/speed-github/"
-    >加速访问Github</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/02/26/speed-github/" class="article-date">
-  <time datetime="2020-02-26T07:06:55.000Z" itemprop="datePublished">2020-02-26</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/github%E6%8A%80%E6%9C%AF/">github技术</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h1 id="说一下访问慢的原因"><a href="#说一下访问慢的原因" class="headerlink" title="说一下访问慢的原因"></a>说一下访问慢的原因</h1><ol>
-<li>由于 github.com 网站位于美国旧金山,所以初始访问 github.com 时网络寻址会比较耗费时间,这是网站打开速度慢的其中一个原因.</li>
-<li>最初用户从浏览器中输入 github.com 网址时,浏览器并不知道这个域名对应的真实 ip 地址,先问问自己电脑认识不认识这个域名的门牌号,如果本机不认识会接着往上问,当地运行商也不认识这个域名的话,继续问上级,直到问出来 github.com 的门牌号是 192.30.253.113 为止!如此繁琐的问路过程被称之为 DNS 寻址,如果问路的时间都占用很久,那么访问网站的速度自然会很慢.</li>
-</ol>
-<h2 id="主域名和多个子域名"><a href="#主域名和多个子域名" class="headerlink" title="主域名和多个子域名"></a>主域名和多个子域名</h2><p>正常来说,网站的主域名下会存在多个子域名,由这些域名组合在一起提供完整的服务.</p>
-<p>而 github.com 也不例外,其中 github.com是一级域名,也是主域名,其他的域名基本上都是二级域名或者说次域名. 所以我们不仅要告诉本机 github.com 的主域名,还要把相关的子域名也告诉本机,帮人帮到底,送福送到西! 那到哪里去查询域名和 ip 的对应关系呢?</p>
-      
-      <a class="article-more-link" href="/2020/02/26/speed-github/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysterious/" rel="tag">mysterious</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
 
     </footer>
