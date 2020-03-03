@@ -4,6 +4,8 @@
     <title>6-Hibernate多对多关联映射</title>
     <url>/2020/03/03/6-Hibernate%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/</url>
     <content><![CDATA[<h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p>在某高校选课系统中，一个学生可以同时选修多门课程，一门课程可以被若干个学生选修，像这样的多对多关联关系，应该如何实现？</p>
+<a id="more"></a>
+
 <p>域模型：<br><img src="/2020/03/03/6-Hibernate%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/manytomany.png" alt></p>
 <p>数据关系模型：<br><img src="/2020/03/03/6-Hibernate%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/manytomany_data.png" alt></p>
 <h2 id="多对多关联映射"><a href="#多对多关联映射" class="headerlink" title="多对多关联映射"></a>多对多关联映射</h2><h3 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h3><p>Student.java</p>
