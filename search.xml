@@ -1,6 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>7-Hibernate操作持久化对象</title>
+    <url>/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h2 id="Session缓存"><a href="#Session缓存" class="headerlink" title="Session缓存"></a>Session缓存</h2><p>java生命周期中当对象<strong>空引用</strong>或<strong>隔离引用</strong>时会清理缓存</p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>缓存介于应用程序和永久性存储源之间，其作用是降低应用程序直接读写永久性存储源的频率，从而提高应用的运行效率。</p>
+<p><img src="/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/2020-03-04_090616.png" alt></p>
+<p>缓存内的数据是永久性存储源中的数据的复制，应用程序在运行时从缓存读写数据，在特定的时刻或事件同步缓存和永久性存储源的数据。</p>
+<a id="more"></a>
+
+<h3 id="Session缓存的工作过程"><a href="#Session缓存的工作过程" class="headerlink" title="Session缓存的工作过程"></a>Session缓存的工作过程</h3><ul>
+<li>当 Session 执行查询方法时，先从 Session 缓存中读取据，如果缓存中有则直接读取，如果缓存中没有，从数据库中查询并加载到Session 缓存中，再从缓存中读取。</li>
+<li>当 Session 执行 save()、update() 方法时，将对象持久化到数据库中并将对象加载到 Session 缓存中。<br><img src="/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/2020-03-04_091148.png" alt></li>
+</ul>
+<h3 id="session实现缓存过程"><a href="#session实现缓存过程" class="headerlink" title="session实现缓存过程"></a>session实现缓存过程</h3><p><img src="/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/Animation.gif" alt></p>
+<h3 id="Session清理缓存"><a href="#Session清理缓存" class="headerlink" title="Session清理缓存"></a>Session清理缓存</h3><p>Session在某一时间点按照缓存中对象的属性变化来同步更新数据库的这一过程被称为 Session 清理缓存</p>
+<p>缓存清理的时间点：</p>
+<ul>
+<li>当调用 transaction.commit() 方法时，会先清理缓存，再向数据库提交事务；</li>
+<li>当显式调用 Session.flush() 方法时，会清理缓存；</li>
+<li>当调用 Session 的查询（不包括 load() 和 get() )方法时，如果缓存中对象的属性有变化则清理缓存。<h3 id="Session对象快照"><a href="#Session对象快照" class="headerlink" title="Session对象快照"></a>Session对象快照</h3><img src="/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/session_fuction.gif" alt><h3 id="Session清理缓存的模式"><a href="#Session清理缓存的模式" class="headerlink" title="Session清理缓存的模式"></a>Session清理缓存的模式</h3>setHibernateFlushMode() 用于设定 Session 清理缓存的模式。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">清理缓存模式</th>
+<th align="center">Session的查询方法</th>
+<th align="center">commit()</th>
+<th align="center">flush()</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">FlushMode.ALWAYS</td>
+<td align="center">清理</td>
+<td align="center">清理</td>
+<td align="center">清理</td>
+</tr>
+<tr>
+<td align="center">FlushMode.AUTO</td>
+<td align="center">缓存中对象的属性有变化时清理，没变化不清理</td>
+<td align="center">清理</td>
+<td align="center">清理</td>
+</tr>
+<tr>
+<td align="center">FlushMode.COMMIT</td>
+<td align="center">不清理</td>
+<td align="center">清理</td>
+<td align="center">清理</td>
+</tr>
+<tr>
+<td align="center">FlushMode.MANUAL</td>
+<td align="center">不清理</td>
+<td align="center">不清理</td>
+<td align="center">清理</td>
+</tr>
+<tr>
+<td align="center">FlushMode.NEVER</td>
+<td align="center"><del>已过时，被MANUAL取代</del></td>
+<td align="center"><del>~</del></td>
+<td align="center"><del>~</del></td>
+</tr>
+</tbody></table>
+<h3 id="Session缓存的作用"><a href="#Session缓存的作用" class="headerlink" title="Session缓存的作用"></a>Session缓存的作用</h3><ul>
+<li>减少数据库访问次数，提高数据访问的效率；</li>
+<li>保证缓存中的对象与数据库中相关的记录同步；</li>
+<li>当缓存中的持久化对象存在循环关联关系时，Session会保证不出现死循环，以及由死循环引起的堆栈溢出异常。</li>
+</ul>
+<h2 id="Hibernate对象的生命周期"><a href="#Hibernate对象的生命周期" class="headerlink" title="Hibernate对象的生命周期"></a>Hibernate对象的生命周期</h2><p>Hibernate实体对象生命周期的4种状态</p>
+<ul>
+<li>Transient(临时状态) ： 刚刚被 new 关键字创建，还没有被持久化，不在Session的缓存中。<ul>
+<li>在数据库中<strong>不存在</strong>与之相对应的记录</li>
+</ul>
+</li>
+<li>Persistent(持久化状态) ： 已经被持久化，并加入到 Session 缓存中。<ul>
+<li>在数据库中<strong>存在</strong>与之相对应的记录</li>
+</ul>
+</li>
+<li>Detached(游离状态) ： 已经被持久化，但不再处于 Session 缓存中。<ul>
+<li>在数据库中<strong>可能存在</strong>与之相对应的记录(前提是没有其他Session实例删除该记录)</li>
+</ul>
+</li>
+<li>Removed(删除状态) ： Session 已经计划将其从数据库删除，并且不再处于 Session 缓存中。<ul>
+<li>数据库中<strong>存在</strong>与之对应的记录(已经计划从数据库中删除)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/2020-03-04_104323.png" alt></p>
+<h2 id="Hibernate操作持久化对象"><a href="#Hibernate操作持久化对象" class="headerlink" title="Hibernate操作持久化对象"></a>Hibernate操作持久化对象</h2><h3 id="Session的save-方法"><a href="#Session的save-方法" class="headerlink" title="Session的save()方法"></a>Session的save()方法</h3><ol>
+<li>把对象加入缓存中，使其变成持久化对象；</li>
+<li>根据映射文件配置的标识符生成器为对象分配一个 OID</li>
+<li>计划执行一个 insert，把对象当前属性值组装到 insert 语句中</li>
+<li>事务提交后（transaction.commit()）永久的将数据保存到数据库</li>
+</ol>
+<h3 id="Session的update-方法"><a href="#Session的update-方法" class="headerlink" title="Session的update()方法"></a>Session的update()方法</h3><ol>
+<li>把游离对象重新加入 Session 缓存中，使其变为持久化对象；</li>
+<li>计划执行一个 update，将对象当前属性组装到 update 语句，执行 update 语句；</li>
+<li>事务提交后（transaction.commit()）永久的将数据保存到数据库；</li>
+<li>不管对象属性有没有改变都会执行update （通过设置<class>的select-before-update=true改变）。</class></li>
+</ol>
+<h3 id="Session的saveOrUpdate-方法"><a href="#Session的saveOrUpdate-方法" class="headerlink" title="Session的saveOrUpdate()方法"></a>Session的saveOrUpdate()方法</h3><ul>
+<li>如果参数是临时对象—save()</li>
+<li>如果参数是游离对象—update()</li>
+<li>如果参数是持久化对象—返回</li>
+</ul>
+<h4 id="Hibernate-如何区分临时对象"><a href="#Hibernate-如何区分临时对象" class="headerlink" title="Hibernate 如何区分临时对象"></a>Hibernate 如何区分临时对象</h4><ul>
+<li>对象的 OID 为 null；</li>
+<li>如果映射文件中设置了 <id> 的 unsaved-value 属性，并且对象的 id 值与 unsaved-value 设置的值相等。</id></li>
+</ul>
+<h3 id="Session的delete-方法"><a href="#Session的delete-方法" class="headerlink" title="Session的delete()方法"></a>Session的delete()方法</h3><ol>
+<li>检查传入的参数是否是持久化对象，如果是持久化对象将其移出 Session 缓存；</li>
+<li>计划执行一个 delete，但是并不立即执行；</li>
+<li>当 Session 清理缓存时才执行 delete，比如执行 Session.flush()。<h3 id="Session的load-和get-方法"><a href="#Session的load-和get-方法" class="headerlink" title="Session的load()和get()方法"></a>Session的load()和get()方法</h3></li>
+</ol>
+<ul>
+<li>load() 与 get() 方法都是根据 OID 加载持久化对象。</li>
+<li>load() 与 get() 方法的不同点：<ul>
+<li>如果数据库中不存在与 OID 对应的记录：<ul>
+<li>load() 会抛出 ObjectNotFoundException 异常；</li>
+<li>get() 会返回 null。</li>
+</ul>
+</li>
+<li>默认加载策略：<ul>
+<li>load() 使用类的延迟加载策略；(在表头查询时较为罕见)</li>
+<li>get() 使用类的立即加载策略。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>hibernate</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>教资过，真开心</title>
     <url>/2020/03/03/%E6%95%99%E8%B5%84%E8%BF%87%EF%BC%8C%E7%9C%9F%E5%BC%80%E5%BF%83/</url>
     <content><![CDATA[<p>今天无疑是新型冠状肺炎疫情期间对于我来说最开心幸福的一天了</p>
