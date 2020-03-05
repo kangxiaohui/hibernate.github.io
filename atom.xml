@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-04T04:19:47.829Z</updated>
+  <updated>2020-03-05T08:51:12.085Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql中的4中外键形式</title>
+    <link href="http://yoursite.com/2020/03/05/mysql%E4%B8%AD%E7%9A%844%E4%B8%AD%E5%A4%96%E9%94%AE%E5%BD%A2%E5%BC%8F/"/>
+    <id>http://yoursite.com/2020/03/05/mysql%E4%B8%AD%E7%9A%844%E4%B8%AD%E5%A4%96%E9%94%AE%E5%BD%A2%E5%BC%8F/</id>
+    <published>2020-03-05T08:47:45.000Z</published>
+    <updated>2020-03-05T08:51:12.085Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用Navicat for mysql设计外键的时候，删除时和更新时两列有四个值可以选择：</p><ol><li>CASCADE<ul><li>父表delete、update的时候，子表会delete、update掉关联记录；</li></ul></li><li>NO ACTION<ul><li>父表delete、update的时候，子表会将关联记录的外键字段所在列设为null，所以注意在设计子表时外键不能设为not null；</li></ul></li><li>RESTRICT<ul><li>如果想要删除父表的记录时，而在子表中有关联该父表的记录，则不允许删除父表中的记录；</li></ul></li><li>SET NULL<ul><li>同 RESTRICT，也是首先先检查外键；</li></ul></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;使用Navicat for mysql设计外键的时候，删除时和更新时两列有四个值可以选择：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CASCADE&lt;ul&gt;
+&lt;li&gt;父表delete、update的时候，子表会delete、update掉关联记录；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li
+      
+    
+    </summary>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>Hibernate小例子</title>

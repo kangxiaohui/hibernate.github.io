@@ -66,6 +66,90 @@
     
     
     
+    <article id="post-3-SpringEL和数据验证" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/27/3-SpringEL%E5%92%8C%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/"
+    >3-SpringEL和数据验证</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/27/3-SpringEL%E5%92%8C%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/" class="article-date">
+  <time datetime="2020-02-27T02:47:28.000Z" itemprop="datePublished">2020-02-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="数据验证"><a href="#数据验证" class="headerlink" title="数据验证"></a>数据验证</h2><ul>
+<li>数据验证不应该被限定在web层去处理，它应该在任何需要做数据验证的地方做验证</li>
+<li>基于以上考虑，Spring设计了一个既方便又可以在所有层使用的Validator接口</li>
+<li>Spring提供了Validator接口来进行对对象的验证，该接口实现2个方法<ul>
+<li>supports(Class)-判断该validator是否能校验提供的class的实例</li>
+<li>validate(Object, org.springframework.validation.Errors)- 校验给定的对象，如果有校验失败信息，将其放入Errors对象</li>
+</ul>
+</li>
+<li>SpringMVC还支持声明式验证@Controller输入</li>
+</ul>
+      
+      <a class="article-more-link" href="/2020/02/27/3-SpringEL%E5%92%8C%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-2-Spring-Beans和生命周期（对象实例化及属性注入-注解方式）" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
