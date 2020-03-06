@@ -15,9 +15,54 @@
 </ol>
 <a id="more"></a>
 
+<p>查询返回结果</p>
+<ul>
+<li>list()：返回List类型的查询结果，返回所有满足条件的对象。</li>
+<li>uniqueResult()：返回单个对象</li>
+</ul>
+<p>where子句支持的各种运算符。</p>
+<table>
+<thead>
+<tr>
+<th align="center">程序中指定的连接类型</th>
+<th align="center">HQL运算符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">比较运算符</td>
+<td align="center">=、&lt;&gt;、&gt;=、&lt;=、&gt;、&lt;、is null、is not null</td>
+</tr>
+<tr>
+<td align="center">范围运算符</td>
+<td align="center">in、not in、between…and、not between…and</td>
+</tr>
+<tr>
+<td align="center">字符串模式匹配运算符</td>
+<td align="center">like</td>
+</tr>
+<tr>
+<td align="center">逻辑运算符</td>
+<td align="center">and、or、not</td>
+</tr>
+</tbody></table>
+<p>HQL缺点：</p>
+<ul>
+<li>代码更加零乱，可读性降低；</li>
+<li>难以进行性能优化；</li>
+<li>引入额外的安全风险。</li>
+</ul>
+<p>HQL子查询：</p>
+<ol>
+<li>size()，获得集合中元素的个数；</li>
+<li>maxIndex()，对于建立索引的集合，获得最大索引值；</li>
+<li>minIndex()，对于建立索引的集合，获得最小索引值；</li>
+<li>elements()，获得集合中所有元素。</li>
+</ol>
 <h3 id="检索所有记录"><a href="#检索所有记录" class="headerlink" title="检索所有记录"></a>检索所有记录</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String hql = <span class="string">"from User"</span>;</span><br><span class="line">Query query = session.createQuery(hql);</span><br><span class="line">List userList = query.list();</span><br><span class="line">System.out.println(userList);</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String hql = <span class="string">"select u from User u"</span>;</span><br><span class="line">Query query = session.createQuery(hql);</span><br><span class="line">List userList = query.list();</span><br><span class="line">System.out.println(userList);</span><br></pre></td></tr></table></figure>
+<h3 id="多态查询：查询出当前类以及所有子类的实例。"><a href="#多态查询：查询出当前类以及所有子类的实例。" class="headerlink" title="多态查询：查询出当前类以及所有子类的实例。"></a>多态查询：查询出当前类以及所有子类的实例。</h3><p>Employee 有两个子类：HourlyEmployee 和SalariedEmployee。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Query query = session.createQuery(<span class="string">"from Employee"</span>);</span><br><span class="line">List employeeList = query.list();</span><br></pre></td></tr></table></figure>
 
 <h3 id="检索单独字段"><a href="#检索单独字段" class="headerlink" title="检索单独字段"></a>检索单独字段</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String hql = <span class="string">"select u.userName from User u"</span>;<span class="comment">//返回所有userName，其中涉及别名u</span></span><br><span class="line">Query query = session.createQuery(hql);</span><br><span class="line">List userList = query.list();</span><br><span class="line">System.out.println(userList);</span><br></pre></td></tr></table></figure>
 
