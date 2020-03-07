@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-06T03:37:58.068Z</updated>
+  <updated>2020-03-06T13:48:03.543Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2003TextTwo单词</title>
+    <link href="http://yoursite.com/2020/03/06/2003TextTwo%E5%8D%95%E8%AF%8D/"/>
+    <id>http://yoursite.com/2020/03/06/2003TextTwo%E5%8D%95%E8%AF%8D/</id>
+    <published>2020-03-06T13:47:22.000Z</published>
+    <updated>2020-03-06T13:48:03.543Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="考研英语" scheme="http://yoursite.com/categories/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
   
   <entry>
     <title>8-Hibernate检索方式</title>

@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    1-Spring介绍和IOC&amp;DI |  神秘的小胖纸
+    2003TextTwo单词 |  神秘的小胖纸
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-1-Spring介绍和IOC-DI" class="article article-type-post" itemscope
+  <article id="post-2003TextTwo单词" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -40,7 +40,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  1-Spring介绍和IOC&amp;DI
+  2003TextTwo单词
 </h1>
   
 
@@ -49,12 +49,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/02/27/1-Spring%E4%BB%8B%E7%BB%8D%E5%92%8CIOC-DI/" class="article-date">
-  <time datetime="2020-02-27T02:45:47.000Z" itemprop="datePublished">2020-02-27</time>
+      <a href="/2020/03/06/2003TextTwo%E5%8D%95%E8%AF%8D/" class="article-date">
+  <time datetime="2020-03-06T13:47:22.000Z" itemprop="datePublished">2020-03-06</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+    <a class="article-category-link" href="/categories/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD/">考研英语</a>
   </div>
 
       
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">569字</span>
+            <span class="post-count">0字</span>
         </span>
     </span>
 
@@ -73,7 +73,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">1分钟</span>
         </span>
     </span>
 </div>
@@ -84,8 +84,6 @@
 
     
     
-    <div class="tocbot"></div>
-
 
 
 
@@ -100,83 +98,7 @@
       
 
       
-      <h2 id="IoC和DI"><a href="#IoC和DI" class="headerlink" title="IoC和DI"></a>IoC和DI</h2><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><ul>
-<li>IoC（Inversion of Control，控制反转）：<ul>
-<li>设计原则，解耦组件之间的依赖关系</li>
-</ul>
-</li>
-<li>DI（ DI(Dependency Injection ，依赖注入）<ul>
-<li>具体的设计模式，体现了IoC的设计原则</li>
-<li>因为DI是IoC最典型的实现，所以术语IoC与DI经常被混用</li>
-</ul>
-</li>
-<li>应用IoC：<ul>
-<li>由容器主动将资源推送到它所管理的组件里，组件要有接受资源的方式</li>
-<li>查找的被动形式</li>
-<li>好的获取资源的解决方案</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-
-<h3 id="不同类型的依赖注入"><a href="#不同类型的依赖注入" class="headerlink" title="不同类型的依赖注入"></a>不同类型的依赖注入</h3><ul>
-<li>主要的三种类型的DI（接口注入，setter注入，构造器注入）</li>
-<li>流行程度最广的：setter注入<ul>
-<li>有可能忘记注入，会抛出空指针</li>
-<li>代码安全有可能存在问题，依赖会被修改</li>
-</ul>
-</li>
-<li>构造器注入<ul>
-<li>可避免setter注入的一些缺点</li>
-<li>没有含义明确的方法名，对参数位置与数量有要求</li>
-</ul>
-</li>
-</ul>
-<h2 id="Spring框架实现IoC"><a href="#Spring框架实现IoC" class="headerlink" title="Spring框架实现IoC"></a>Spring框架实现IoC</h2><ol>
-<li>Spring提供了IoC容器</li>
-<li>Beans均由Spring IoC容器来管理和组装</li>
-<li>Bean是一个由Spring IoC容器进行实例化、装配和管理的对象</li>
-<li>Beans以及他们之间的依赖关系是通过容器使用配置元数据反应出来</li>
-<li>配置元数据：（基于Xml的配置，基于注解的配置，基于Java的配置）</li>
-</ol>
-<h2 id="Spring容器"><a href="#Spring容器" class="headerlink" title="Spring容器"></a>Spring容器</h2><p>工作视图</p>
-<p><img src="/2020/02/27/1-Spring%E4%BB%8B%E7%BB%8D%E5%92%8CIOC-DI/IOC-DI.png" alt></p>
-<p>org.springframework.beans和org.springframework.context包是Spring框架IoC容器的基础</p>
-<p><img src="/2020/02/27/1-Spring%E4%BB%8B%E7%BB%8D%E5%92%8CIOC-DI/IOC_base.png" alt></p>
-<ul>
-<li><p>BeanFactory</p>
-<ul>
-<li>BeanFactory提供了一个先进的配置机制能够管理任何类型的对象</li>
-<li>BeanFactory负责对Bean对象的实例化、装配和生命周期的管理</li>
-<li>BeanFactory的实现： <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BeanFactory beanFactory = <span class="keyword">new</span> XmlBeanFactory(<span class="keyword">new</span> ClassPathResource(<span class="string">"beans.xml"</span>));<span class="comment">//创建该工厂需要传入一个Resource实例</span></span><br><span class="line">MyBean bean = (MyBean)factory.getBean(<span class="string">"myBean"</span>)<span class="comment">//获取Bean实例</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>ApplicationContext</p>
-<ul>
-<li>ApplicationContext是BeanFactory的一个子接口</li>
-<li>ApplicationContext添加了更多的企业特定的功能：</li>
-<li>实现<ul>
-<li>ClassPathXmlApplicationContext</li>
-<li>FileSystemXmlApplicationContext</li>
-<li>XmlWebApplicationContext</li>
-<li>AnnotationConfigApplicationContext</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>区别</p>
-<ul>
-<li>BeanFactory提供了配置框架和基本功能，ApplicationContext则添加了更多的企业特定功能</li>
-<li>ApplicationContext是BeanFactory的一个子接口，同时也是它的一个完整的超集</li>
-<li>实例Bean的载入方式不同：<ul>
-<li>BeanFactory延迟载入所有Bean，直到getBean()方法调用时才被创建</li>
-<li>ApplicationContext启动后载入所有单实例Bean。通过预载入单实例Bean，确保当需要时可以使用</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+      <a id="more"></a>
       
       <!-- reward -->
       
@@ -245,14 +167,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/27/1-Spring%E4%BB%8B%E7%BB%8D%E5%92%8CIOC-DI/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/06/2003TextTwo%E5%8D%95%E8%AF%8D/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%80%83%E7%A0%94/" rel="tag">考研</a></li></ul>
 
 
     </footer>
@@ -263,19 +185,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            2-Spring_Beans和生命周期
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/02/26/speed-github/" class="article-nav-link">
+      <a href="/2020/03/06/8-Hibernate%E6%A3%80%E7%B4%A2%E6%96%B9%E5%BC%8F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">加速访问Github</div>
+        <div class="article-nav-title">8-Hibernate检索方式</div>
       </a>
     
   </nav>
