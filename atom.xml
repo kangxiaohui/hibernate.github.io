@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-09T13:13:10.613Z</updated>
+  <updated>2020-03-11T02:59:53.499Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,65 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>8.1-Hibernate检索策略</title>
+    <link href="http://yoursite.com/2020/03/11/8-1-Hibernate%E6%A3%80%E7%B4%A2%E7%AD%96%E7%95%A5/"/>
+    <id>http://yoursite.com/2020/03/11/8-1-Hibernate%E6%A3%80%E7%B4%A2%E7%AD%96%E7%95%A5/</id>
+    <published>2020-03-11T02:36:42.000Z</published>
+    <updated>2020-03-11T02:59:53.499Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="三种检索策略"><a href="#三种检索策略" class="headerlink" title="三种检索策略"></a>三种检索策略</h2><ol><li>立即检索：立即加载检索方法指定的对象。<ol><li>加载多于需要的对象白白浪费内存空间；</li><li>select 语句数量多，频繁访问数据库，影响系统性能。</li></ol></li><li>延迟检索：延迟加载检索方法指定的对象。<ol><li>避免多加载应用程序不需要访问的数据对象。</li></ol></li><li>迫切左外连接：利用SQL外连接查询功能加载检索方法指定对象。<ol><li>减少执行select语句的数量，减少数据库访问，提高系统性能。</li></ol></li></ol><a id="more"></a><h2 id="类级别和关联级别可选的检索策略"><a href="#类级别和关联级别可选的检索策略" class="headerlink" title="类级别和关联级别可选的检索策略"></a>类级别和关联级别可选的检索策略</h2><p><img src="/2020/03/11/8-1-Hibernate%E6%A3%80%E7%B4%A2%E7%AD%96%E7%95%A5/2020-03-11_105703.jpg" alt></p><h2 id="类级别检索策略"><a href="#类级别检索策略" class="headerlink" title="类级别检索策略"></a>类级别检索策略</h2><p>立即检索（加载）：映射配置文件中<class>元素的lazy 属性设置为 false。</class></p><p><code>&lt;class name=&quot;User&quot; table=&quot;user&quot; lazy=&quot;false&quot;&gt;</code></p><p>延迟检索（加载）：映射配置文件中<class>元素的lazy 属性设置为 true。</class></p><p><code>&lt;class name=&quot;User&quot; table=&quot;user&quot; lazy=&quot;true&quot;&gt;</code></p><h3 id="立即检索"><a href="#立即检索" class="headerlink" title="立即检索"></a>立即检索</h3><p><code>User user = session.load(User.class, new Integer(1));</code></p><h3 id="延迟检索"><a href="#延迟检索" class="headerlink" title="延迟检索"></a>延迟检索</h3><ol><li>创建 User 的代理类实例（代理类是 Hibernate 动态生成的User的扩展类）；</li><li>Hibernate 创建的 User 代理类的实例<strong>仅仅初始化了OID 属性</strong>，其他属性均为 null；</li><li>当程序第一次访问代理类实例时（比如user.getX()），Hibernate会初始化代理类实例，执行 select 语句；</li><li>如果程序访问 User 的 getId() 方法时，Hibernate并不会初始化代理类实例，因为 id 值已经存在。</li><li>类级别的检索策略<strong>只会影响到 Session 的 load() 方法</strong>，对get() 和其它查询不起作用。</li><li>延迟加载对 load() 方法的影响：<ol><li>如果数据库中不存在对应的对象不会抛出异常，只有在调用 user.getXX() 时才会抛异常；</li><li>代理类实例只能在当前 Session 范围内初始化；</li><li><strong>Hibernate.initialize()</strong> 方法可以显示初始化代理类实例。</li></ol></li></ol><h3 id="关联级别检索策略"><a href="#关联级别检索策略" class="headerlink" title="关联级别检索策略"></a>关联级别检索策略</h3><p>User.hbm.xml 中<set>元素 lazy 和 outer-join 属性。</set></p><p>在映射文件中用<strong><set></set></strong>元素来配置一对多和多对多关联关系。<br><img src="/2020/03/11/8-1-Hibernate%E6%A3%80%E7%B4%A2%E7%AD%96%E7%95%A5/2020-03-11_105818.jpg" alt></p><p>outer-join属性：auto、true、false</p><p><img src="/2020/03/11/8-1-Hibernate%E6%A3%80%E7%B4%A2%E7%AD%96%E7%95%A5/2020-03-11_105927.jpg" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;三种检索策略&quot;&gt;&lt;a href=&quot;#三种检索策略&quot; class=&quot;headerlink&quot; title=&quot;三种检索策略&quot;&gt;&lt;/a&gt;三种检索策略&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;立即检索：立即加载检索方法指定的对象。&lt;ol&gt;
+&lt;li&gt;加载多于需要的对象白白浪费内存空间；&lt;/li&gt;
+&lt;li&gt;select 语句数量多，频繁访问数据库，影响系统性能。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;延迟检索：延迟加载检索方法指定的对象。&lt;ol&gt;
+&lt;li&gt;避免多加载应用程序不需要访问的数据对象。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;迫切左外连接：利用SQL外连接查询功能加载检索方法指定对象。&lt;ol&gt;
+&lt;li&gt;减少执行select语句的数量，减少数据库访问，提高系统性能。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="hibernate" scheme="http://yoursite.com/categories/hibernate/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>英语词汇11-20</title>
+    <link href="http://yoursite.com/2020/03/10/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%8711-20/"/>
+    <id>http://yoursite.com/2020/03/10/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%8711-20/</id>
+    <published>2020-03-10T01:55:15.000Z</published>
+    <updated>2020-03-10T01:55:15.675Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>英语词汇1-10</title>
