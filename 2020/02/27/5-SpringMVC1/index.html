@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
+    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
     5-SpringMVC1 |  神秘的小胖纸
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
+  
   <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
 <link rel="stylesheet" href="/css/main.css">
+
+  
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
 <link rel="alternate" href="/atom.xml" title="神秘的小胖纸" type="application/atom+xml">
 </head>
+
 </html>
+
 <body>
   <div id="app">
     <main class="content">
       <section class="outer">
   <article id="post-5-SpringMVC1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
+
   <div class="article-inner">
+    
     <header class="article-header">
+       
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   5-SpringMVC1
 </h1>
+  
+
     </header>
+    
+
+    
     <div class="article-meta">
       <a href="/2020/02/27/5-SpringMVC1/" class="article-date">
   <time datetime="2020-02-27T02:48:08.000Z" itemprop="datePublished">2020-02-27</time>
 </a>
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/Spring/">Spring</a>
   </div>
+
+      
+      
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
@@ -40,6 +66,7 @@
             <span class="post-count">2.7k字</span>
         </span>
     </span>
+
     <span class="post-time">
         &nbsp; | &nbsp;
         <span class="post-meta-item-icon">
@@ -49,9 +76,29 @@
         </span>
     </span>
 </div>
+
+      
     </div>
+    
+
+    
+    
     <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
     <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
       <h2 id="程序搭建过程"><a href="#程序搭建过程" class="headerlink" title="程序搭建过程"></a>程序搭建过程</h2><ol>
 <li>创建web工程，导入jar</li>
 <li>配置xml文件 3个(web.xml，spring-mvc.xml，applicationContext.xml)<a id="more"></a>
@@ -146,6 +193,7 @@ web.xml</li>
 <li>@RequestMapping用于映射URL，该注解可以写在类级别上，也可以写在方法级别上</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"helloworld!"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hi"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>相对于该路径的，上面的方法映射的URL路径是：/user/hello，<strong>推荐使用</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"helloworld!"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hi"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>直接映射方法注解上的路径，上面的方法映射的URL路径是：/hello</p>
@@ -153,13 +201,16 @@ web.xml</li>
 <li>@RequestMapping中，还可以使用method来限制请求的类型，执行不同操作</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"add"</span>, method=RequestMethod.GET)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toAdd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//数据库查询，查蛋糕类型，存入到request</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"cake"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"add"</span>, method=RequestMethod.POST)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">add</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//获取蛋糕的相关参数，插入数据库</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"list"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>URI模版是一个类似于URI的字符串，其中包含了一个或多个变量。当你将这些变量替换掉时，就变回了URI</li>
 </ul>
 <p>例：/cake/get/3</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/cake"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CakeController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@RequestMapping</span>(value=<span class="string">"get/&#123;cakeId&#125;"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">(@PathVariable <span class="keyword">int</span> cakeId)</span> </span>&#123;</span><br><span class="line">		System.out.println(cakeId);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"list"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h4><p>@RequestParam将请求参数绑定到方法参法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(@RequestParam(value = <span class="string">"name"</span>, required=<span class="keyword">true</span>, defaultValue=<span class="string">"1"</span>)</span> String name,</span></span><br><span class="line"><span class="function">			 @<span class="title">RequestParam</span><span class="params">(value=<span class="string">"pageNum"</span>, defaultValue=<span class="string">"1"</span>)</span><span class="keyword">int</span> pageNum) </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"helloworld!"</span>+name);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hi"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="RequestParam和-PathVariable的区别"><a href="#RequestParam和-PathVariable的区别" class="headerlink" title="@RequestParam和@PathVariable的区别"></a>@RequestParam和@PathVariable的区别</h4><ol>
 <li>@RequestParam拿到的是传统的传参方式，例：form表单</li>
 <li>@PathVariable页面请求路径中的参数，例：/user/login/zs</li>
@@ -169,6 +220,7 @@ web.xml</li>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置拦截器 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/**"</span> /&gt;</span>		<span class="comment">&lt;!-- 拦截所有请求 --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">"/user/login"</span> /&gt;</span>			<span class="comment">&lt;!-- 不拦截/user/login请求 --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.myschool.user.LoginTimeInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>	<span class="comment">&lt;!-- 拦截器类 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>LoginTimeInterceptor拦截器类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.myschool.user;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Calendar;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.handler.HandlerInterceptorAdapter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginTimeInterceptor</span> <span class="keyword">extends</span> <span class="title">HandlerInterceptorAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"afterCompletion"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler,</span></span></span><br><span class="line"><span class="function"><span class="params">			ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"postHandle"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"preHandle"</span>);</span><br><span class="line">		Calendar cal = Calendar.getInstance();</span><br><span class="line">        <span class="keyword">int</span> hour = cal.get(Calendar.HOUR_OF_DAY);</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">8</span> &lt;= hour &amp;&amp; hour &lt; <span class="number">17</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        	response.sendRedirect(<span class="string">"index.jsp"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">//		return true;</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>SpringMVC提供了2种常用的方法来实现</p>
 <ul>
 <li>基于Servlet3.0的文件上传</li>
@@ -180,6 +232,7 @@ web.xml</li>
 <li>在spring-mvc.xml中加入</li>
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 --&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span>/&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!-- 指定所上传文件的总大小不能超过200KB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxUploadSize"</span> <span class="attr">value</span>=<span class="string">"200000"</span>/&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>index.jsp</li>
 </ol>
@@ -188,12 +241,18 @@ web.xml</li>
 <li>UploadController类</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.upload;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.util.FileCopyUtils;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"upload1"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">upload1</span><span class="params">(@RequestParam(value=<span class="string">"title"</span>)</span> String title,</span></span><br><span class="line"><span class="function">            @<span class="title">RequestParam</span><span class="params">(value=<span class="string">"upfile"</span>)</span> MultipartFile file,</span></span><br><span class="line"><span class="function">            HttpServletRequest request)</span>&#123;</span><br><span class="line">		System.out.println(title);</span><br><span class="line">		String rootPath=request.getServletContext().getRealPath(<span class="string">"/"</span>);</span><br><span class="line">		<span class="keyword">if</span>(!file.isEmpty())&#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				InputStream is=file.getInputStream();</span><br><span class="line">				FileOutputStream fos=<span class="keyword">new</span> FileOutputStream(</span><br><span class="line">						rootPath+<span class="string">"/"</span>+<span class="string">"upload/"</span></span><br><span class="line">						+file.getOriginalFilename());</span><br><span class="line">				<span class="keyword">byte</span> []cache=<span class="keyword">new</span> <span class="keyword">byte</span>[is.available()];</span><br><span class="line">				fos.write(cache);</span><br><span class="line">				is.close();</span><br><span class="line">				fos.flush();</span><br><span class="line">				fos.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"upload2"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">upload2</span><span class="params">(@RequestParam(value=<span class="string">"title"</span>)</span> String title,</span></span><br><span class="line"><span class="function">            @<span class="title">RequestParam</span><span class="params">(value=<span class="string">"upfile"</span>)</span> MultipartFile file,</span></span><br><span class="line"><span class="function">            HttpServletRequest request)</span>&#123;</span><br><span class="line">		System.out.println(title);</span><br><span class="line">		String rootPath=request.getServletContext().getRealPath(<span class="string">"/"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			FileCopyUtils.copy(file.getBytes(), </span><br><span class="line">					<span class="keyword">new</span> File(rootPath+<span class="string">"/upload"</span>,file.getOriginalFilename()));</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"upload3"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">upload3</span><span class="params">(@RequestParam(value=<span class="string">"title"</span>)</span> String title,</span></span><br><span class="line"><span class="function">            @<span class="title">RequestParam</span><span class="params">(value=<span class="string">"upfile"</span>)</span> MultipartFile []file,</span></span><br><span class="line"><span class="function">            HttpServletRequest request)</span>&#123;</span><br><span class="line">		System.out.println(title);</span><br><span class="line">		String rootPath=request.getServletContext().getRealPath(<span class="string">"/"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">for</span>(MultipartFile temp:file)</span><br><span class="line">				FileCopyUtils.copy(temp.getBytes(), </span><br><span class="line">						<span class="keyword">new</span> File(rootPath+<span class="string">"/upload"</span>,temp.getOriginalFilename()));</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
       <!-- reward -->
+      
       <div id="reward-btn">
         打赏
       </div>
+      
     </div>
+    
+    
       <!-- copyright -->
+      
         <div class="declare">
           <ul class="post-copyright">
             <li>
@@ -204,7 +263,10 @@ web.xml</li>
             </li>
           </ul>
         </div>
+        
     <footer class="article-footer">
+      
+          
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -213,6 +275,7 @@ web.xml</li>
       <div class="share-wrap">
         <i class="arrow"></i>
         <div class="share-icons">
+          
           <a class="weibo share-sns" href="javascript:;" data-type="weibo">
             <i class="ri-weibo-fill"></i>
           </a>
@@ -228,6 +291,7 @@ web.xml</li>
           <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a> -->
+          
           <a class="facebook share-sns" href="javascript:;" data-type="facebook">
             <i class="ri-facebook-circle-fill"></i>
           </a>
@@ -240,6 +304,7 @@ web.xml</li>
         </div>
       </div>
 </div>
+
 <div class="wx-share-modal">
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
@@ -247,22 +312,43 @@ web.xml</li>
       <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/27/5-SpringMVC1/" alt="微信分享二维码">
     </div>
 </div>
+
 <div id="share-mask"></div>
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+
+
     </footer>
+
   </div>
+
+  
+  
   <nav class="article-nav">
+    
       <a href="/2020/02/27/6-SpringMVC2/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
+          
             6-SpringMVC2
+          
         </div>
       </a>
+    
+    
       <a href="/2020/02/27/4-AOP/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">4-AOP</div>
       </a>
+    
   </nav>
+
+
+  
+
+  
+  
 <!-- valine评论 -->
 <div id="vcomments-box">
     <div id="vcomments">
@@ -293,21 +379,32 @@ web.xml</li>
     #vcomments-box {
         padding: 5px 30px;
     }
+
     @media screen and (max-width: 800px) {
         #vcomments-box {
             padding: 5px 0px;
         }
     }
+
     #vcomments-box #vcomments {
         background-color: #fff;
     }
+
     .v .vlist .vcard .vh {
         padding-right: 20px;
     }
+
     .v .vlist .vcard {
         padding-left: 10px;
     }
 </style>
+
+  
+
+  
+  
+  
+
 </article>
 </section>
       <footer class="footer">
@@ -319,18 +416,25 @@ web.xml</li>
         Kang Xiaohui
       </li>
       <li>
+        
       </li>
     </ul>
     <ul class="list-inline">
       <li>
+        
+        
         <span>
   <i>PV:<span id="busuanzi_value_page_pv"></span></i>
   <i>UV:<span id="busuanzi_value_site_uv"></span></i>
 </span>
+        
       </li>
+      
       <li>
         <!-- cnzz统计 -->
+        
         <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
       </li>
     </ul>
   </div>
@@ -344,36 +448,48 @@ web.xml</li>
     <aside class="sidebar">
       <button class="navbar-toggle"></button>
 <nav class="navbar">
+  
   <div class="logo">
     <a href="/"><img src="/images/ayer-side.svg" alt="神秘的小胖纸"></a>
   </div>
+  
   <ul class="nav nav-main">
+    
     <li class="nav-item">
       <a class="nav-item-link" href="/">主页</a>
     </li>
+    
     <li class="nav-item">
       <a class="nav-item-link" href="/archives">归档</a>
     </li>
+    
     <li class="nav-item">
       <a class="nav-item-link" href="/categories">分类</a>
     </li>
+    
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
     </li>
+    
     <li class="nav-item">
       <a class="nav-item-link" href="/about">关于我</a>
     </li>
+    
   </ul>
 </nav>
 <nav class="navbar navbar-bottom">
   <ul class="nav">
     <li class="nav-item">
+      
       <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
+      
+      
       <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
         <i class="ri-rss-line"></i>
       </a>
+      
     </li>
   </ul>
 </nav>
@@ -385,24 +501,36 @@ web.xml</li>
 </div>
     </aside>
     <div id="mask"></div>
+
 <!-- #reward -->
 <div id="reward">
   <span class="close"><i class="ri-close-line"></i></span>
   <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
   <div class="reward-box">
+    
     <div class="reward-item">
       <img class="reward-img" src="/images/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
+    
+    
     <div class="reward-item">
       <img class="reward-img" src="/images/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
+    
   </div>
 </div>
+    
 <script src="/js/jquery-2.0.3.min.js"></script>
+
+
 <script src="/js/share.js"></script>
+
+
 <script src="/js/lazyload.min.js"></script>
+
+
 <script>
   try {
     var typed = new Typed("#subtitle", {
@@ -415,8 +543,14 @@ web.xml</li>
     });
   } catch (err) {
   }
+
 </script>
+
+
+
+
 <script src="/js/tocbot.min.js"></script>
+
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
   tocbot.init({
@@ -437,17 +571,27 @@ web.xml</li>
     }
   });
 </script>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
 <script src="/js/ayer.js"></script>
+
+
+
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
     <!-- Background of PhotoSwipe. 
          It's a separate element as animating opacity is faster than rgba(). -->
     <div class="pswp__bg"></div>
+
     <!-- Slides wrapper with overflow:hidden. -->
     <div class="pswp__scroll-wrap">
+
         <!-- Container that holds slides. 
             PhotoSwipe keeps only 3 of them in the DOM to save memory.
             Don't modify these 3 pswp__item elements, data is added later on. -->
@@ -456,15 +600,24 @@ web.xml</li>
             <div class="pswp__item"></div>
             <div class="pswp__item"></div>
         </div>
+
         <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
         <div class="pswp__ui pswp__ui--hidden">
+
             <div class="pswp__top-bar">
+
                 <!--  Controls are self-explanatory. Order can be changed. -->
+
                 <div class="pswp__counter"></div>
+
                 <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
                 <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
                 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
                 <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
                 <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
                 <!-- element will get class pswp__preloader--active when preloader is running -->
                 <div class="pswp__preloader">
@@ -475,27 +628,37 @@ web.xml</li>
                     </div>
                 </div>
             </div>
+
             <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
                 <div class="pswp__share-tooltip"></div>
             </div>
+
             <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
             </button>
+
             <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
             </button>
+
             <div class="pswp__caption">
                 <div class="pswp__caption__center"></div>
             </div>
+
         </div>
+
     </div>
+
 </div>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
 <script>
     function viewer_init() {
         let pswpElement = document.querySelectorAll('.pswp')[0];
         let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
         $imgArr.forEach(($em, i) => {
             $em.onclick = () => {
                 // slider展开状态
@@ -525,14 +688,30 @@ web.xml</li>
     }
     viewer_init()
 </script>
+
+
+
+
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+
+    
     <div id="music">
+    
+    
+    
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
         src="//music.163.com/outchain/player?type=2&id=31134623&auto=0&height=32"></iframe>
 </div>
+
 <style>
     #music {
         position: fixed;
@@ -541,6 +720,8 @@ web.xml</li>
         z-index: 998;
     }
 </style>
+    
   </div>
 </body>
+
 </html>
