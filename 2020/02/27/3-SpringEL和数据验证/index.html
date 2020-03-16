@@ -1,63 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
-    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
     3-SpringEL和数据验证 |  神秘的小胖纸
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
-  
   <link rel="shortcut icon" href="/favicon.ico" />
-  
-  
 <link rel="stylesheet" href="/css/main.css">
-
-  
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-  
-  
-
-  
-
 <link rel="alternate" href="/atom.xml" title="神秘的小胖纸" type="application/atom+xml">
 </head>
-
 </html>
-
 <body>
   <div id="app">
     <main class="content">
       <section class="outer">
   <article id="post-3-SpringEL和数据验证" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
-
   <div class="article-inner">
-    
     <header class="article-header">
-       
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   3-SpringEL和数据验证
 </h1>
-  
-
     </header>
-    
-
-    
     <div class="article-meta">
       <a href="/2020/02/27/3-SpringEL%E5%92%8C%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/" class="article-date">
   <time datetime="2020-02-27T02:47:28.000Z" itemprop="datePublished">2020-02-27</time>
 </a>
-      
   <div class="article-category">
     <a class="article-category-link" href="/categories/Spring/">Spring</a>
   </div>
-
-      
-      
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
@@ -66,7 +40,6 @@
             <span class="post-count">806字</span>
         </span>
     </span>
-
     <span class="post-time">
         &nbsp; | &nbsp;
         <span class="post-meta-item-icon">
@@ -76,29 +49,9 @@
         </span>
     </span>
 </div>
-
-      
     </div>
-    
-
-    
-    
     <div class="tocbot"></div>
-
-
-
-
-
-    
-
-    
     <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
       <h2 id="数据验证"><a href="#数据验证" class="headerlink" title="数据验证"></a>数据验证</h2><ul>
 <li>数据验证不应该被限定在web层去处理，它应该在任何需要做数据验证的地方做验证</li>
 <li>基于以上考虑，Spring设计了一个既方便又可以在所有层使用的Validator接口</li>
@@ -110,30 +63,24 @@
 <li>SpringMVC还支持声明式验证@Controller输入</li>
 </ul>
 <a id="more"></a>
-
 <p>User.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Integer id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> Date birthday;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Date <span class="title">getBirthday</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> birthday;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBirthday</span><span class="params">(Date birthday)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.birthday = birthday;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>UserValidator.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserValidator</span> <span class="keyword">implements</span> <span class="title">Validator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(Class&lt;?&gt; arg0)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> User<span class="class">.<span class="keyword">class</span>.<span class="title">equals</span>(<span class="title">arg0</span>)</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">validate</span><span class="params">(Object arg0, Errors arg1)</span> </span>&#123;</span><br><span class="line">		ValidationUtils.rejectIfEmpty(arg1, <span class="string">"id"</span>, <span class="string">"id can't be null"</span>, <span class="string">"id不能为空"</span>);</span><br><span class="line">		User u=(User)arg0;</span><br><span class="line">		ValidationUtils.rejectIfEmpty(arg1, <span class="string">"name"</span>, <span class="string">"name.empty"</span>, <span class="string">"用户名不能为空"</span>);</span><br><span class="line">		<span class="keyword">if</span>(u.getBirthday().getTime()&gt;<span class="keyword">new</span> Date().getTime())&#123;</span><br><span class="line">			arg1.rejectValue(<span class="string">"birthday"</span>, <span class="string">"birthday.wrong"</span>, <span class="string">"出生日期不能晚于当前时间"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>Test.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		User u=<span class="keyword">new</span> User();</span><br><span class="line">		u.setBirthday(<span class="keyword">new</span> Date(<span class="keyword">new</span> Date().getTime()+<span class="number">1000</span>));</span><br><span class="line">		</span><br><span class="line">		Errors e=<span class="keyword">new</span> BindException(u, <span class="string">"User"</span>);</span><br><span class="line">		Validator v=<span class="keyword">new</span> UserValidator();</span><br><span class="line">		v.validate(u, e);</span><br><span class="line">		List&lt;ObjectError&gt; list=e.getAllErrors();</span><br><span class="line">		<span class="keyword">for</span>(ObjectError temp:list)&#123;</span><br><span class="line">			System.out.println(temp.getCode());</span><br><span class="line">			System.out.println(temp.getDefaultMessage());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="SpringEL"><a href="#SpringEL" class="headerlink" title="SpringEL"></a>SpringEL</h2><p>表达式的语法形式：#{&lt;表达式字符串&gt;}</p>
 <h3 id="SpringEL方法"><a href="#SpringEL方法" class="headerlink" title="SpringEL方法"></a>SpringEL方法</h3><p>SpringEL允许开发者将一个对象的属性注入给另一个对象属性，也可以调用一个对象的方法，并将返回值注入给另一个对象的属性</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(<span class="string">"item"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Item</span></span>&#123;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123;' tea'. toupperCase()&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String upName;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123; mathutil. getLength()&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> itemLength;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123; mathutil. getArea(3)&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span> itemArea;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(<span class="string">"mathUtil"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mathutil</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLength</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">100</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getArea</span><span class="params">(<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> Math. PI*r*r;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="SpringEL构造"><a href="#SpringEL构造" class="headerlink" title="SpringEL构造"></a>SpringEL构造</h3><p>SpringEL允许开发者调用new关键字，实现构造方法调用，并实例化出对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Computerl</span></span>&#123;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123;new com.constructor.Memory1()&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> Memoryl memory1;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123;new int[]&#123;1,2,3&#125;&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> [] count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="SpringEL操作符"><a href="#SpringEL操作符" class="headerlink" title="SpringEL操作符"></a>SpringEL操作符</h3><p>SpringEL支持大多数的算数运算符、关系运算符、逻辑运算符、三元运算符等</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MathItem</span></span>&#123;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123;3+5&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> num1;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123;3^3&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> num2;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123;5&gt;4&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> num3;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123;5+3&gt;4&amp;&amp;3&gt;2&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> num4;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"#&#123;mathItem. num1&gt;mathItem. num2?' numl':' num2'&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String num5;</span><br></pre></td></tr></table></figure>
-
 <h3 id="SpringEL集合"><a href="#SpringEL集合" class="headerlink" title="SpringEL集合"></a>SpringEL集合</h3><ul>
 <li>SpringEL支持对List、Properties、Map等集合的操作，还支持集合选择、集合投影等</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;dataItem. list&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> List list;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;datartem. list[1]&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String listValue;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;dataItem. map['2']&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String mapValue;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>SpringEL集合选择<ul>
 <li>.?[]可以设置筛选条件</li>
@@ -143,29 +90,20 @@
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;dataItem.students.?[stuId&gt;1]&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> List sublist;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;dataItem.map.?[key=='3']&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> Map subMap;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>集合投影：  .![]可以选择特定属性</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;dataItem. students.![stuName]&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> List namelist;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>SpringEL 集合选择和集合投影结合使用</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;dataItem.students.?[stuId&gt;1].![stuName]&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> List nameList;</span><br></pre></td></tr></table></figure>
-
-      
       <!-- reward -->
-      
       <div id="reward-btn">
         打赏
       </div>
-      
     </div>
-    
-    
       <!-- copyright -->
-      
         <div class="declare">
           <ul class="post-copyright">
             <li>
@@ -176,10 +114,7 @@
             </li>
           </ul>
         </div>
-        
     <footer class="article-footer">
-      
-          
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -188,7 +123,6 @@
       <div class="share-wrap">
         <i class="arrow"></i>
         <div class="share-icons">
-          
           <a class="weibo share-sns" href="javascript:;" data-type="weibo">
             <i class="ri-weibo-fill"></i>
           </a>
@@ -204,7 +138,6 @@
           <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a> -->
-          
           <a class="facebook share-sns" href="javascript:;" data-type="facebook">
             <i class="ri-facebook-circle-fill"></i>
           </a>
@@ -217,7 +150,6 @@
         </div>
       </div>
 </div>
-
 <div class="wx-share-modal">
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
@@ -225,43 +157,22 @@
       <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/27/3-SpringEL%E5%92%8C%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/" alt="微信分享二维码">
     </div>
 </div>
-
 <div id="share-mask"></div>
-      
-      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
-
-
     </footer>
-
   </div>
-
-  
-  
   <nav class="article-nav">
-    
       <a href="/2020/02/27/4-AOP/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
-          
             4-AOP
-          
         </div>
       </a>
-    
-    
       <a href="/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%88%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%8F%8A%E5%B1%9E%E6%80%A7%E6%B3%A8%E5%85%A5-%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">2-Spring-Beans和生命周期（对象实例化及属性注入-xml方式）</div>
       </a>
-    
   </nav>
-
-
-  
-
-  
-  
 <!-- valine评论 -->
 <div id="vcomments-box">
     <div id="vcomments">
@@ -292,32 +203,21 @@
     #vcomments-box {
         padding: 5px 30px;
     }
-
     @media screen and (max-width: 800px) {
         #vcomments-box {
             padding: 5px 0px;
         }
     }
-
     #vcomments-box #vcomments {
         background-color: #fff;
     }
-
     .v .vlist .vcard .vh {
         padding-right: 20px;
     }
-
     .v .vlist .vcard {
         padding-left: 10px;
     }
 </style>
-
-  
-
-  
-  
-  
-
 </article>
 </section>
       <footer class="footer">
@@ -329,25 +229,18 @@
         Kang Xiaohui
       </li>
       <li>
-        
       </li>
     </ul>
     <ul class="list-inline">
       <li>
-        
-        
         <span>
   <i>PV:<span id="busuanzi_value_page_pv"></span></i>
   <i>UV:<span id="busuanzi_value_site_uv"></span></i>
 </span>
-        
       </li>
-      
       <li>
         <!-- cnzz统计 -->
-        
         <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
       </li>
     </ul>
   </div>
@@ -361,48 +254,36 @@
     <aside class="sidebar">
       <button class="navbar-toggle"></button>
 <nav class="navbar">
-  
   <div class="logo">
     <a href="/"><img src="/images/ayer-side.svg" alt="神秘的小胖纸"></a>
   </div>
-  
   <ul class="nav nav-main">
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/">主页</a>
     </li>
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/archives">归档</a>
     </li>
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/categories">分类</a>
     </li>
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
     </li>
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/about">关于我</a>
     </li>
-    
   </ul>
 </nav>
 <nav class="navbar navbar-bottom">
   <ul class="nav">
     <li class="nav-item">
-      
       <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
-      
-      
       <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
         <i class="ri-rss-line"></i>
       </a>
-      
     </li>
   </ul>
 </nav>
@@ -414,36 +295,24 @@
 </div>
     </aside>
     <div id="mask"></div>
-
 <!-- #reward -->
 <div id="reward">
   <span class="close"><i class="ri-close-line"></i></span>
   <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
   <div class="reward-box">
-    
     <div class="reward-item">
       <img class="reward-img" src="/images/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
-    
-    
     <div class="reward-item">
       <img class="reward-img" src="/images/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
-    
   </div>
 </div>
-    
 <script src="/js/jquery-2.0.3.min.js"></script>
-
-
 <script src="/js/share.js"></script>
-
-
 <script src="/js/lazyload.min.js"></script>
-
-
 <script>
   try {
     var typed = new Typed("#subtitle", {
@@ -456,14 +325,8 @@
     });
   } catch (err) {
   }
-
 </script>
-
-
-
-
 <script src="/js/tocbot.min.js"></script>
-
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
   tocbot.init({
@@ -484,27 +347,17 @@
     }
   });
 </script>
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
-
 <script src="/js/ayer.js"></script>
-
-
-
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
     <!-- Background of PhotoSwipe. 
          It's a separate element as animating opacity is faster than rgba(). -->
     <div class="pswp__bg"></div>
-
     <!-- Slides wrapper with overflow:hidden. -->
     <div class="pswp__scroll-wrap">
-
         <!-- Container that holds slides. 
             PhotoSwipe keeps only 3 of them in the DOM to save memory.
             Don't modify these 3 pswp__item elements, data is added later on. -->
@@ -513,24 +366,15 @@
             <div class="pswp__item"></div>
             <div class="pswp__item"></div>
         </div>
-
         <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
         <div class="pswp__ui pswp__ui--hidden">
-
             <div class="pswp__top-bar">
-
                 <!--  Controls are self-explanatory. Order can be changed. -->
-
                 <div class="pswp__counter"></div>
-
                 <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
                 <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
                 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
                 <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
                 <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
                 <!-- element will get class pswp__preloader--active when preloader is running -->
                 <div class="pswp__preloader">
@@ -541,37 +385,27 @@
                     </div>
                 </div>
             </div>
-
             <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
                 <div class="pswp__share-tooltip"></div>
             </div>
-
             <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
             </button>
-
             <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
             </button>
-
             <div class="pswp__caption">
                 <div class="pswp__caption__center"></div>
             </div>
-
         </div>
-
     </div>
-
 </div>
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
-
 <script>
     function viewer_init() {
         let pswpElement = document.querySelectorAll('.pswp')[0];
         let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
         $imgArr.forEach(($em, i) => {
             $em.onclick = () => {
                 // slider展开状态
@@ -601,30 +435,14 @@
     }
     viewer_init()
 </script>
-
-
-
-
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
-
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
-
-
-    
     <div id="music">
-    
-    
-    
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
         src="//music.163.com/outchain/player?type=2&id=31134623&auto=0&height=32"></iframe>
 </div>
-
 <style>
     #music {
         position: fixed;
@@ -633,8 +451,6 @@
         z-index: 998;
     }
 </style>
-    
   </div>
 </body>
-
 </html>
