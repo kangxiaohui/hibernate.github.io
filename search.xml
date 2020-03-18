@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2-MyBatis的CRUD操作</title>
+    <url>/2020/03/18/2-MyBatis%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="动态代理机制"><a href="#动态代理机制" class="headerlink" title="动态代理机制"></a>动态代理机制</h2><p>略</p>
+<h2 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h2><h3 id="单条插入："><a href="#单条插入：" class="headerlink" title="单条插入："></a>单条插入：</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insert"</span> <span class="attr">parameterType</span>=<span class="string">"com.mybatis.entity.User"</span>&gt;</span></span><br><span class="line">	insert into USER(id,user_name,password) values(#&#123;id&#125;,#&#123;userName&#125;,#&#123;password&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中</p>
+<ol>
+<li>id属性：命名空间中的唯一标识符，为Mapper接口中的方法名</li>
+<li>parameterType：指定了方法的参数类型，为<strong>可选项</strong>可以省略</li>
+<li>#{id}是JavaBean对象的属性名</li>
+<li>insert方法的返回值num是执行插入语句所<strong>影响的行数</strong></li>
+</ol>
+<h3 id="使用JDBC方式返回主键自增的值"><a href="#使用JDBC方式返回主键自增的值" class="headerlink" title="使用JDBC方式返回主键自增的值"></a>使用JDBC方式返回主键自增的值</h3><p>执行插入操作以后返回表中的主键值，id值可为null</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insert"</span> <span class="attr">parameterType</span>=<span class="string">"com.mybatis.entity.User"</span> "<span class="attr">useGeneratedKeys</span>=<span class="string">"true"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">	insert into USER(id,user_name,password) values(#&#123;id&#125;,#&#123;userName&#125;,#&#123;password&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用user.getId()才能获取主键值，inset的返回值是影响的条数</p>
+<a id="more"></a>
+
+<h3 id="使用selectKey返回主键的值-mysql一般不需要"><a href="#使用selectKey返回主键的值-mysql一般不需要" class="headerlink" title="使用selectKey返回主键的值(mysql一般不需要)"></a>使用selectKey返回主键的值(mysql一般不需要)</h3><p>对于一些不提供主键自增功能的数据库，如Oracle，需要使用selectKey标签来获取主键的值</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insert"</span> <span class="attr">useGeneratedKeys</span>=<span class="string">"true"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">	insert into USER(id,user_name,password values(#&#123;id&#125;,#&#123;userName&#125;,#&#123;password&#125;)</span><br><span class="line">	<span class="tag">&lt;<span class="name">selectKey</span> <span class="attr">resultType</span>=<span class="string">"int"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span> <span class="attr">order</span>=<span class="string">"AFTER"</span>&gt;</span></span><br><span class="line">		SELECT LAST_INSERT_ID()</span><br><span class="line">	<span class="tag">&lt;/<span class="name">selectKey</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>keyProperty属性表示主键所对应的属性名</li>
+<li>resultType属性用于设置返回值类型</li>
+<li>在MySQL中order属性设置为after，表示当前记录的主键值在insert语句执行成功后才能获取到，Oracle中设置为before</li>
+<li>selectKey元素中的内容是一个独立的SQL语句，在MySQL中SELECT LAST_INSERT_ID()用于获取数据库中最后插入的数据的主键值</li>
+<li>在Oracle中应该使用SELECT SEQ_ID.nextval from dual用来获取序列中的一个值</li>
+</ol>
+<h2 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h2><h3 id="查询所有"><a href="#查询所有" class="headerlink" title="查询所有"></a>查询所有</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findAllUsers"</span>  <span class="attr">resultMap</span>=<span class="string">"userMap"</span>&gt;</span></span><br><span class="line">	select * from user</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="查询单个对象"><a href="#查询单个对象" class="headerlink" title="查询单个对象"></a>查询单个对象</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 结果映射 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"net.onest.entity.User"</span> <span class="attr">id</span>=<span class="string">"userMap"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">property</span>=<span class="string">"id"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"user_name"</span> <span class="attr">property</span>=<span class="string">"userName"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"password"</span> <span class="attr">property</span>=<span class="string">"password"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使用别名方式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserById"</span> <span class="attr">resultMap</span>=<span class="string">"userMap"</span>&gt;</span></span><br><span class="line">	select * from user where id=#&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 不使用别名方式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span> = <span class="string">"findUserById"</span> <span class="attr">resultType</span>=<span class="string">"net.onest.entity.User"</span>&gt;</span></span><br><span class="line">    select id, user_name userName, password from user where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findLike"</span> <span class="attr">resultMap</span>=<span class="string">"userMap"</span>&gt;</span></span><br><span class="line">	select * from user where user_name like "%"#&#123;name&#125;"%"</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="更新操作"><a href="#更新操作" class="headerlink" title="更新操作"></a>更新操作</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">updateById</span><span class="params">(User user)</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateById"</span>&gt;</span></span><br><span class="line">	update user set user_name = #&#123;userName&#125;,password = #&#123;password&#125; where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">deleteById</span><span class="params">(Integer id)</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">"deleteById"</span>&gt;</span></span><br><span class="line">	delete from user where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>英语语法之主从复合句2</title>
     <url>/2020/03/17/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95%E4%B9%8B%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%90%88%E5%8F%A52/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="同位语从句"><a href="#同位语从句" class="headerlink" title="同位语从句"></a>同位语从句</h2><ol>
@@ -100,9 +142,16 @@
 
 <h2 id="MyBatis主要的类层次结构-1"><a href="#MyBatis主要的类层次结构-1" class="headerlink" title="MyBatis主要的类层次结构"></a>MyBatis主要的类层次结构</h2><p><img src="/2020/03/17/1-Mybatis%E6%A1%86%E6%9E%B6/2020-03-17_113645.jpg" alt></p>
 <h2 id="SqlSession的工作流程"><a href="#SqlSession的工作流程" class="headerlink" title="SqlSession的工作流程"></a>SqlSession的工作流程</h2><ol>
-<li>开启一个数据库访问会话—创建SqlSession对象：MyBatis封装了对数据库的访问，把对数据库的会话和事务控制放到了SqlSession对象中。</li>
+<li>开启一个数据库访问会话—创建SqlSession对象：MyBatis封装了对数据库的访问，把对数据库的会话和事务控制放到了SqlSession对象中。<br><img src="/2020/03/17/1-Mybatis%E6%A1%86%E6%9E%B6/2020-03-17_114424.jpg" alt></li>
+<li>为SqlSession传递一个映射的SQL语句的StatementId和参数，然后返回结果：<ol>
+<li>SqlSession根据Statement ID, 在MyBatis配置对象</li>
+<li>Configuration中获取到对应的MappedStatement对象</li>
+<li>调用MyBatis执行器来执行具体的操作。</li>
 </ol>
-<p><img src="/2020/03/17/1-Mybatis%E6%A1%86%E6%9E%B6/2020-03-17_114424.jpg" alt><br>2. 为SqlSession传递一个映射的SQL语句的StatementId和参数，然后返回结果：<br>    1. SqlSession根据Statement ID, 在MyBatis配置对象<br>    2. Configuration中获取到对应的MappedStatement对象<br>    3. 调用MyBatis执行器来执行具体的操作。<br>3. MyBatis在初始化的时候，会将MyBatis的配置信息全部加载到内存中，使用Configuration实例来维护。<br>4. 映射文件加载到内存中会生成n个对应的MappedStatement对象</p>
+</li>
+<li>MyBatis在初始化的时候，会将MyBatis的配置信息全部加载到内存中，使用Configuration实例来维护。</li>
+<li>映射文件加载到内存中会生成n个对应的MappedStatement对象</li>
+</ol>
 ]]></content>
       <categories>
         <category>Mybatis</category>
