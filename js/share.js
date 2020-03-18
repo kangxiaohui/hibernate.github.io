@@ -1,10 +1,13 @@
+
 function generate(url, opts) {
   var url = url.replace(/<%-sUrl%>/g, encodeURIComponent(opts.sUrl))
     .replace(/<%-sTitle%>/g, opts.sTitle)
     .replace(/<%-sDesc%>/g, opts.sDesc)
     .replace(/<%-sPic%>/g, encodeURIComponent(opts.sPic));
+
   window.open(url);
 }
+
 function showWX() {
   let $wx = $('.wx-share-modal')
   let $mask = $('#share-mask')
@@ -12,6 +15,7 @@ function showWX() {
   $wx.addClass('ready')
   $mask.show()
 }
+
 function hideWX() {
   let $wx = $('.wx-share-modal')
   let $mask = $('#share-mask')
@@ -19,6 +23,7 @@ function hideWX() {
   $wx.removeClass('ready')
   $mask.hide()
 }
+
 function handleClick(type, opts) {
   if (type === 'weibo') {
     generate('http://service.weibo.com/share/share.php?url=<%-sUrl%>&title=<%-sTitle%>&pic=<%-sPic%>', opts)
@@ -38,9 +43,11 @@ function handleClick(type, opts) {
     showWX();
   }
 }
+
 let init = function () {
   let $sns = document.querySelectorAll('.share-sns');
   if (!$sns || $sns.length === 0) return;
+
   let sUrl = window.location.href;
   let sTitle = document.querySelector('title').innerHTML;
   let $img = document.querySelectorAll('.article-entry img');
@@ -48,6 +55,7 @@ let init = function () {
   if ((sPic !== '') && !/^(http:|https:)?\/\//.test(sPic)) {
     sPic = window.location.origin + sPic
   }
+
   $sns.forEach(($em) => {
     $em.onclick = (e) => {
       let type = $em.getAttribute('data-type')
@@ -59,7 +67,9 @@ let init = function () {
       })
     }
   })
+
   document.querySelector('#mask').onclick = hideWX
   document.querySelector('.modal-close').onclick = hideWX
 }
+
 init()

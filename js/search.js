@@ -17,6 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301 USA
 // 
+
 var searchFunc = function (path, search_id, content_id) {
   'use strict';
   var BTN = "<button type='button' class='local-search-close' id='local-search-close'></button>";
@@ -32,8 +33,10 @@ var searchFunc = function (path, search_id, content_id) {
           url: $("url", this).text()
         };
       }).get();
+
       var $input = document.getElementById(search_id);
       var $resultContent = document.getElementById(content_id);
+
       $input.addEventListener('input', function () {
         var str = '<ul class="search-result-list">';
         var keywords = this.value.trim().toLowerCase().split(/[\s]+/);
@@ -59,6 +62,7 @@ var searchFunc = function (path, search_id, content_id) {
             keywords.forEach(function (keyword, i) {
               index_title = data_title.indexOf(keyword);
               index_content = data_content.indexOf(keyword);
+
               if (index_title < 0 && index_content < 0) {
                 isMatch = false;
               } else {
@@ -82,21 +86,27 @@ var searchFunc = function (path, search_id, content_id) {
               // cut out 100 characters
               var start = first_occur - 20;
               var end = first_occur + 80;
+
               if (start < 0) {
                 start = 0;
               }
+
               if (start == 0) {
                 end = 100;
               }
+
               if (end > content.length) {
                 end = content.length;
               }
+
               var match_content = content.substr(start, end);
+
               // highlight all keywords
               keywords.forEach(function (keyword) {
                 var regS = new RegExp(keyword, "gi");
                 match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
               });
+
               str += "<p class=\"search-result\">" + match_content + "...</p>"
             }
             str += "</li>";
