@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>高数之微分方程</title>
+    <url>/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一阶微分方程"><a href="#一阶微分方程" class="headerlink" title="一阶微分方程"></a>一阶微分方程</h2><h3 id="（一）可分离变量的微分方程"><a href="#（一）可分离变量的微分方程" class="headerlink" title="（一）可分离变量的微分方程"></a>（一）可分离变量的微分方程</h3><ol>
+<li>方程形式：g(y)dy=f(x)dx</li>
+<li>解法：两边同时积分</li>
+</ol>
+<h3 id="（二）齐次方程"><a href="#（二）齐次方程" class="headerlink" title="（二）齐次方程"></a>（二）齐次方程</h3><ol>
+<li>方程形式：dy/dx=Φ(y/x)</li>
+<li>解法：换元<ol>
+<li>令u=y/x  则dy/dx=u+du/dx</li>
+<li>代入原方程，即为可分离变量的微分方程，然后代回u=y/x</li>
+</ol>
+</li>
+</ol>
+<a id="more"></a>
+<h3 id="（三）一阶线性微分方程"><a href="#（三）一阶线性微分方程" class="headerlink" title="（三）一阶线性微分方程"></a>（三）一阶线性微分方程</h3><ol>
+<li>方程形式：dy/dx+p(x)y=Q(x)</li>
+<li>解法：<ol>
+<li>齐次线性方程的解法：Q(x)=0</li>
+<li><img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_223906.jpg" alt></li>
+<li>非齐次线性方程的解法:</li>
+<li><img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_224005.jpg" alt></li>
+</ol>
+</li>
+</ol>
+<h3 id="（四）伯努利方程"><a href="#（四）伯努利方程" class="headerlink" title="（四）伯努利方程"></a>（四）伯努利方程</h3><ol>
+<li>方程形式:<img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_224717.jpg" alt></li>
+<li>解法:令z=y^(1-n),即：<img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_224833.jpg" alt></li>
+</ol>
+<h2 id="可降阶的高阶微分方程"><a href="#可降阶的高阶微分方程" class="headerlink" title="可降阶的高阶微分方程"></a>可降阶的高阶微分方程</h2><h3 id="不显含-y-型的二阶微分方程"><a href="#不显含-y-型的二阶微分方程" class="headerlink" title="不显含 y 型的二阶微分方程"></a>不显含 y 型的二阶微分方程<img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_224936.jpg" alt></h3><pre><code>1. 令y&apos;=p
+2. y&apos;&apos;=p&apos;</code></pre><h3 id="不显含-x-型的二阶微分方程"><a href="#不显含-x-型的二阶微分方程" class="headerlink" title="不显含 x 型的二阶微分方程"></a>不显含 x 型的二阶微分方程<img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_225028.jpg" alt></h3><pre><code>1. 令y&apos;=p
+2. y&apos;&apos;=p(dp/dy)  可推导出</code></pre><h2 id="高阶线性微分方程"><a href="#高阶线性微分方程" class="headerlink" title="高阶线性微分方程"></a>高阶线性微分方程</h2><ol>
+<li>二阶线性常系数齐次微分方程<ol>
+<li>形式：<img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_225419.jpg" alt></li>
+</ol>
+</li>
+<li>二阶线性常系数非齐次微分方程<ol>
+<li>形式：<img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_225537.jpg" alt></li>
+</ol>
+</li>
+</ol>
+<h2 id="二阶线性微分方程的解法"><a href="#二阶线性微分方程的解法" class="headerlink" title="二阶线性微分方程的解法"></a>二阶线性微分方程的解法</h2><h3 id="二阶常系数齐次线性微分方程"><a href="#二阶常系数齐次线性微分方程" class="headerlink" title="二阶常系数齐次线性微分方程"></a>二阶常系数齐次线性微分方程</h3><ol>
+<li>方程形式：y’’+py’+qy=0(p q为常数)</li>
+<li>解法：<ol>
+<li>写出特征方程 λ^2+pλ+q=0</li>
+<li><img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_230730.jpg" alt></li>
+</ol>
+</li>
+</ol>
+<h3 id="二阶常系数非齐次线性微分方程"><a href="#二阶常系数非齐次线性微分方程" class="headerlink" title="二阶常系数非齐次线性微分方程"></a>二阶常系数非齐次线性微分方程</h3><ol>
+<li>方程形式:y’’+py’+qy=f(x)</li>
+<li><img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_230855.jpg" alt>时的特解<ol>
+<li><img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_231235.jpg" alt></li>
+<li>k=0:<img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_231505.jpg" alt></li>
+<li>k=1:<img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_231522.jpg" alt></li>
+<li>k=2:<img src="/2020/03/19/%E9%AB%98%E6%95%B0%E4%B9%8B%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/2020-03-19_231548.jpg" alt></li>
+<li>通解=特征方程的解+f(x)的特解</li>
+</ol>
+</li>
+</ol>
+<h3 id="欧拉方程"><a href="#欧拉方程" class="headerlink" title="欧拉方程"></a>欧拉方程</h3><p>略</p>
+]]></content>
+      <categories>
+        <category>考研数学</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>3-MyBatis关联映射之一对一映射</title>
     <url>/2020/03/18/3-MyBatis%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84%E4%B9%8B%E4%B8%80%E5%AF%B9%E4%B8%80%E6%98%A0%E5%B0%84/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p>在某网络购物系统中，一个用户只能拥有一个购物车，用户与购物车的关系可以设计为一对一关系</p>
