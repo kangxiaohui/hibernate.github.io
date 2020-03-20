@@ -38,6 +38,76 @@
 <div id="main">
   <section class="outer">
   <article class="articles">
+    <article id="post-5-SpringMVC1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+  <div class="article-inner">
+    <header class="article-header">
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/27/5-SpringMVC1/"
+    >5-SpringMVC1</a
+  >
+</h2>
+    </header>
+    <div class="article-meta">
+      <a href="/2020/02/27/5-SpringMVC1/" class="article-date">
+  <time datetime="2020-02-27T02:48:08.000Z" itemprop="datePublished">2020-02-27</time>
+</a>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+  </div>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="程序搭建过程"><a href="#程序搭建过程" class="headerlink" title="程序搭建过程"></a>程序搭建过程</h2><ol>
+<li>创建web工程，导入jar</li>
+<li>配置xml文件 3个(web.xml，spring-mvc.xml，applicationContext.xml)</li></ol>
+      <a class="article-more-link" href="/2020/02/27/5-SpringMVC1/">阅读更多...</a>
+      <!-- reward -->
+    </div>
+      <!-- copyright -->
+    <footer class="article-footer">
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+    </footer>
+  </div>
+</article>
+    <article id="post-4-AOP" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+  <div class="article-inner">
+    <header class="article-header">
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/27/4-AOP/"
+    >4-AOP</a
+  >
+</h2>
+    </header>
+    <div class="article-meta">
+      <a href="/2020/02/27/4-AOP/" class="article-date">
+  <time datetime="2020-02-27T02:47:49.000Z" itemprop="datePublished">2020-02-27</time>
+</a>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+  </div>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><p>代理对象与被代理对象必须实现同一个接口，在代理对象中实现日志等服务<br>问题：</p>
+<ol>
+<li>代理对象的一个接口只服务于一种类型的对象</li>
+<li>如果要代理的方法很多，要为每种方法进行代理</li>
+<li>静态代理在程序规模稍大时无法胜任</li>
+</ol>
+<h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><ul>
+<li>InvocationHandler接口</li>
+<li>关键：使用Proxy.newProxyInstance()静态方法建立一个代理对象(建立代理对象必须告知要代理的接口)</li>
+<li>操作代理对象时会执行invoke()方法</li>
+</ul>
+      <a class="article-more-link" href="/2020/02/27/4-AOP/">阅读更多...</a>
+      <!-- reward -->
+    </div>
+      <!-- copyright -->
+    <footer class="article-footer">
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+    </footer>
+  </div>
+</article>
     <article id="post-3-SpringEL和数据验证" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
@@ -329,73 +399,9 @@
     </footer>
   </div>
 </article>
-    <article id="post-2-Hibernate的单实体映射" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-  <div class="article-inner">
-    <header class="article-header">
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/"
-    >2.Hibernate的单实体映射</a
-  >
-</h2>
-    </header>
-    <div class="article-meta">
-      <a href="/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/" class="article-date">
-  <time datetime="2020-02-25T05:05:21.000Z" itemprop="datePublished">2020-02-25</time>
-</a>
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hibernate/">hibernate</a>
-  </div>
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="Hibernate的单实体映射"><a href="#Hibernate的单实体映射" class="headerlink" title="Hibernate的单实体映射"></a>Hibernate的单实体映射</h1><h2 id="单实体的属性映射"><a href="#单实体的属性映射" class="headerlink" title="单实体的属性映射"></a><font size="5" color="#ff0000">单实体的属性映射</font></h2><ol>
-<li><p>setter 和 getter 方法优点：有效控制属性的访问权限。<br></p>
-</li>
-<li><p>property元素的 access 属性；field : 不需要getset方法，通过Java反射机制绕过hibernate直接访问属性值。<br><code>&lt;property name=&quot;userName&quot; access=&quot;field&quot; /&gt;</code></p>
-</li>
-<li><p>实体映射技巧：实体类属性与表字段不对称时，可以在 setter 和 getter 方法中加入程序逻辑<br><br> 例：User 类中没有 username 属性，而是改为了 firstName 和 lastName 两个属性</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">  		String[] strName = userName.split(<span class="string">" "</span>);</span><br><span class="line">  		<span class="keyword">this</span>.firstName = strName[<span class="number">0</span>];</span><br><span class="line">  		<span class="keyword">this</span>.lastName = strName[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol>
-      <a class="article-more-link" href="/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/">阅读更多...</a>
-      <!-- reward -->
-    </div>
-      <!-- copyright -->
-    <footer class="article-footer">
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
-    </footer>
-  </div>
-</article>
-    <article id="post-1-Hibernate框架的搭建" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-  <div class="article-inner">
-    <header class="article-header">
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/"
-    >1.Hibernate框架的搭建</a
-  >
-</h2>
-    </header>
-    <div class="article-meta">
-      <a href="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/" class="article-date">
-  <time datetime="2020-02-25T04:06:04.000Z" itemprop="datePublished">2020-02-25</time>
-</a>
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hibernate/">hibernate</a>
-  </div>
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="Hibernate框架的搭建"><a href="#Hibernate框架的搭建" class="headerlink" title="Hibernate框架的搭建"></a>Hibernate框架的搭建</h1>
-      <a class="article-more-link" href="/2020/02/25/1-Hibernate%E6%A1%86%E6%9E%B6%E7%9A%84%E6%90%AD%E5%BB%BA/">阅读更多...</a>
-      <!-- reward -->
-    </div>
-      <!-- copyright -->
-    <footer class="article-footer">
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
-    </footer>
-  </div>
-</article>
   </article>
   <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
   </nav>
 </section>
 </div>
