@@ -5,13 +5,13 @@
   <meta name="description" content="记录学习生活点点滴滴" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    2.Hibernate的单实体映射 |  神秘的小胖纸
+    2.Hibernate的单实体映射 |  Mysterious Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="stylesheet" href="/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-<link rel="alternate" href="/atom.xml" title="神秘的小胖纸" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Mysterious Blog" type="application/atom+xml">
 </head>
 </html>
 <body>
@@ -103,7 +103,7 @@
 <li>用户自定义的类也可以覆盖Object的equals方法实现对象按值进行比较</li>
 <li>Hibernate 采用对象标识符（OID）区分对象。</li>
 </ol>
-<p><img src="/2020/02/25/2-Hibernate%E7%9A%84%E5%8D%95%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84/session.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/session.png" alt></p>
 <h2 id="使用注解映射单实体"><a href="#使用注解映射单实体" class="headerlink" title="使用注解映射单实体"></a><font size="5" color="#ff0000">使用注解映射单实体</font></h2><p>User.java类：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>								<span class="comment">//声明一个实体类。</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"USER"</span>)					<span class="comment">//为实体类指定对应的数据库表</span></span><br><span class="line"><span class="meta">@DynamicInsert</span>(<span class="keyword">true</span>)</span><br><span class="line"><span class="meta">@DynamicUpdate</span>(<span class="keyword">true</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span>                       <span class="comment">//声明实体类的OID属性</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator=<span class="string">"my_gen"</span>)		<span class="comment">//声明OID的生成策略</span></span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name = <span class="string">"my_gen"</span>, strategy = <span class="string">"increment"</span>)	<span class="comment">//使用Hibernate提供的生成策略</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"USERNAME"</span>, insertable=<span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="meta">@Access</span>(AccessType.FIELD)</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="meta">@Formula</span>(value = <span class="string">"(select sum(o.price) from orders as o where o.userid=id)"</span>)<span class="comment">//查询语句</span></span><br><span class="line">    <span class="keyword">private</span> Double totalPrice;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Double <span class="title">getTotalPrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> totalPrice;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTotalPrice</span><span class="params">(Double totalPrice)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.totalPrice = totalPrice;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>@Column(name=”columnName”) ：将属性映射到列。<br></p>
@@ -270,7 +270,7 @@
       <li>
         &copy;
         2019-2020
-        Mysterious
+        Mystery
       </li>
       <li>
         Powered by
@@ -301,7 +301,7 @@
       <button class="navbar-toggle"></button>
 <nav class="navbar">
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="神秘的小胖纸"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Mysterious Blog"></a>
   </div>
   <ul class="nav nav-main">
     <li class="nav-item">

@@ -5,13 +5,13 @@
   <meta name="description" content="记录学习生活点点滴滴" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    7-Hibernate操作持久化对象 |  神秘的小胖纸
+    7-Hibernate操作持久化对象 |  Mysterious Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="stylesheet" href="/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-<link rel="alternate" href="/atom.xml" title="神秘的小胖纸" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Mysterious Blog" type="application/atom+xml">
 </head>
 </html>
 <body>
@@ -55,20 +55,20 @@
     <div class="article-entry" itemprop="articleBody">
       <h2 id="Session缓存"><a href="#Session缓存" class="headerlink" title="Session缓存"></a>Session缓存</h2><p>java生命周期中当对象<strong>空引用</strong>或<strong>隔离引用</strong>时会清理缓存</p>
 <h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>缓存介于应用程序和永久性存储源之间，其作用是降低应用程序直接读写永久性存储源的频率，从而提高应用的运行效率。</p>
-<p><img src="/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/2020-03-04_090616.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/2020-03-04_090616.png" alt></p>
 <p>缓存内的数据是永久性存储源中的数据的复制，应用程序在运行时从缓存读写数据，在特定的时刻或事件同步缓存和永久性存储源的数据。</p>
 <a id="more"></a>
 <h3 id="Session缓存的工作过程"><a href="#Session缓存的工作过程" class="headerlink" title="Session缓存的工作过程"></a>Session缓存的工作过程</h3><ul>
 <li>当 Session 执行查询方法时，先从 Session 缓存中读取据，如果缓存中有则直接读取，如果缓存中没有，从数据库中查询并加载到Session 缓存中，再从缓存中读取。</li>
-<li>当 Session 执行 save()、update() 方法时，将对象持久化到数据库中并将对象加载到 Session 缓存中。<br><img src="/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/2020-03-04_091148.png" alt></li>
+<li>当 Session 执行 save()、update() 方法时，将对象持久化到数据库中并将对象加载到 Session 缓存中。<br><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/2020-03-04_091148.png" alt></li>
 </ul>
-<h3 id="session实现缓存过程"><a href="#session实现缓存过程" class="headerlink" title="session实现缓存过程"></a>session实现缓存过程</h3><p><img src="/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/Animation.gif" alt></p>
+<h3 id="session实现缓存过程"><a href="#session实现缓存过程" class="headerlink" title="session实现缓存过程"></a>session实现缓存过程</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/Animation.gif" alt></p>
 <h3 id="Session清理缓存"><a href="#Session清理缓存" class="headerlink" title="Session清理缓存"></a>Session清理缓存</h3><p>Session在某一时间点按照缓存中对象的属性变化来同步更新数据库的这一过程被称为 Session 清理缓存</p>
 <p>缓存清理的时间点：</p>
 <ul>
 <li>当调用 transaction.commit() 方法时，会先清理缓存，再向数据库提交事务；</li>
 <li>当显式调用 Session.flush() 方法时，会清理缓存；</li>
-<li>当调用 Session 的查询（不包括 load() 和 get() )方法时，如果缓存中对象的属性有变化则清理缓存。<h3 id="Session对象快照"><a href="#Session对象快照" class="headerlink" title="Session对象快照"></a>Session对象快照</h3><img src="/2020/03/04/7-Hibernate%E6%93%8D%E4%BD%9C%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1/session_fuction.gif" alt><h3 id="Session清理缓存的模式"><a href="#Session清理缓存的模式" class="headerlink" title="Session清理缓存的模式"></a>Session清理缓存的模式</h3>setHibernateFlushMode() 用于设定 Session 清理缓存的模式。</li>
+<li>当调用 Session 的查询（不包括 load() 和 get() )方法时，如果缓存中对象的属性有变化则清理缓存。<h3 id="Session对象快照"><a href="#Session对象快照" class="headerlink" title="Session对象快照"></a>Session对象快照</h3><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/session_fuction.gif" alt><h3 id="Session清理缓存的模式"><a href="#Session清理缓存的模式" class="headerlink" title="Session清理缓存的模式"></a>Session清理缓存的模式</h3>setHibernateFlushMode() 用于设定 Session 清理缓存的模式。</li>
 </ul>
 <table>
 <thead>
@@ -305,7 +305,7 @@
       <li>
         &copy;
         2019-2020
-        Mysterious
+        Mystery
       </li>
       <li>
         Powered by
@@ -336,7 +336,7 @@
       <button class="navbar-toggle"></button>
 <nav class="navbar">
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="神秘的小胖纸"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Mysterious Blog"></a>
   </div>
   <ul class="nav nav-main">
     <li class="nav-item">

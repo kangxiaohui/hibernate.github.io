@@ -5,13 +5,13 @@
   <meta name="description" content="记录学习生活点点滴滴" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    6-Hibernate多对多关联映射 |  神秘的小胖纸
+    6-Hibernate多对多关联映射 |  Mysterious Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="stylesheet" href="/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-<link rel="alternate" href="/atom.xml" title="神秘的小胖纸" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Mysterious Blog" type="application/atom+xml">
 </head>
 </html>
 <body>
@@ -55,8 +55,8 @@
     <div class="article-entry" itemprop="articleBody">
       <h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p>在某高校选课系统中，一个学生可以同时选修多门课程，一门课程可以被若干个学生选修，像这样的多对多关联关系，应该如何实现？</p>
 <a id="more"></a>
-<p>域模型：<br><img src="/2020/03/03/6-Hibernate%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/manytomany.png" alt></p>
-<p>数据关系模型：<br><img src="/2020/03/03/6-Hibernate%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/manytomany_data.png" alt></p>
+<p>域模型：<br><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/manytomany.png" alt></p>
+<p>数据关系模型：<br><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/manytomany_data.png" alt></p>
 <h2 id="多对多关联映射"><a href="#多对多关联映射" class="headerlink" title="多对多关联映射"></a>多对多关联映射</h2><h3 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h3><p>Student.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String studentNo;</span><br><span class="line">    <span class="keyword">private</span> Set&lt;Course&gt; courseSet = <span class="keyword">new</span> HashSet&lt;Course&gt;();</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Course.java</p>
@@ -200,7 +200,7 @@
       <li>
         &copy;
         2019-2020
-        Mysterious
+        Mystery
       </li>
       <li>
         Powered by
@@ -231,7 +231,7 @@
       <button class="navbar-toggle"></button>
 <nav class="navbar">
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="神秘的小胖纸"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Mysterious Blog"></a>
   </div>
   <ul class="nav nav-main">
     <li class="nav-item">

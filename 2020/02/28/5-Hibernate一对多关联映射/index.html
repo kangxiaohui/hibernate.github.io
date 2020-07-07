@@ -5,13 +5,13 @@
   <meta name="description" content="记录学习生活点点滴滴" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    5-Hibernate一对多关联映射 |  神秘的小胖纸
+    5-Hibernate一对多关联映射 |  Mysterious Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="stylesheet" href="/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-<link rel="alternate" href="/atom.xml" title="神秘的小胖纸" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Mysterious Blog" type="application/atom+xml">
 </head>
 </html>
 <body>
@@ -55,7 +55,7 @@
     <div class="article-entry" itemprop="articleBody">
       <h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>通常情况下，在一些购物网站系统中，用户和订单之间的关系就是一对多关联关系，并且对于用户来说需要知道自己有哪些订单，对于商家来说需要知道某个订单属于哪个用户，思考这种情况该如何实现？</p>
 <h2 id="数据库一对多关联"><a href="#数据库一对多关联" class="headerlink" title="数据库一对多关联"></a>数据库一对多关联</h2><a id="more"></a>
-<p><img src="/2020/02/28/5-Hibernate%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/DB_oneToMany.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/DB_oneToMany.png" alt></p>
 <h2 id="实现单向一对多关联-user—-gt-orders"><a href="#实现单向一对多关联-user—-gt-orders" class="headerlink" title="实现单向一对多关联(user—&gt;orders)"></a>实现单向一对多关联(user—&gt;orders)</h2><h3 id="使用Set集合，List集合，Map集合"><a href="#使用Set集合，List集合，Map集合" class="headerlink" title="使用Set集合，List集合，Map集合"></a>使用Set集合，List集合，Map集合</h3><p>User.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> Set orderSet = <span class="keyword">new</span> HashSet&lt;Order&gt;();<span class="comment">//Set</span></span><br><span class="line">	<span class="keyword">private</span> List orderList = <span class="keyword">new</span> ArrayList&lt;Order&gt;();<span class="comment">//List</span></span><br><span class="line">    <span class="keyword">private</span> Map orderMap = <span class="keyword">new</span> HashMap&lt;String, Order&gt;();<span class="comment">//Map</span></span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>User.hbn.xml</p>
@@ -208,7 +208,7 @@
       <li>
         &copy;
         2019-2020
-        Mysterious
+        Mystery
       </li>
       <li>
         Powered by
@@ -239,7 +239,7 @@
       <button class="navbar-toggle"></button>
 <nav class="navbar">
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="神秘的小胖纸"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Mysterious Blog"></a>
   </div>
   <ul class="nav nav-main">
     <li class="nav-item">
