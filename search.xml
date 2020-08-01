@@ -1,6 +1,409 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2011单词</title>
+    <url>/2020/07/26/2012%E5%8D%95%E8%AF%8D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>……</p>
+<a id="more"></a>
+
+<h3 id="Text-1"><a href="#Text-1" class="headerlink" title="Text 1"></a>Text 1</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185647.png" alt></p>
+<h3 id="Text-2"><a href="#Text-2" class="headerlink" title="Text 2"></a>Text 2</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185724.png" alt></p>
+<h3 id="Text-3"><a href="#Text-3" class="headerlink" title="Text 3"></a>Text 3</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185754.png" alt>)<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185810.png" alt></p>
+<h3 id="Text-4"><a href="#Text-4" class="headerlink" title="Text 4"></a>Text 4</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185836.png" alt></p>
+]]></content>
+      <categories>
+        <category>考研英语</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2011单词</title>
+    <url>/2020/07/25/2011%E5%8D%95%E8%AF%8D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>……</p>
+<a id="more"></a>
+
+<h3 id="Text-1"><a href="#Text-1" class="headerlink" title="Text 1"></a>Text 1</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185203.png" alt></p>
+<h3 id="Text-2"><a href="#Text-2" class="headerlink" title="Text 2"></a>Text 2</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185241.png" alt></p>
+<h3 id="Text-3"><a href="#Text-3" class="headerlink" title="Text 3"></a>Text 3</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185314.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185347.png" alt></p>
+<h3 id="Text-4"><a href="#Text-4" class="headerlink" title="Text 4"></a>Text 4</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185420.png" alt>)<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200801185450.png" alt></p>
+]]></content>
+      <categories>
+        <category>考研英语</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构习题2.2.3</title>
+    <url>/2020/07/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%A0%E9%A2%982.3.7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><a id="more"></a>
+
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200725202005.png" alt></p>
+<p><strong>A.</strong> 对于A，在单链表和顺序表上实现的时间复杂度都为O(n)，但<strong>后者要移动很多元素</strong>，因此在单链表上实现效率更高。对于B和D，顺序表的效率更高。C无区别</p>
+<hr>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200725202259.png" alt></p>
+<p><strong>C.</strong>先遍厉长度为m的单链表，找到该单链表的尾结点，然后将其next域指向另一个单链表的首结点，其时间复杂度为O(m)</p>
+<hr>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200725202640.png" alt></p>
+<p><strong>B.</strong>注意不能进行折半查找，计算长度就需要O(n)，所以进行顺序查找，然后插入</p>
+<hr>
+<h3 id="综合应用"><a href="#综合应用" class="headerlink" title="综合应用"></a>综合应用</h3><ol>
+<li><p>设计一个递归算法，删除不带头结点的单链表L中所有值为x的结点。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Del_X_3</span><span class="params">(Linklist &amp;L, ElemType x)</span></span>&#123;</span><br><span class="line">	LNode *p;			<span class="comment">//p指向待删除结点</span></span><br><span class="line">    <span class="keyword">if</span>(L==<span class="literal">NULL</span>)			<span class="comment">//递归出口</span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(L-&gt;data==x)&#123;</span><br><span class="line">        p=L;</span><br><span class="line">        L=L-&gt;next;</span><br><span class="line">        <span class="built_in">free</span>(p);</span><br><span class="line">        Del_X_3(L, x);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        Del_X_3(L-&gt;next, x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>在带头结点的单链表L中，删除所有值为x的结点，并释放其空间，假设值为x的结点不唯一，试编写算法以实现上述操作。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Del_X_1</span><span class="params">(Linklist &amp;L, ElemType x)</span></span>&#123;</span><br><span class="line">    LNode *p=L-&gt;next;</span><br><span class="line">    LNode *pre=L;</span><br><span class="line">    LNode *q;</span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)(</span><br><span class="line">		<span class="keyword">if</span>(p-&gt;data==x)&#123;</span><br><span class="line">            q=p;</span><br><span class="line">            p=p-&gt;next;</span><br><span class="line">            pre-&gt;next=p;</span><br><span class="line">            <span class="built_in">free</span>(q);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            pre=p;</span><br><span class="line">			p=p-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>设L为带头结点的单链表，编写算法实现从尾到头反向输出每个结点的值。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">R_Print</span><span class="params">(Linklist L)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		R_Print(L-&gt;next)</span><br><span class="line">	&#125;</span><br><span class="line"> 	<span class="keyword">if</span>(L!=<span class="literal">NULL</span>)</span><br><span class="line">		<span class="built_in">print</span>(L-&gt;data);<span class="comment">//print为打印的方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>试编写在带头结点的单链表L中删除一个最小值结点的高效算法(假设最小值结点是唯一的)。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete_Min</span><span class="params">(Linklist &amp;L)</span></span>&#123;</span><br><span class="line">	LNode *pre=L, *p=pre-&gt;next;<span class="comment">//p为工作指针，pre指向其前驱</span></span><br><span class="line">    LNode *minor=pre, minp=p;<span class="comment">//保存最小值结点及其前驱</span></span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;data &lt; minp-&gt;data)&#123;</span><br><span class="line">            minp=p;</span><br><span class="line">            minpre=pre;</span><br><span class="line">        &#125;</span><br><span class="line">        pre=p;</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">	minpre-&gt;next = minp-&gt;next;<span class="comment">//删除最小值结点</span></span><br><span class="line">    <span class="built_in">free</span>(minp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="5">
+<li><p>试编写算法将带头结点的单链表就地逆置，所谓“就地”是指辅助空间复杂度为O(1)</p>
+<p>解法一：将头结点摘下，然后从第一结点开始，依次插入到头结点的后面（头插法建立单链表），直到最后一个结点为止，这样就实现了链表的逆置</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">Linklist <span class="title">Reverse_1</span> <span class="params">(LinkList L)</span></span>&#123;</span><br><span class="line">	LNode *p, *r;</span><br><span class="line">    p=L-&gt;next;</span><br><span class="line">    L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">while</span>(p！=NUll)&#123;</span><br><span class="line">        r=p-&gt;next;</span><br><span class="line">        p-&gt;next=L-&gt;next;</span><br><span class="line">        L-&gt;next=p;</span><br><span class="line">        p=r;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解法二：假设pre、p和r指向3个相邻的结点，如下图所示。假设经过若干操作后，<em>pre之前的结点的指针都已调整完毕，它们的next都指向其原前驱结点。现在令</em>p结点的next域指向<em>pre结点，注意到一旦调整指针的指向后，</em>p的后继结点的链就会断开，为此需要用r来指向原*p的后继结点。处理时需要注意两点：一是在处理第一个结点时，应将其next域置为NULL，而不是指向头结点（因为它将作为新表的尾结点）；二是在处理完最后一个结点后，需要将头结点的指针指向它。<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200725213700.png" alt></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">Linklist <span class="title">Reverse_2</span><span class="params">(Linklist L)</span></span>&#123;</span><br><span class="line">	LNode*pre, *p=L-&gt;next, *r=p-&gt;next;</span><br><span class="line">    p-&gt;next=<span class="literal">NULL</span>;		<span class="comment">//处理第一个结点</span></span><br><span class="line">	<span class="keyword">while</span>(r！=<span class="literal">NULL</span>)&#123;		<span class="comment">//x为空，则说明p为最后一个结点</span></span><br><span class="line">        pre=p;			<span class="comment">//依次继续遍历</span></span><br><span class="line">        p=r;</span><br><span class="line">        r=r-&gt;next;</span><br><span class="line">        p-&gt;next=pre;	<span class="comment">//指针反转</span></span><br><span class="line">    &#125;</span><br><span class="line">	L-&gt;next=p;<span class="comment">//处理最后一个结点</span></span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="6">
+<li><p>有一个带头结点的单链表L，设计一个算法使其元素递增有序</p>
+</li>
+<li><p>设在一个带表头结点的单链表中所有元素结点的数据值无序，试编写一个函数，删除表中所有介于给定的两个值 (作为函数参数给出) 之间的元素的元素 (若存在) </p>
+</li>
+<li><p>给定两个单链表，编写算法找出两个链表的公共结点</p>
+</li>
+<li><p>给定一个带表头结点的单链表，设head为头指针，结点结构为 (data，next) ，data为整型元素，ηext为指针，试写出算法：按递增次序输出单链表中各结点的数据元素，并释放结点所占的存储空间 (要求：不允许使用数组作为辅助空间) 。</p>
+</li>
+<li><p>将一个带头结点的单链表A分解为两个带头结点的单链表A和B，使得A表中含有原表中序号为奇数的元素，而B表中含有原表中序号为偶数的元素，且保持其相对顺序不变。</p>
+</li>
+<li><p>设C={a1，b1，a2b2…，anbn}为线性表，采用带头结点的hc单链表存放，设计一个就地算法，将其拆分为两个线性表，使得A={a，a2…，an}，B={bn，…，b2b1}</p>
+</li>
+<li><p>在一个递增有序的线性表中，有数值相同的元素存在。若存储方式为单链表，设计算法去掉数值相同的元素，使表中不再有重复的元素，例如 (7，10，10，21，30，42，42，42，51，70) 将变为 (7，10，21，30，42，51，70) </p>
+</li>
+<li><p>假设有两个按元素值递増次序排列的线性表，均以单链表形式存储。请编写算法将这两个单链表归并为一个按元素值递减次序排列的单链表，并要求利用原来两个单链表的结点存放归并后的单链表。</p>
+</li>
+<li><p>设A和B是两个单链表 (带头结点) ，其中元素递增有序。设计一个算法从A和B中的公共元素产生单链表C，要求不破坏A、B的结点</p>
+</li>
+<li><p>已知两个链表A和B分别表示两个集合，其元素递增排列。编制函数，求A与B的交集，并存放于A链表中。</p>
+</li>
+<li><p>两个整数序列A=a1，a2，a3，…，am和B=b1，b2b，…，bn已经存入两个单链表中，设计个算法，判断序列B是否是序列A的连续子序列。</p>
+</li>
+<li><p>设计一个算法用于判断带头结点的循环双链表是否对称</p>
+</li>
+<li><p>有两个循环单链表，链表头指针分别为h1和h2，编写一个函数将链表h2链接到链表h1之后，要求链接后的链表仍保持循环链表形式。</p>
+</li>
+<li><p>设有一个带头结点的循环单链表，其结点值均为正整数。设计一个算法，反复找出单链表中结点值最小的结点并输出，然后将该结点从中删除，直到单链表空为止，再删除表</p>
+</li>
+<li><p>设头指针为L的带有表头结点的非循环双向链表，其每个结点中除有pred (前驱指针) 、data (数据) 和next (后继指针) 域外，还有一个访问频度域freq。在链表被启用前，其值均初始化为零。每当在链表中进行一次 Locate (L，x) 运算时令元素值为ⅹ的结点中freq域的值增1，并使此链表中结点保持按访问频度非增递减) 的顺序排列，同时最近访问的结点排在频度相同的结点前面，以便使频繁访问的结点总是靠近表头。试编写符合上述要求的 Locate (，x) 运算的算法，该运算为函数过程，返回找到结点的地址，类型为指针型。</p>
+</li>
+<li><p>【2009统考真题】已知一个带有表头结点的单链表，结点结构为</p>
+<p>​                                                                        |    data  |   list   |</p>
+<p>假设该链表只给出了头指针list。在不改变链表的前提下，请设计一个尽可能高效的算法，查找链表中倒数第k个位置上的结点 (k为正整数) 。若查找成功，算法输岀该结点的data域的值，并返回1；否则，只返回0。要求：</p>
+<pre><code>1) 描述算法的基本设计思想
+2) 描述算法的详细实现步骤。
+3) 根据设计思想和实现步骤，采用程序设计语言描述算法, 关键之处请给出简要注释</code></pre></li>
+<li><p>〖2012统考真题】假定采用带头结点的单链表保存单词，当两个单词有相同的后缀时，可共享相同的后缀存储空间，例如，”loading”和“being”的存储映像如下图所示<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200725212018.png" alt>设Str1和str2分别指向两个单词所在单链表的头结点，链表结点结构为| data | next |请设计一个时间上尽可能高效的算法，找出由str1和str2所指向两个链表共同后缀的起始位置 (如图中字符所在结点的位置p) 。要求：<br>1) 给出算法的基本设计思想<br>2) 根据设计思想，采用C或C艹+或Java语言描述算法，关键之处给出注释。<br>3) 说明你所设计算法的时间复杂度</p>
+</li>
+<li><p>〖2015统考真题】用单链表保存m个整数，结点的结构为| data | link |，且 I data l≤n<br> (n为正整数) 现要求设计一个时间复杂度尽可能高效的算法，对于链表中data的绝对值相等的结点，仅保留笫一次出现的结点而删除其余绝对值相等的结点。例如，若给定的单链表head如下<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200725212253.png" alt></p>
+<p>则删除结点后的head为:</p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200725212345.png" alt></p>
+<p>要求:<br>1) 给出算法的基本设计思想<br>2) 使用C或C++语言，给出单链表结点的数据类型定义3) 根据设计思想，采用C或C艹语言描述算法，关键之处给出注释。<br>4) 说明你所设计算法的时间复杂度和空间复杂度</p>
+</li>
+<li><p>设计一个算法完成以下功能：判断一个链表是否有环，如果有，找出环的入口点并返回，否则返回NULL</p>
+</li>
+<li><p>〖2019统考真题】设线性表L= (a1, a2, a3, …，an-2，an-1，an) 采用带头结点的单链表保存，链表中的结点定义如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span>*<span class="title">next</span>;</span></span><br><span class="line">&#125;NODE;</span><br></pre></td></tr></table></figure>
+
+<p>请设计一个空间复杂度为O (1) 且时间上尽可能高效的算法，重新排列L中的各结点，得到线性表</p>
+<p>L’= (a1, an, a2, an-1，a3, an-2…) 。要求</p>
+<ol>
+<li>给出算法的基本设计思想</li>
+<li>根据设计思想，采用C或C艹语言描述算法，关键之处给出注释。</li>
+<li>说明你所设计的算法的时间复杂度 </li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2010单词</title>
+    <url>/2020/07/24/2010%E5%8D%95%E8%AF%8D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>……</p>
+<a id="more"></a>
+
+<h3 id="Text-1"><a href="#Text-1" class="headerlink" title="Text 1"></a>Text 1</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200724192929.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200724192954.png" alt></p>
+<h3 id="Text-2"><a href="#Text-2" class="headerlink" title="Text 2"></a>Text 2</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200724193049.png" alt></p>
+<h3 id="Text-3"><a href="#Text-3" class="headerlink" title="Text 3"></a>Text 3</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200724193119.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200724193153.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200724193216.png" alt></p>
+<h3 id="Text-4"><a href="#Text-4" class="headerlink" title="Text 4"></a>Text 4</h3><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200724193257.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200724193320.png" alt></p>
+]]></content>
+      <categories>
+        <category>考研英语</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构习题2.2.3</title>
+    <url>/2020/07/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%A0%E9%A2%982.2.3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="一、选择题"><a href="#一、选择题" class="headerlink" title="一、选择题"></a>一、选择题</h3><a id="more"></a>
+
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721222859.png" alt></p>
+<p><strong>A.</strong> 注意，存取方式是指读写方式。顺序表是一种支持随机存取的存储结构，根据起始地址加上元素的序号，可以很方便地访问任意一个元素，这就是随机存取的概念。</p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721223159.png" alt></p>
+<p><strong>B.</strong>  线性表元素的序号是从1开始，而在第n+1个位置插入相当于在表尾追加。</p>
+<h3 id="二、综合应用题"><a href="#二、综合应用题" class="headerlink" title="二、综合应用题"></a>二、综合应用题</h3><ol>
+<li>从顺序表中删除具有最小值的元素(假设唯一)并由函数返回被删元素的值。空出的位置由最后一个元素填补，若顺序表为空则显示出错信息并退出运行。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">deleteMinValue</span><span class="params">(SqList &amp;L, ElemType &amp;value)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(L.length==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    value = L.data[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> pos;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;L.length;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(value&gt;L.data[i])&#123;</span><br><span class="line">            value = L.data[i];</span><br><span class="line">            pos = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    L.data[pos] = L.data[L.length<span class="number">-1</span>];</span><br><span class="line">    L.length--;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>设计一个高效算法，将顺序表L的所有元素逆置，要求算法的空间复杂度为0(1)</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span><span class="params">(SqList &amp;L)</span></span>&#123;</span><br><span class="line">    ElenType temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L.length/<span class="number">2</span>;i++)&#123;</span><br><span class="line">        temp = L.data[i];</span><br><span class="line">        L.data[i] = L.data[L.length-i<span class="number">-1</span>];</span><br><span class="line">        L.data[L.length-i<span class="number">-1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>对长度为n的顺序表L，编写一个时间复杂度为O(n)、空间复杂度为0(1)的算法，该算法删除线性表中所有值为x的数据元素。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//思路一：k记录不等于x的个数，将不等于x的元素向前移动k个位置，修改L的长度</span></span><br><span class="line"><span class="comment">//例如：1，2,3,2,3 (删除值为3)</span></span><br><span class="line"><span class="comment">//1：k++，此时k=1;</span></span><br><span class="line"><span class="comment">//2：k++，此时k=2;</span></span><br><span class="line"><span class="comment">//3：忽略，不处理，此时k=2;</span></span><br><span class="line"><span class="comment">//2：将位置i的元素赋值到k，然后k++，此时k=3;</span></span><br><span class="line"><span class="comment">//3：忽略，不处理，此时k=3;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span><span class="params">(SqList &amp;L, ElemType x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L.length;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(L.data[i] != x)&#123;</span><br><span class="line">            L.data[k] = L.data[i];</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    L.length = k;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//思路二：k记录等于x的个数，将不等于x的元素向前移动k个位置，修改L的长度</span></span><br><span class="line"><span class="comment">//例如：1，2,3,2,3 (删除值为3)</span></span><br><span class="line"><span class="comment">//1：不相等，此时k=0;</span></span><br><span class="line"><span class="comment">//2：不相等，此时k=0;</span></span><br><span class="line"><span class="comment">//3：相等，k++，此时k=1;</span></span><br><span class="line"><span class="comment">//2：不相等，此时k=1，当前元素向前移动1个位置</span></span><br><span class="line"><span class="comment">//3：相等，k++，此时k=2;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span><span class="params">(SqList &amp;L, ElemType x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L.length;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(L.data[i] == x)</span><br><span class="line">            k++;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            L.data[i-k] = L.data[i];<span class="comment">//当前元素向前移动k个位置</span></span><br><span class="line">    &#125;</span><br><span class="line">    L.length -= k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>从<strong>有序</strong>顺序表中删除其值在给定值s与t之间(要求s&lt;t)的所有元素，如果s或t不合理或顺序表为空，则显示出错信息并退出运行。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">del_s_t</span><span class="params">(SqList &amp;L, ElemType s, ElemType t)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">if</span>(s&lt;=t||L.length==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;L.length&amp;&amp;L.data[i]&lt;s;++i);<span class="comment">//寻找值大于等于s的第一个元素</span></span><br><span class="line">    <span class="keyword">if</span>(i&gt;=L.length)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//所有元素都小于s</span></span><br><span class="line">     <span class="keyword">for</span>(j=<span class="number">0</span>;i&lt;L.length&amp;&amp;L.data[j]&lt;=t;++j);<span class="comment">//寻找值小于t的第一个元素</span></span><br><span class="line">    <span class="keyword">for</span>(;j&lt;L.length;i++;j++)&#123;</span><br><span class="line">        L.data[i]=L.data[j];</span><br><span class="line">    &#125;</span><br><span class="line">    L.length=i+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>从顺序表中删除其值在给定值s与1之间(包含s和t，要求s&lt;t)的所有元素，如果s或t不合理或顺序表为空，则显示出错信息并退出运行。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">del_s_t</span><span class="params">(SqList &amp;L, ElemType s, ElemType t)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,k=<span class="number">0</span>;<span class="comment">//k记录s-t之间的个数</span></span><br><span class="line">    <span class="keyword">if</span>(s&lt;=t||L.length==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;L.length;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(L.data[i]&gt;=s&amp;&amp;L.data&lt;=t)</span><br><span class="line">            k++;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            L.data[i-k] = L.data[i];<span class="comment">//当前元素向前移动k个位置</span></span><br><span class="line">    &#125;</span><br><span class="line">    L.length=i+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>从<strong>有序</strong>顺序表中删除所有其值重复的元素，使表中所有元素的值均不同。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//号：0 1 2 3 4 5 6 7 8 9 10</span></span><br><span class="line"><span class="comment">//值：1,2,2,2,3,3,3,4,5,5,5</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">del_same</span><span class="params">(SqList &amp;L)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(L.length==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> i,j;<span class="comment">//i存储第一个不相同的元素，j为工作指针</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>,j=<span class="number">1</span>;j&lt;L.length;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(L.data[i]!=L.data[j])&#123;<span class="comment">//查找下一个与上一个元素不想同的值，然后放到上个元素后面</span></span><br><span class="line">            i++;</span><br><span class="line">            L.data[i]=L.data[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    L.length=i+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>将两个有序顺序表合并为一个新的有序顺序表，并由函数返回结果顺序表。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Merge</span><span class="params">(SqList A, SqList B, SqList &amp;c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(A.length+B.length&gt;C.MaxSize)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;A.length&amp;&amp;j&lt;Length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(A.data[i]&lt;=B.data[j])</span><br><span class="line">            C.data[k++]=A.data[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            C.data[k++]=B.data[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;A.length)&#123;</span><br><span class="line">        C.data[k++]=A.data[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(j&lt;B.length)&#123;</span><br><span class="line">         C.data[k++]=B.data[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    C.length=k;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>已知在一维数组A[m+n]中依次存放两个线性表(a，a2，a，..am)和(b，b2，b，.，bn)试编写一个函数，将数组中两个顺序表的位置互换，即将(b，b2，b3，.，bn)，放在(a，a2 a3，.，.am)的前面。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Exchange</span><span class="params">(ElemType A[], <span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> arraySize)</span></span>&#123;</span><br><span class="line">    Reverse(A,<span class="number">0</span>,m+n<span class="number">-1</span>,arraySize);<span class="comment">//整体翻转</span></span><br><span class="line">    Reverse(A,<span class="number">0</span>,n<span class="number">-1</span>,arraySize);<span class="comment">//前部分翻转</span></span><br><span class="line">    Reverse(A,n,m+n<span class="number">-1</span>,arraySize);<span class="comment">//有部分翻转</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span><span class="params">(ElemType A[], <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> arraySize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(left&gt;==right||right&gt;=arraySize)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">    ElemType temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;mid-left;i++)&#123;</span><br><span class="line">        temp=A[left+i];</span><br><span class="line">        A[left+i]=A[right+i];</span><br><span class="line">        A[right+i]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>线性表(a，a2，a3，.，an)中的元素<strong>递增有序</strong>且按顺序存储于计算机内。要求设计一算法，完成用最少时间在表中查找数值为x的元素，若找到则将其与后继元素位置相交换，若找不到则将其插入表中并使表中元素仍递增有序。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//采用折半查找</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SearchEexchangeInstert</span><span class="params">(ElemType A[],ElemType x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low=<span class="number">0</span>, hight=n<span class="number">-1</span>, mid;</span><br><span class="line">    <span class="keyword">while</span>(low&lt;=hight)&#123;</span><br><span class="line">        mid=(low+hight)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(A[mid]==x)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(A[mid]&lt;x)</span><br><span class="line">            low=mid+<span class="number">1</span>;<span class="comment">//到后半部分去查</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            hig=mid<span class="number">-1</span>;<span class="comment">//到前半部分去查</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(A[mid]==x &amp;&amp; mid!=n<span class="number">-1</span>)&#123;<span class="comment">//进行交换，如果是最后一个元素和x相等，则不需要交换</span></span><br><span class="line">        ElemType t=A[mid];</span><br><span class="line">        A[mid]=A[mid+<span class="number">1</span>];</span><br><span class="line">        A[mid+<span class="number">1</span>]=t</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(low&gt;high)&#123;<span class="comment">//没有与x相等的元素，进行插入操作</span></span><br><span class="line">        <span class="keyword">for</span>(i=n<span class="number">-1</span>; i&gt;high;i++)</span><br><span class="line">            A[i+<span class="number">1</span>]=A[i];</span><br><span class="line">        A[i+<span class="number">1</span>]=x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="10">
+<li><p><strong>【2010统考真题】设将n(n&gt; 1)个整数存放到一维数组R中。设计一个在时间和空间两方面都尽可能高效的算法。将R中保存的序列循环左移p(0&lt;p&lt;n)个位置，即将R中的数据由(X0，X1，X2，…，Xn-1)换为(Xp，Xp+1，Xp+2，…，Xp+n-1)，要求：</strong><br>1)给出算法的基本设计思想。<br>2)根据设计思想，采用C或C++或Java语言描述算法，关键之处给出注释。<br>3)说明你所设计算法的时间复杂度和空间复杂度</p>
+<ol>
+<li><p>解：<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200723092824.png" alt>另外一种做法是设置一个辅助数组：创建大小为p的辅助数组S，将R中前p个整数依次暂存在S中，同时将R中后n-p个整数左移，然后将 中暂存的p个数依次放回到R中的后续单元。时间复杂度为0(n)，空间复杂度为O(p)。</p>
+</li>
+<li><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span> <span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> from, <span class="keyword">int</span> to)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, temp;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;(to-from+<span class="number">1</span>)/<span class="number">2</span>;i++)&#123;</span><br><span class="line">        temp=R[from+i];</span><br><span class="line">        R[from+i]=R[to-i];</span><br><span class="line">        R[to-i]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="comment">//Reverse</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Converse</span> <span class="params">(<span class="keyword">int</span> R[<span class="number">1</span>,<span class="keyword">int</span> n,<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	Reverse (R, <span class="number">0</span>, p<span class="number">-1</span>);</span><br><span class="line">    Reverse (R, p, n<span class="number">-1</span>);</span><br><span class="line">    Reverse (R, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上述三个Reversede函数的时间复杂度分别为O(p/2),O((n-p)/2)和O(n/2),设计的算法中时间复杂度是O(n)，空间复杂度是O(1)</p>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="11">
+<li><strong>【2011统考真题】一个长度为L(L&gt;=1)的升序序列S，处在第 [L/2] 个位置的数称为S的中位数。例如，若序列S1=(11，13，15，17，19)，则S，的中位数是15，两个序列的中位数是含它们所有元素的升序序列的中位数。例如，若S2=(2，4，6，8，20)，则S1和S2的中位数是11，现在有两个等长升序序列A和B，试设计一个在时间和空间两方面都尽可能高效的算法，找出两个序列A和B的中位数。要求：</strong><br>1)给出算法的基本设计思想。<br>2)根据设计思想，采用C或C++或Java语言描述算法，关键之处给出注释。<br>3)说明你所设计算法的时间复杂度和空间复杂度。</li>
+</ol>
+<pre><code>1. 分别求两个升序序列A、B的中位数，设为a和b，求序列A、B的中位数过程如下：
+
+
+   - 若a=b，则a或b即为所求中位数，算法结束。
+   - 若a&lt;b，则舍弃序列A中较小的一半，同时舍弃序列B中较大的一半，要求两次舍弃的长度相等。
+   - 若a&gt;b，则舍弃序列A中较大的一半，同时舍弃序列B中较小的一半，要求两次舍弃的长度相等。
+   - 在保留的两个升序序列中，重复过程1,2,3，直到两个序列中均只含一个元素时为止。
+
+2. 解：
+
+   <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">M_Search</span><span class="params">(<span class="keyword">int</span> A[]，<span class="keyword">int</span> B[]，<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> s1=<span class="number">0</span>, d1=n<span class="number">-1</span>, ml;</span><br><span class="line">	<span class="keyword">int</span> s2=<span class="number">0</span>, d2=n<span class="number">-1</span>, m2;		<span class="comment">//分别表示序列A和B的首位数、末位数和中位数</span></span><br><span class="line">	<span class="keyword">while</span>(s1!=d1 || s2!=d2)&#123;</span><br><span class="line"> 		ml=(s1+d1)/<span class="number">2</span>;</span><br><span class="line">		m2-(s2+d2)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(A[m1]=-B[m2])</span><br><span class="line"> 			<span class="keyword">return</span> A[m1];		<span class="comment">//满足条件1</span></span><br><span class="line">		<span class="keyword">if</span>(A[m1]&lt;B[m2])			<span class="comment">//满足条件2</span></span><br><span class="line"> 			<span class="keyword">if</span>((s1+d1)%<span class="number">2</span>==<span class="number">0</span>)&#123; 	<span class="comment">//若元素个数为奇数</span></span><br><span class="line"> 				s1=m1;			<span class="comment">//舍弃A中间点以前的部分且保留中间点</span></span><br><span class="line">				d2=m2;  		<span class="comment">//舍弃B中间点以后的部分且保留中间点</span></span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;				<span class="comment">//元素个数为偶数</span></span><br><span class="line">				s1=m1+<span class="number">1</span>;		<span class="comment">//舍弃A中间点及中间点以前部分</span></span><br><span class="line">				d2=m2; 			<span class="comment">//舍弃B中间点以后部分且保留中间点</span></span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;					<span class="comment">//满足条件3</span></span><br><span class="line">			<span class="keyword">if</span>((s2+d2)%<span class="number">2</span>==<span class="number">0</span>)&#123;	<span class="comment">//若元素个数为奇数</span></span><br><span class="line">				d1=m1;			<span class="comment">//舍弃A中间点以后的部分且保留中间点</span></span><br><span class="line">				s2=m2;			<span class="comment">//舍弃B中间点以前的部分且保留中间点</span></span><br><span class="line">			&#125;</span><br><span class="line"> 			<span class="keyword">else</span>&#123;				<span class="comment">//元素个数为偶数</span></span><br><span class="line">				dl=ml;			<span class="comment">//舍弃A中间点以后部分且保留中间点</span></span><br><span class="line">				s2-m2+<span class="number">1</span>;		 <span class="comment">//舍弃B中间点及中间点以前部分</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> A[s1]&lt;B[s2]?A[s1]:B[s2];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+3. 解：算法的时间复杂度是O(log2n)，空间复杂度是O(1)</code></pre><ol start="12">
+<li>【2013统考真题】已知一个整数序列A=(a0，a1，.，an)，其中0&lt;=ai&lt;n(o&lt;i&lt;n)，若存在ap1=ap2=…=apm=x，且m&gt;n/2 (0&lt;=pk&lt;n，1&lt;k&lt;m)，则称x为A的主元素。例如A= (0，5，5，3，5，7，5，5)，则5为主元素; 又如A= (0，5，5，3，5，1，5，7)，则A中没有主元素。假设A中的n个元素保存在一个一维数组中，请设计一个尽可能高效的算法，找出A的主元素。若存在主元素，则输出该元素; 否则输出-1，要求：<br>1)给出算法的基本设计思想。<br>2)根据设计思想，采用C或C++或Java语言描述算法，关键之处给出注释。<br>3)说明你所设计算法的时间复杂度和空间复杂度。</li>
+</ol>
+<ol start="13">
+<li>【2018统考真题】给定一个含n(n&gt;=1)个整数的数组，请设计一个在时间上尽可能高效的算法，找出数组中未出现的最小正整数。例如，数组 {-5，3，2，3} 中未出现的最小正整数是1; 数组 {1，2，3} 中未出现的最小正整数是4，要求：<br>1)给出算法的基本设计思想。<br>2)根据设计思想，采用C或C++语言描述算法，关键之处给出注释。<br>3)说明你所设计算法的时间复杂度和空间复杂度。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构习题1.2.3</title>
+    <url>/2020/07/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%A0%E9%A2%981.2.3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="一、选择题"><a href="#一、选择题" class="headerlink" title="一、选择题"></a>一、选择题</h3><a id="more"></a>
+
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721221543.png" alt></p>
+<ol>
+<li><p>B</p>
+</li>
+<li><p>C</p>
+</li>
+<li><p>D</p>
+</li>
+</ol>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721221702.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721221813.png" alt></p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721221850.png" alt></p>
+<ol start="4">
+<li><p>A</p>
+</li>
+<li><p>B</p>
+</li>
+<li><p>D</p>
+</li>
+<li><p>C</p>
+</li>
+<li><p>B</p>
+</li>
+<li><p>C</p>
+</li>
+<li><p>D</p>
+</li>
+<li><p><strong>A</strong> 注意：是执行的次数</p>
+</li>
+<li><p><strong>A</strong></p>
+<ol>
+<li>算法原地工作是指算法所需的辅助空间是常量。</li>
+<li>本项考查算法效率的理解，时间复杂度是指渐近时间复杂度，不要想当然的去给n赋予一个特殊值，时间复杂度为O（m）的算法必然优于时间复杂度为O（2”）的算法。</li>
+<li>时间复杂度总是考虑最坏情况下的时间复杂度，以保证算法的运行时间不会比它更长。</li>
+<li>严蔚敏教材中的原话，该问题在论坛讨论过多年，对于这种在语言层次上的效率问题，建议不要以特例程序来解释其优劣，我认为该结论是正确的。<h3 id="二、综合应用题"><a href="#二、综合应用题" class="headerlink" title="二、综合应用题"></a>二、综合应用题</h3></li>
+</ol>
+</li>
+<li><p>一个算法所需时间由下述递归方程表示，试求出该算法的时间复杂度的级别（或阶）<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721222301.png" alt>式中，n是问题的规模，为简单起见，设n是2的整数次幂。</p>
+<p>解：<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721222451.png" alt></p>
+</li>
+<li><p>分析以下各程序段，求出算法的时间复杂度。<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721222353.png" alt></p>
+<p>解：<img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721222529.png" alt></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构习题1.1.3</title>
+    <url>/2020/07/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%A0%E9%A2%981.1.3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="一、选择题"><a href="#一、选择题" class="headerlink" title="一、选择题"></a>一、选择题</h3><a id="more"></a>
+
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721214953.png" alt></p>
+<ol>
+<li><p><strong>D.</strong>  抽象数据类型（ADT）描述了数据的逻辑结构和抽象运算，通常用（数据对象，数据关系，基本操作集）这样的三元组来表示，从而构成一个完整的数据结构定义。</p>
+</li>
+<li><p>*<em>A. *</em>树和图是典型的非线性数据结构，其他选项都属于线性数据结构。</p>
+</li>
+<li><p><strong>C.</strong> 顺序表、哈希表和单链是三种不同的数据结构，既描述逻辑结构，又描述存储结构和数据运算。而有序表是指关键字有序的线性表，仅描述元素之间的逻辑关系，它既可以链式存储也可以顺序存储，故属于逻辑结构。</p>
+</li>
+<li><p><strong>D.</strong>  数据的存储结构有顺序存储、链式存储、索引存储和散列存储。循环队列（易错点）是用顺序表表示的队列，是一种数据结构。栈是一种抽象数据类型，可采用顺序存储或链式存储，只表示逻辑结构。</p>
+<hr>
+</li>
+</ol>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200721215036.png" alt></p>
+<ol start="5">
+<li><strong>A.</strong> 数据的逻辑结构是从面向实际问题的角度出发的，只采用抽象表达方式，独立于存储结构，数据的存储方式有多种不同的选择；而数据的存储结构是逻辑结构在计算机上的映射，它不能独立于逻辑结构而存在。数据结构包括三个要素，缺一不可。</li>
+<li><strong>C.</strong> </li>
+<li><strong>A.</strong>链式存储设计时，各个不同结点的存储空间可以不连续，但结点内的存储单元地址必须连续。</li>
+</ol>
+<h3 id="二、综合应用题"><a href="#二、综合应用题" class="headerlink" title="二、综合应用题"></a>二、综合应用题</h3><ol>
+<li><p>对于两种不同的数据结构，逻辑结构或物理结构一定不相同吗？</p>
+<p>​        对于两种不同的数据结构，它们的逻辑结构和物理结构完全有可能相同。比如二叉树和二叉排序树，二叉排序树可以采用二叉树的逻辑表示和存储方式，前者通常用于表示层次关系，而后者通常用于排序和查找。虽然它们的运算都有建立树、插入结点、删除结点和查找结点等功能，但对于二叉树和二又排序树，这些运算的定义是不同的，以查找结点为例，二叉树的时间复杂度为0（n），而二叉排序树的时间复杂度为O（log2n）。</p>
+<hr>
+</li>
+<li><p>试举一例，说明对相同的逻辑结构，同一种运算在不同的存储方式下实现时，其运算效率不同。</p>
+<p>​        线性表既可以用顺序存储方式实现，又可以用链式存储方式实现。在顺序存储方式下，在线性表中插入和删除元素，平均要移动近一半的元素，时间复杂度为O（n）；而在链式存储方式下，插入和删除的时间复杂度都是O（1）。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chrome的Software Reporter Tool长时间占用CPU解决办法</title>
+    <url>/2020/07/07/Chrome%E7%9A%84Software-Reporter-Tool%E9%95%BF%E6%97%B6%E9%97%B4%E5%8D%A0%E7%94%A8CPU%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="什么是Software-Reporter-Tool"><a href="#什么是Software-Reporter-Tool" class="headerlink" title="什么是Software Reporter Tool"></a>什么是Software Reporter Tool</h2><p>Software Reporter Tool是一个Chrome清理工具,用于清理谷歌浏览器中不必要或恶意的扩展，应用程序，劫持开始页面等等。当你安装Chrome时，Software_reporter_tool.exe也j就会被下载在SwReporter文件夹下的Chrome应用数据文件夹中。</p>
+<a id="more"></a>
+
+<h2 id="如何关闭SRT"><a href="#如何关闭SRT" class="headerlink" title="如何关闭SRT"></a>如何关闭SRT</h2><p>这个软件在运行的过程中可能会长时间地占用CPU，导致高CPU使用率。我们虽然可以通过任务管理器手动结束进程或者选择删除SRT，但这都不是长久的解决办法。因为前者过一段时间它又会再次运行，后者在浏览器更新的时候就又会重新被下载下来。要完美地解决这一个问题我们可以进入SRT目录，默认它位于以下目录</p>
+<p>C:\Users[YourName]\AppData\Local\Google\Chrome\User Data\SwReporter[版本]\software_reporter_tool.exe</p>
+<p>我们还可以通过<code>win+r</code>键打开运行命令窗口并输入以下命令快速找到它</p>
+<p>%localappdata%\Google\Chrome\User Data\SwReporter</p>
+<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200707204417.png" alt></p>
+<ul>
+<li>右键单击software_reporter_tool.exe选择属性</li>
+<li>转到“安全”选项卡</li>
+<li>点击“高级”</li>
+<li>点击“禁用继承”</li>
+<li>选择”从此对象中删除所有继承的权限”,之后一路点击“确定”“确定”。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>业余技术</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>线性表之循环单链表（带头结点）</title>
     <url>/2020/07/07/%E7%BA%BF%E6%80%A7%E8%A1%A8%E4%B9%8B%E5%BE%AA%E7%8E%AF%E5%8D%95%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>见代码</p>
@@ -48,7 +451,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>见代码</p>
 <a id="more"></a>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *格式化全部代码       ctrl+a+k+f</span></span><br><span class="line"><span class="comment"> *格式化选中的代码     ctrl+k+f</span></span><br><span class="line"><span class="comment"> *注释代码   ctrl+k+c</span></span><br><span class="line"><span class="comment"> *反注释代码  ctrl+k+u</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> elemtype;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">lnode</span>&#123;</span></span><br><span class="line">    elemtype data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">lnode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;lnode, *linklist;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">initlist</span><span class="params">(linklist &amp;l)</span></span>&#123;</span><br><span class="line">	l = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">(linklist l)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">listinsert</span><span class="params">(linklist &amp;l, <span class="keyword">int</span> i, elemtype e)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">1</span>)&#123;<span class="comment">//插入到第一个位置</span></span><br><span class="line">		lnode *s =(lnode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(lnode));</span><br><span class="line">		s-&gt;data=e;</span><br><span class="line">		s-&gt;next=l;</span><br><span class="line">		l=s;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	lnode *p;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">1</span>;<span class="comment">//p指向的第几个节点</span></span><br><span class="line">	p=l;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span> &amp;&amp; j&lt;i<span class="number">-1</span>)&#123;<span class="comment">//循环找到i-1个节点</span></span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (p==<span class="literal">NULL</span>)&#123;<span class="comment">//i值不合法 p指向了null</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	lnode *s =(lnode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(lnode));</span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">	s-&gt;next=p-&gt;next;</span><br><span class="line">	p-&gt;next=s;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">L<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *格式化全部代码       ctrl+a+k+f</span></span><br><span class="line"><span class="comment"> *格式化选中的代码     ctrl+k+f</span></span><br><span class="line"><span class="comment"> *注释代码   ctrl+k+c</span></span><br><span class="line"><span class="comment"> *反注释代码  ctrl+k+u</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Lnode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Lnode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;Lnode, *LinkList;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">initlist</span><span class="params">(LinkList &amp;l)</span></span>&#123;</span><br><span class="line">	L = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">(LinkList L)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">listinsert</span><span class="params">(LinkList &amp;L, <span class="keyword">int</span> i, ElemType e)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">1</span>)&#123;<span class="comment">//插入到第一个位置</span></span><br><span class="line">		Lnode *s =(Lnode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Lnode));</span><br><span class="line">		s-&gt;data=e;</span><br><span class="line">		s-&gt;next=L;</span><br><span class="line">		L=s;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Lnode *p;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">1</span>;<span class="comment">//p指向的第几个节点</span></span><br><span class="line">	p = L;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span> &amp;&amp; j&lt;i<span class="number">-1</span>)&#123;<span class="comment">//循环找到i-1个节点</span></span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (p==<span class="literal">NULL</span>)&#123;<span class="comment">//i值不合法 p指向了null</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Lnode *s =(Lnode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Lnode));</span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">	s-&gt;next=p-&gt;next;</span><br><span class="line">	p-&gt;next=s;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>数据结构</category>
       </categories>
@@ -62,7 +465,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>见代码</p>
 <a id="more"></a>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LNode, *LinkList;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InitList</span><span class="params">(LinkList &amp;L)</span></span>&#123;<span class="comment">//初始化一个链表</span></span><br><span class="line">	L = (LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	<span class="keyword">if</span>(L==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Empty</span><span class="params">(LinkList L)</span></span>&#123;<span class="comment">//判断链表是否为空</span></span><br><span class="line">	<span class="keyword">if</span>(L-&gt;next==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ListInsert</span><span class="params">(LinkList &amp;L, <span class="keyword">int</span> i, ElemType e)</span></span>&#123;<span class="comment">//在第i个位置插入e元素</span></span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LNode *p;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;<span class="comment">//p指向的第几个结点</span></span><br><span class="line">	p=L;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span> &amp;&amp; j&lt;i<span class="number">-1</span>)&#123;<span class="comment">//循环找到i-1个结点</span></span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (p==<span class="literal">NULL</span>)&#123;<span class="comment">//i值不合法 p指向了null</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LNode *s =(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">	s-&gt;next=p-&gt;next;</span><br><span class="line">	p-&gt;next=s;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertNextNode</span><span class="params">(LNode *p,ElemType e)</span></span>&#123;<span class="comment">//在p结点后插入元素</span></span><br><span class="line">	<span class="keyword">if</span> (p==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LNode *s=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	<span class="keyword">if</span>(s==<span class="literal">NULL</span>)<span class="comment">//内存分配失败</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">	s-&gt;next=p-&gt;next;</span><br><span class="line">	p-&gt;next=s;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertPriorNode</span><span class="params">(LNode *p,ElemType e)</span></span>&#123;<span class="comment">//在p结点之前插入元素e</span></span><br><span class="line">	<span class="keyword">if</span>(p==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LNode *s=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	<span class="keyword">if</span>(s==<span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//内存分配失败</span></span><br><span class="line">	s-&gt;next=p-&gt;next;</span><br><span class="line">	p-&gt;next=s;</span><br><span class="line">	s-&gt;data=p-&gt;data;</span><br><span class="line">	p-&gt;data=e;<span class="comment">//在p结点之后插入s 然后交换两个结点的data</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ListDelete</span><span class="params">(LinkList &amp;L, <span class="keyword">int</span> i,ElemType &amp;e)</span></span>&#123;<span class="comment">//删除第i个结点（将第i-1个结点指向第i+1个结点。然后释放第i个结点）</span></span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	LNode *p;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">	p=L;</span><br><span class="line">	<span class="keyword">while</span> (p!=<span class="literal">NULL</span> &amp;&amp;j&lt;i<span class="number">-1</span>)&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(p==<span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span>(p-&gt;next == <span class="literal">NULL</span>)<span class="comment">//i-1个结点之后已无其他结点</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	LNode *q=p-&gt;next;</span><br><span class="line">	e=q-&gt;data;</span><br><span class="line">	p-&gt;next=q-&gt;next;</span><br><span class="line">	<span class="built_in">free</span>(q);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">DeleteNode</span><span class="params">(LNode *p)</span></span>&#123;<span class="comment">//删除指定结点p</span></span><br><span class="line">	<span class="keyword">if</span>(p==<span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	LNode *q=p-&gt;next;<span class="comment">//令q指向*p的后继结点</span></span><br><span class="line">	p-&gt;data=p-&gt;next-&gt;data;<span class="comment">//和后继结点交换数据域</span></span><br><span class="line">	p-&gt;next=q-&gt;next;<span class="comment">//将*p结点从链中断开</span></span><br><span class="line">	<span class="built_in">free</span>(q);<span class="comment">//释放q结点</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LNode * <span class="title">GetElem</span><span class="params">(LinkList L,<span class="keyword">int</span> i)</span></span>&#123;<span class="comment">//按位查找，返回第i个元素（带头结点）</span></span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	LNode *p;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (p!=<span class="literal">NULL</span> &amp;&amp; j&lt;i)&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LNode * <span class="title">LocateElem</span><span class="params">(LinkList L, ElemType e)</span></span>&#123;<span class="comment">//按值查找</span></span><br><span class="line">	LNode *p = L-&gt;next;</span><br><span class="line">	<span class="comment">//从第一个结点开始查找数据域为e的结点</span></span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span> &amp;&amp; p-&gt;data != e)&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Length</span><span class="params">(LinkList L)</span></span>&#123;<span class="comment">//表的长度</span></span><br><span class="line">	<span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">	LNode *p=L;</span><br><span class="line">	<span class="keyword">while</span> (p-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		len++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">printList</span><span class="params">(LinkList L)</span></span>&#123;</span><br><span class="line">	LNode *p=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	<span class="keyword">if</span> (p==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	p=L;</span><br><span class="line">	<span class="keyword">while</span> (p-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,p-&gt;next-&gt;data);</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="built_in">free</span>(p);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//------------------单链表的建立------------------//</span></span><br><span class="line"><span class="comment">//功能：可以实现列表的逆置</span></span><br><span class="line"><span class="function">LinkList <span class="title">List_HeadInsert</span><span class="params">(LinkList &amp;L)</span></span>&#123;<span class="comment">//头插法</span></span><br><span class="line">	LNode *s;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	L=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;<span class="comment">//必须指向null，否则会出现问题</span></span><br><span class="line">	<span class="comment">//养成好习惯，只要初始化单链表就指向null</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">while</span> (x!=<span class="number">0</span>)&#123;<span class="comment">//输入0即为结束</span></span><br><span class="line">		s=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">		s-&gt;data=x;</span><br><span class="line">		s-&gt;next=L-&gt;next;</span><br><span class="line">		L-&gt;next=s;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LinkList <span class="title">List_TailInsert</span><span class="params">(LinkList &amp;L)</span></span>&#123;<span class="comment">//尾插法</span></span><br><span class="line">	LNode *s;</span><br><span class="line">	LNode *r;<span class="comment">//r为表尾指针</span></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	L=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));<span class="comment">//创建头结点</span></span><br><span class="line">	r=L;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">while</span> (x!=<span class="number">0</span>)&#123;<span class="comment">//输入0即为结束</span></span><br><span class="line">		s=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">		s-&gt;data=x;</span><br><span class="line">		r-&gt;next=s;</span><br><span class="line">		r=s;<span class="comment">//r永远指向最后一个结点</span></span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	&#125;</span><br><span class="line">	r-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    LinkList L;<span class="comment">//声明一个指向单链表的指针 </span></span><br><span class="line">    InitList(L);<span class="comment">//初始化一个空表 </span></span><br><span class="line">	List_HeadInsert(L);</span><br><span class="line">	<span class="keyword">int</span> len = Length(L);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"该表的长度是：%d\n"</span>,len);</span><br><span class="line">	printList(L);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LNode, *LinkList;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InitList</span><span class="params">(LinkList &amp;L)</span></span>&#123;<span class="comment">//初始化一个链表</span></span><br><span class="line">	L = (LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	<span class="keyword">if</span>(L==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Empty</span><span class="params">(LinkList L)</span></span>&#123;<span class="comment">//判断链表是否为空</span></span><br><span class="line">	<span class="keyword">if</span>(L-&gt;next==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ListInsert</span><span class="params">(LinkList &amp;L, <span class="keyword">int</span> i, ElemType e)</span></span>&#123;<span class="comment">//在第i个位置插入e元素</span></span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LNode *p;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;<span class="comment">//p指向的第几个结点</span></span><br><span class="line">	p=L;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span> &amp;&amp; j&lt;i<span class="number">-1</span>)&#123;<span class="comment">//循环找到i-1个结点</span></span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (p==<span class="literal">NULL</span>)&#123;<span class="comment">//i值不合法 p指向了null</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LNode *s =(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">	s-&gt;next=p-&gt;next;</span><br><span class="line">	p-&gt;next=s;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertNextNode</span><span class="params">(LNode *p,ElemType e)</span></span>&#123;<span class="comment">//在p结点后插入元素</span></span><br><span class="line">	<span class="keyword">if</span> (p==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LNode *s=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	<span class="keyword">if</span>(s==<span class="literal">NULL</span>)<span class="comment">//内存分配失败</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">	s-&gt;next=p-&gt;next;</span><br><span class="line">	p-&gt;next=s;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertPriorNode</span><span class="params">(LNode *p,ElemType e)</span></span>&#123;<span class="comment">//在p结点之前插入元素e</span></span><br><span class="line">	<span class="keyword">if</span>(p==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LNode *s=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	<span class="keyword">if</span>(s==<span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//内存分配失败</span></span><br><span class="line">	s-&gt;next=p-&gt;next;</span><br><span class="line">	p-&gt;next=s;</span><br><span class="line">	s-&gt;data=p-&gt;data;</span><br><span class="line">	p-&gt;data=e;<span class="comment">//在p结点之后插入s 然后交换两个结点的data</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ListDelete</span><span class="params">(LinkList &amp;L, <span class="keyword">int</span> i,ElemType &amp;e)</span></span>&#123;</span><br><span class="line">    <span class="comment">//删除第i个结点（将第i-1个结点指向第i+1个结点。然后释放第i个结点）</span></span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	LNode *p;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">	p=L;</span><br><span class="line">	<span class="keyword">while</span> (p!=<span class="literal">NULL</span> &amp;&amp;j&lt;i<span class="number">-1</span>)&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(p==<span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span>(p-&gt;next == <span class="literal">NULL</span>)<span class="comment">//i-1个结点之后已无其他结点</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	LNode *q=p-&gt;next;</span><br><span class="line">	e=q-&gt;data;</span><br><span class="line">	p-&gt;next=q-&gt;next;</span><br><span class="line">	<span class="built_in">free</span>(q);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">DeleteNode</span><span class="params">(LNode *p)</span></span>&#123;<span class="comment">//删除指定结点p</span></span><br><span class="line">	<span class="keyword">if</span>(p==<span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	LNode *q=p-&gt;next;<span class="comment">//令q指向*p的后继结点</span></span><br><span class="line">	p-&gt;data=p-&gt;next-&gt;data;<span class="comment">//和后继结点交换数据域</span></span><br><span class="line">	p-&gt;next=q-&gt;next;<span class="comment">//将*p结点从链中断开</span></span><br><span class="line">	<span class="built_in">free</span>(q);<span class="comment">//释放q结点</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LNode * <span class="title">GetElem</span><span class="params">(LinkList L,<span class="keyword">int</span> i)</span></span>&#123;<span class="comment">//按位查找，返回第i个元素（带头结点）</span></span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	LNode *p;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (p!=<span class="literal">NULL</span> &amp;&amp; j&lt;i)&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LNode * <span class="title">LocateElem</span><span class="params">(LinkList L, ElemType e)</span></span>&#123;<span class="comment">//按值查找</span></span><br><span class="line">	LNode *p = L-&gt;next;</span><br><span class="line">	<span class="comment">//从第一个结点开始查找数据域为e的结点</span></span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span> &amp;&amp; p-&gt;data != e)&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Length</span><span class="params">(LinkList L)</span></span>&#123;<span class="comment">//表的长度</span></span><br><span class="line">	<span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">	LNode *p=L;</span><br><span class="line">	<span class="keyword">while</span> (p-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		len++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">printList</span><span class="params">(LinkList L)</span></span>&#123;</span><br><span class="line">	LNode *p=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	<span class="keyword">if</span> (p==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	p=L;</span><br><span class="line">	<span class="keyword">while</span> (p-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,p-&gt;next-&gt;data);</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="built_in">free</span>(p);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//------------------单链表的建立------------------//</span></span><br><span class="line"><span class="comment">//功能：可以实现列表的逆置</span></span><br><span class="line"><span class="function">LinkList <span class="title">List_HeadInsert</span><span class="params">(LinkList &amp;L)</span></span>&#123;<span class="comment">//头插法</span></span><br><span class="line">	LNode *s;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	L=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;<span class="comment">//必须指向null，否则会出现问题</span></span><br><span class="line">	<span class="comment">//养成好习惯，只要初始化单链表就指向null</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">while</span> (x!=<span class="number">0</span>)&#123;<span class="comment">//输入0即为结束</span></span><br><span class="line">		s=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">		s-&gt;data=x;</span><br><span class="line">		s-&gt;next=L-&gt;next;</span><br><span class="line">		L-&gt;next=s;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LinkList <span class="title">List_TailInsert</span><span class="params">(LinkList &amp;L)</span></span>&#123;<span class="comment">//尾插法</span></span><br><span class="line">	LNode *s;</span><br><span class="line">	LNode *r;<span class="comment">//r为表尾指针</span></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	L=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));<span class="comment">//创建头结点</span></span><br><span class="line">	r=L;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">while</span> (x!=<span class="number">0</span>)&#123;<span class="comment">//输入0即为结束</span></span><br><span class="line">		s=(LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">		s-&gt;data=x;</span><br><span class="line">		r-&gt;next=s;</span><br><span class="line">		r=s;<span class="comment">//r永远指向最后一个结点</span></span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	&#125;</span><br><span class="line">	r-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    LinkList L;<span class="comment">//声明一个指向单链表的指针 </span></span><br><span class="line">    InitList(L);<span class="comment">//初始化一个空表 </span></span><br><span class="line">	List_HeadInsert(L);</span><br><span class="line">	<span class="keyword">int</span> len = Length(L);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"该表的长度是：%d\n"</span>,len);</span><br><span class="line">	printList(L);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>数据结构</category>
       </categories>
@@ -2267,179 +2670,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2003TextTwo单词</title>
-    <url>/2020/03/06/2003TextTwo%E5%8D%95%E8%AF%8D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
-<li><p>paraphrase n&amp;v释义</p>
-<ol>
-<li>para- 表时“在旁边，辅助”</li>
-<li>phrase 短语</li>
-<li>paragraph 短评   graph写</li>
-<li>parameter 参数   meter计量</li>
-<li>parasite 寄生虫  site地点</li>
-</ol>
-</li>
-<li><p>biomedical 生物医学的</p>
-</li>
-<li><p>advocate v.提倡 n.提倡者，辩护人</p>
-</li>
-<li><p>argument 辩论，论据，论点</p>
-<ol>
-<li>argue 辩论，主张</li>
-</ol>
-</li>
-<li><p>allegation 断言</p>
-<ol>
-<li>announce 宣布</li>
-<li>declare 宣布</li>
-<li>proclaim 宣布</li>
-</ol>
-</li>
-<li><p>perplex 使困惑，使复杂化</p>
-<ol>
-<li>complex 复杂的，综合的，联合体</li>
-</ol>
-</li>
-<li><p>brochure 小册子</p>
-<ol>
-<li>brother 兄弟   兄弟们手里拿着小册子 </li>
-</ol>
-</li>
-<li><p>immunization n.免疫作用</p>
-<ol>
-<li>immune adj.免疫的，免除的</li>
-<li>immunity n.免疫，免除</li>
-<li>immunize v.使免疫，使免除</li>
-</ol>
-</li>
-<li><p>vaccine 疫苗</p>
-<ol>
-<li>vaccination 接种疫苗</li>
-<li>a microbe with its face washed 疫苗–&gt;洗过脸的微生物。</li>
-</ol>
-</li>
-<li><p>epidemic 流行的，流行病</p>
-<ol>
-<li>academic 学术的，理论的<a id="more"></a></li>
-</ol>
-</li>
-<li><p>deceptive 欺骗的，蒙蔽的，虚伪的</p>
-<ol>
-<li>deceive v.欺骗，蒙蔽</li>
-<li>deception n.欺骗，蒙蔽</li>
-<li>receptive 善于接受的</li>
-<li>receive v.接收，接待</li>
-<li>reception 接收，招待，招待会</li>
-</ol>
-</li>
-<li><p>ultimate 最终的，根本的</p>
-<ol>
-<li>The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge and controversy</li>
-<li>衡量一个人的最终尺度，不是看他在舒适顺利的时候站在哪里，而是看他在受到非难和争议的时候站在哪里。</li>
-</ol>
-</li>
-<li><p>recruit v.征兵，招募</p>
-<ol>
-<li>cruit词根意为创造</li>
-</ol>
-</li>
-<li><p>vicious 邪恶的，恶毒的</p>
-<ol>
-<li>vice n.恶毒，邪恶</li>
-<li>virus n.病毒 </li>
-<li>virtuous 善良的，有道德的</li>
-<li>The more virtuous any man is, the less easily does he suspect others to be vicious。</li>
-<li>任何人越高尚，就越不容易疑心别人邪恶。</li>
-</ol>
-</li>
-<li><p>ignorance 无知，不知道</p>
-<ol>
-<li>ignorant 无知的</li>
-<li>ignore 忽视</li>
-<li>It is impossible to defeat an ignorant man in argument.在争论中无法击败无知者</li>
-</ol>
-</li>
-<li><p>extinguish v.熄灭，灭绝</p>
-<ol>
-<li>extinct adj.熄灭的，灭绝的</li>
-<li>distinguish v区别，辨别</li>
-<li>distinct adj.独特的，明显的</li>
-<li>inflame v.使燃烧，激怒</li>
-<li>Absence is to love what wind is to fire; it extinguishes the small, it inflames the great.离别之于爱情有如风之于火，它熄灭小火，却使大火燃烧更旺。</li>
-</ol>
-</li>
-<li><p>bypass n.支路，旁路 v.绕开，避开，忽视</p>
-</li>
-<li><p>ember 灰烬（但火焰尚未完全熄灭）</p>
-<ol>
-<li>embers 余烬；余火；小火苗</li>
-</ol>
-</li>
-<li><p>statesman 政治家</p>
-</li>
-<li><p>triumph 胜利，凯旋</p>
-</li>
-<li><p>confuse 使迷惑  refuse拒绝</p>
-</li>
-<li><p>thereby 从而，因此  whereby 凭什么</p>
-</li>
-<li><p>allegation n.指控，陈述，主张，宣称</p>
-</li>
-<li><p>cruelty n.残酷，残忍  cruel 残酷的，残忍的</p>
-</li>
-<li><p>deliberately 故意地；谨慎地</p>
-</li>
-<li><p>grandmotherly 慈祥的</p>
-</li>
-<li><p>compassionate adj.富有同情心的，慈悲的  v.同情，怜悯</p>
-</li>
-<li><p>human terms 人类术语</p>
-</li>
-<li><p>molecular adj. 分子的；由分子组成的</p>
-</li>
-<li><p>hip n. 臀部；蔷薇果；忧郁  adj. 熟悉内情的；非常时尚的</p>
-</li>
-<li><p>adopt v.采取，接受，收养</p>
-<ol>
-<li>adapt v.适应</li>
-</ol>
-</li>
-<li><p>courageous 勇敢的，有胆量的==brave</p>
-</li>
-<li><p>institutions 体系</p>
-</li>
-<li><p>laboratory 实验室</p>
-</li>
-<li><p>stakeholder 利益相关者</p>
-<ol>
-<li>stake n.棍子，赌注</li>
-<li>holder n.持有人，所有人</li>
-</ol>
-</li>
-<li><p>precious 宝贵的，珍贵的</p>
-<ol>
-<li>previous 早先的，先前的</li>
-</ol>
-</li>
-<li><p>forcefully 强有力的，激烈的</p>
-</li>
-<li><p>booth 货摊</p>
-</li>
-<li><p>…at best …at worst 往最好的方面看……往最坏的方面看……</p>
-<ol>
-<li>animal research seems wasteful at best and cruel at worst</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>考研英语</category>
-      </categories>
-      <tags>
-        <tag>考研</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>8-Hibernate检索方式</title>
     <url>/2020/03/06/8-Hibernate%E6%A3%80%E7%B4%A2%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="3种检索方式"><a href="#3种检索方式" class="headerlink" title="3种检索方式"></a>3种检索方式</h2><ul>
@@ -2685,85 +2915,6 @@
 ]]></content>
       <categories>
         <category>考研数学</category>
-      </categories>
-      <tags>
-        <tag>考研</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2003TextOne单词</title>
-    <url>/2020/03/05/2003TextOne%E5%8D%95%E8%AF%8D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
-<li>spymaster 间谍组织首脑<ul>
-<li>spying 间谍，侦探</li>
-<li>master n.主人，大师，有能力的人 adj.主要的，熟练的</li>
-</ul>
-</li>
-<li>strategy n.策略<ul>
-<li>strategic adj.策略的，战略的</li>
-</ul>
-</li>
-<li>later 后来<ul>
-<li>latest 最近的</li>
-</ul>
-</li>
-<li>lay the roots for 扎根于</li>
-<li>fascinate 使着迷</li>
-<li>espionage 间谍，间谍活动</li>
-<li>pastimes 消遣</li>
-<li>go on 持续</li>
-<li>give birth to 分娩，产生，造成</li>
-<li>point-and-click 点击<a id="more"></a></li>
-<li>spook 间谍，幽灵</li>
-<li>crisis 危机</li>
-<li>sign-up 注册，签约</li>
-<li>a lean staff 一位精干的员工</li>
-<li>brief 简报</li>
-<li>back-and-forthing 来来回回</li>
-<li>whereby 凭什么</li>
-<li>dramatic 戏剧性的，激动人心的，激烈的</li>
-<li>on the chance +that从句  也许能够做某事</li>
-<li>revolution 革命，<strong>旋转</strong><ul>
-<li>reform and innovation 改革创新</li>
-</ul>
-</li>
-<li>influential 有影响的，<strong>有权势的</strong></li>
-<li>compile 编辑，收集<ul>
-<li>pile 堆</li>
-<li>compilation 编撰</li>
-</ul>
-</li>
-<li>splash 溅（拟声词）<ul>
-<li>make a splash 炫耀财富</li>
-</ul>
-</li>
-<li>mutually 相互地<ul>
-<li>mute 哑的</li>
-</ul>
-</li>
-<li>reinforce 增援，加强==enforce<ul>
-<li>reinforce concrete 钢筋混凝土</li>
-</ul>
-</li>
-<li>emergence n.显现<ul>
-<li>emerge v.浮现，暴露</li>
-<li>merge v.合并，吞并</li>
-</ul>
-</li>
-<li>margin 边缘，利润</li>
-<li>corporation 公司</li>
-<li>president 总统</li>
-<li>prediction 预言，预测</li>
-<li>revive  复苏，恢复</li>
-<li>nonconformist 不合传统规范的，不合传统规范的人<ul>
-<li>non-不</li>
-<li>conform 遵守</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>考研英语</category>
       </categories>
       <tags>
         <tag>考研</tag>
@@ -4113,7 +4264,7 @@ web.xml</li>
 </ol>
 ]]></content>
       <categories>
-        <category>github技术</category>
+        <category>业余技术</category>
       </categories>
       <tags>
         <tag>技术</tag>
