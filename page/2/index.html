@@ -39,6 +39,52 @@
 <div id="main">
   <section class="outer">
   <article class="articles">
+    <article id="post-mysql中的4中外键形式" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+  <div class="article-inner">
+    <header class="article-header">
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/05/mysql%E4%B8%AD%E7%9A%844%E4%B8%AD%E5%A4%96%E9%94%AE%E5%BD%A2%E5%BC%8F/"
+    >mysql中的4中外键形式</a
+  >
+</h2>
+    </header>
+    <div class="article-meta">
+      <a href="/2020/03/05/mysql%E4%B8%AD%E7%9A%844%E4%B8%AD%E5%A4%96%E9%94%AE%E5%BD%A2%E5%BC%8F/" class="article-date">
+  <time datetime="2020-03-05T08:47:45.000Z" itemprop="datePublished">2020-03-05</time>
+</a>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+  </div>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      <p>使用Navicat for mysql设计外键的时候，删除时和更新时两列有四个值可以选择：</p>
+<ol>
+<li>CASCADE<ul>
+<li>父表delete、update的时候，子表会delete、update掉关联记录；</li>
+</ul>
+</li>
+<li>NO ACTION<ul>
+<li>父表delete、update的时候，子表会将关联记录的外键字段所在列设为null，所以注意在设计子表时外键不能设为not null；</li>
+</ul>
+</li>
+<li>RESTRICT<ul>
+<li>如果想要删除父表的记录时，而在子表中有关联该父表的记录，则不允许删除父表中的记录；</li>
+</ul>
+</li>
+<li>SET NULL<ul>
+<li>同 RESTRICT，也是首先先检查外键；</li>
+</ul>
+</li>
+</ol>
+      <!-- reward -->
+    </div>
+      <!-- copyright -->
+    <footer class="article-footer">
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+    </footer>
+  </div>
+</article>
     <article id="post-Hibernate小例子" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
@@ -325,46 +371,6 @@
 <li>SpringMVC还支持声明式验证@Controller输入</li>
 </ul>
       <a class="article-more-link" href="/2020/02/27/3-SpringEL%E5%92%8C%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/">阅读更多...</a>
-      <!-- reward -->
-    </div>
-      <!-- copyright -->
-    <footer class="article-footer">
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
-    </footer>
-  </div>
-</article>
-    <article id="post-2-Spring-Beans和生命周期（对象实例化及属性注入-注解方式）" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-  <div class="article-inner">
-    <header class="article-header">
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%88%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%8F%8A%E5%B1%9E%E6%80%A7%E6%B3%A8%E5%85%A5-%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%EF%BC%89/"
-    >2-Spring-Beans和生命周期（对象实例化及属性注入-xml方式）</a
-  >
-</h2>
-    </header>
-    <div class="article-meta">
-      <a href="/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%88%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%8F%8A%E5%B1%9E%E6%80%A7%E6%B3%A8%E5%85%A5-%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%EF%BC%89/" class="article-date">
-  <time datetime="2020-02-27T02:46:50.000Z" itemprop="datePublished">2020-02-27</time>
-</a>
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Spring/">Spring</a>
-  </div>
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="xml配置的方式进行实例化"><a href="#xml配置的方式进行实例化" class="headerlink" title="xml配置的方式进行实例化"></a>xml配置的方式进行实例化</h2><h3 id="配置文件中bean标签的属性"><a href="#配置文件中bean标签的属性" class="headerlink" title="配置文件中bean标签的属性"></a>配置文件中bean标签的属性</h3><p>（1）id属性：起名称，id属性值名称任意命名 </p>
-<ul>
-<li>id属性值，不能包含特殊符号 </li>
-<li>根据id值得到配置对象</li>
-</ul>
-<p>（2）class属性：创建对象所在类的全路径</p>
-<p>（3）name属性：功能和id属性一样的，id属性值不能包含特殊符号，但是在name属性值里面可以包含特殊符号</p>
-<p>（4）scope属性 </p>
-<ul>
-<li>singleton：默认值，单例 </li>
-<li>prototype：多例</li>
-</ul>
-      <a class="article-more-link" href="/2020/02/27/2-Spring-Beans%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%88%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%8F%8A%E5%B1%9E%E6%80%A7%E6%B3%A8%E5%85%A5-%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%EF%BC%89/">阅读更多...</a>
       <!-- reward -->
     </div>
       <!-- copyright -->
