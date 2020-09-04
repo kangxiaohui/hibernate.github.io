@@ -129,12 +129,10 @@
             orders as o where o.userid=id)&quot;)</code></p>
 <p>@DynamicInsert：动态生成 INSERT 语句。<br></p>
 <p>@DynamicUpdate：动态生成 UPDATE 语句。<br></p>
-<h2 id="使用注解和xml方式的区别："><a href="#使用注解和xml方式的区别：" class="headerlink" title="使用注解和xml方式的区别："></a><font color="#0000FF" size="10">使用注解和xml方式的区别：</font></h2><ol>
-<li><p><font color="#0000FF" size="4">hibernate.hbm.xml 文件中把引用：xxx.hbm.xml改为引用实体类：</font>即把：&lt;mapping resource=”com/db/entity/Person.hbm.xml”/&gt;改为：&lt;mapping class=”com.db.entity.Person” /&gt;</p>
-</li>
-<li><p><font color="#0000FF" size="4">注解方式不需要在xxx.hbm.xml把实体类与表进行映射。而采用在实体类中进行注解。</font></p>
-<ol>
-<li>实体类属性注解的时候，都注解在<font color="#ff0000">get方法前</font></li>
+<h2 id="使用注解和xml方式的区别："><a href="#使用注解和xml方式的区别：" class="headerlink" title="使用注解和xml方式的区别："></a><font color="#00FF" size="5">使用注解和xml方式的区别：</font></h2><ol>
+<li><strong>hibernate.hbm.xml 文件中把引用：xxx.hbm.xml改为引用实体类</strong>：即把：&lt;mapping resource=”com/db/entity/Person.hbm.xml”/&gt;改为：&lt;mapping class=”com.db.entity.Person” /&gt;</li>
+<li><strong>注解方式不需要在xxx.hbm.xml把实体类与表进行映射</strong>。而采用在实体类中进行注解。</li>
+<li>实体类属性注解的时候，都注解在<font color="#ff0000">get方法前</font><ol start="2">
 <li>如果在实体类中某些属性不注解：（属性和get都不写注解），默认为表字段名与实体类属性名一致。</li>
 <li>如果实体类的某个成员属性不需要存入数据库中，使用@Transient 进行注解就可以了。即类似于：(xxx.hbm.Xml配置中的某些字段不写(就是不需要对这个成员属性进行映射))</li>
 <li>表名称可以在实体类前进行注解。</li>
