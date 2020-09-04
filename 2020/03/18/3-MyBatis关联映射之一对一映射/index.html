@@ -55,8 +55,8 @@
     <div class="article-entry" itemprop="articleBody">
       <h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p>在某网络购物系统中，一个用户只能拥有一个购物车，用户与购物车的关系可以设计为一对一关系</p>
 <a id="more"></a>
-<p>域模型<br>![](<a href="https://gitee.com/LYmystery/PicGo/raw/master/image/2020-7-7" target="_blank" rel="noopener">https://gitee.com/LYmystery/PicGo/raw/master/image/2020-7-7</a> 184414.png)</p>
-<p>数据库表<br>![](<a href="https://gitee.com/LYmystery/PicGo/raw/master/image/2020-7-7" target="_blank" rel="noopener">https://gitee.com/LYmystery/PicGo/raw/master/image/2020-7-7</a> 184427.png)</p>
+<p>域模型<br><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200904182831.png" alt="image-20200904182823699"></p>
+<p>数据库表<br><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20200904182839.png" alt="image-20200904182838092"></p>
 <h2 id="两个实体"><a href="#两个实体" class="headerlink" title="两个实体"></a>两个实体</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">private</span> String userName;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="keyword">private</span> ShoppingCart shoppingCart;</span><br><span class="line">	.....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShoppingCart</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span> price;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> userId;</span><br><span class="line">	.......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="其他类，文件"><a href="#其他类，文件" class="headerlink" title="其他类，文件"></a>其他类，文件</h2><p>ShoppingCartMapper.java</p>
@@ -75,9 +75,11 @@
 <li>MyBatis主配置文件中有两个延时加载相关settings设置<ol>
 <li>lazyLoadingEnabled，延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。可通过设置fetchType 属性来覆盖该项的开关状态</li>
 <li>aggressiveLazyLoading，当开启时，任何方法的调用都会加载该对象的所有属性。否则，每个属性会按需加载<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"lazyLoadingEnabled"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"aggressiveLazyLoading"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>设置为延迟加载的对象，默认情况下，当调用该对象的equals、hashCode、toString、clone方法时，就会加载该对象的全部数据<h2 id="对比四种关联映射方式"><a href="#对比四种关联映射方式" class="headerlink" title="对比四种关联映射方式"></a>对比四种关联映射方式</h2></li>
 </ol>
 </li>
+<li>设置为延迟加载的对象，默认情况下，当调用该对象的equals、hashCode、toString、clone方法时，就会加载该对象的全部数据</li>
+</ol>
+<h2 id="对比四种关联映射方式"><a href="#对比四种关联映射方式" class="headerlink" title="对比四种关联映射方式"></a>对比四种关联映射方式</h2><ol>
 <li>前面的三种方式都属于“关联的嵌套结果映射“,即通过一次SQL查询根据表或指定的属性映射到不同的对象中</li>
 <li>最后一种方式属于“关联的嵌套查询”，利用简单的SQL语句，通过多次查询得到想要的结果，可实现延迟加载效果</li>
 </ol>
