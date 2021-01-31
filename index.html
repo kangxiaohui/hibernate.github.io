@@ -1,40 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
-    
   <meta name="description" content="记录学习生活的点点滴滴" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
      Mysterious Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
-  
   <link rel="shortcut icon" href="/favicon.ico" />
-  
-  
 <link rel="stylesheet" href="/css/main.css">
-
-  
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-  
-  
-
-  
-
 <link rel="alternate" href="/atom.xml" title="Mysterious Blog" type="application/atom+xml">
 </head>
-
 </html>
-
 <body>
   <div id="app">
     <main class="content">
-      
 <section class="cover">
-    
   <div class="cover-frame">
     <div class="bg-box">
       <img src="/images/cover1.jpg" alt="image frame" />
@@ -42,12 +25,9 @@
     <div class="cover-inner text-center text-white">
       <h1><a href="/">Mysterious Blog</a></h1>
       <div id="subtitle-box">
-        
         <span id="subtitle"></span>
-        
       </div>
       <div>
-        
       </div>
     </div>
   </div>
@@ -55,342 +35,165 @@
     <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
   </div>
 </section>
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
-
 <div id="main">
   <section class="outer">
   <article class="articles">
-    
-    
-    
-    
+    <article id="post-优雅地识别理科公式——mathpix-mathpix-api-MathpixCsharp-MathF的使用" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+  <div class="article-inner">
+    <header class="article-header">
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/31/%E4%BC%98%E9%9B%85%E5%9C%B0%E8%AF%86%E5%88%AB%E7%90%86%E7%A7%91%E5%85%AC%E5%BC%8F%E2%80%94%E2%80%94mathpix-mathpix-api-MathpixCsharp-MathF%E7%9A%84%E4%BD%BF%E7%94%A8/"
+    >优雅地识别理科公式——mathpix/mathpix api/MathpixCsharp/MathF的使用</a
+  >
+</h2>
+    </header>
+    <div class="article-meta">
+      <a href="/2021/01/31/%E4%BC%98%E9%9B%85%E5%9C%B0%E8%AF%86%E5%88%AB%E7%90%86%E7%A7%91%E5%85%AC%E5%BC%8F%E2%80%94%E2%80%94mathpix-mathpix-api-MathpixCsharp-MathF%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2021-01-31T13:53:58.000Z" itemprop="datePublished">2021-01-31</time>
+</a>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%B8%9A%E4%BD%99%E6%8A%80%E6%9C%AF/">业余技术</a>
+  </div>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><p>最近有识别图片公式OCR识别地需求，发现Mathpix Snip甚合我意，只需要截个图，Mathpix Snip就可以将截图中的公式自动转化为 LaTex 代码表达式或者MS word格式（直接粘贴进word），我们只需要简单地修改就可以直接插入到LaTex或Word中，公式较为清晰规范的话是不需要修改的，电子公式的识别率几乎100%，而且可以识别手写的公式。</p>
+      <a class="article-more-link" href="/2021/01/31/%E4%BC%98%E9%9B%85%E5%9C%B0%E8%AF%86%E5%88%AB%E7%90%86%E7%A7%91%E5%85%AC%E5%BC%8F%E2%80%94%E2%80%94mathpix-mathpix-api-MathpixCsharp-MathF%E7%9A%84%E4%BD%BF%E7%94%A8/">阅读更多...</a>
+      <!-- reward -->
+    </div>
+      <!-- copyright -->
+    <footer class="article-footer">
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+    </footer>
+  </div>
+</article>
     <article id="post-浏览器广告过滤" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
-
   <div class="article-inner">
-    
     <header class="article-header">
-       
 <h2 itemprop="name">
   <a class="article-title" href="/2021/01/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B9%BF%E5%91%8A%E8%BF%87%E6%BB%A4/"
     >浏览器广告过滤</a
   >
 </h2>
-  
-
     </header>
-    
-
-    
     <div class="article-meta">
       <a href="/2021/01/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B9%BF%E5%91%8A%E8%BF%87%E6%BB%A4/" class="article-date">
   <time datetime="2021-01-31T13:30:37.000Z" itemprop="datePublished">2021-01-31</time>
 </a>
-      
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E4%B8%9A%E4%BD%99%E6%8A%80%E6%9C%AF/">业余技术</a>
   </div>
-
-      
-      
-      
     </div>
-    
-
-    
-
-    
     <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
       <h1 id="uBlock-Origin"><a href="#uBlock-Origin" class="headerlink" title="uBlock Origin"></a>uBlock Origin</h1><p>插件下载:<a href="https://liuhouer.lanzous.com/ibjtxna" target="_blank" rel="noopener">https://liuhouer.lanzous.com/ibjtxna</a> 密码:cdsc</p>
 <p><strong>规则链接：</strong><br>HalfLife规则：<br><a href="https://gitee.com/halflife/list/raw/master/ad.txt" target="_blank" rel="noopener">https://gitee.com/halflife/list/raw/master/ad.txt</a></p>
 <p>乘风广告过滤规则“<br><a href="https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt" target="_blank" rel="noopener">https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt</a></p>
 <p>乘风视频规则，可过滤国内视频站片头广告和黑屏：<br><a href="https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt" target="_blank" rel="noopener">https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt</a></p>
-
-      
       <!-- reward -->
-      
     </div>
-    
-    
       <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
-
-
     </footer>
-
   </div>
-
-  
-
-  
-  
-  
-
-  
-
 </article>
-    
     <article id="post-微信备份聊天记录提示当前网络状况复杂" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
-
   <div class="article-inner">
-    
     <header class="article-header">
-       
 <h2 itemprop="name">
   <a class="article-title" href="/2021/01/27/%E5%BE%AE%E4%BF%A1%E5%A4%87%E4%BB%BD%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E6%8F%90%E7%A4%BA%E5%BD%93%E5%89%8D%E7%BD%91%E7%BB%9C%E7%8A%B6%E5%86%B5%E5%A4%8D%E6%9D%82/"
     >微信备份聊天记录提示当前网络状况</a
   >
 </h2>
-  
-
     </header>
-    
-
-    
     <div class="article-meta">
       <a href="/2021/01/27/%E5%BE%AE%E4%BF%A1%E5%A4%87%E4%BB%BD%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E6%8F%90%E7%A4%BA%E5%BD%93%E5%89%8D%E7%BD%91%E7%BB%9C%E7%8A%B6%E5%86%B5%E5%A4%8D%E6%9D%82/" class="article-date">
   <time datetime="2021-01-27T12:27:37.000Z" itemprop="datePublished">2021-01-27</time>
 </a>
-      
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E4%B8%9A%E4%BD%99%E6%8A%80%E6%9C%AF/">业余技术</a>
   </div>
-
-      
-      
-      
     </div>
-    
-
-    
-
-    
     <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
       <h2 id="聊天记录备份"><a href="#聊天记录备份" class="headerlink" title="聊天记录备份"></a>聊天记录备份</h2><p>在通过电脑版微信备份数据的时候，提示 “当前网络状况复杂，请尝试使用其它网络”，说明微信电脑版备份失败，这是什么原因呢？</p>
-<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20210127202840.png" alt="image-20210127202832735"></p>
-<p>在网上的教程上看到说，自己的电脑发布热点，手机连上就可以备份。但我的手机访问不了互联网，和电脑的微信没法连通。</p>
-<p>后来在 “控制面板” 的 “网络和共享中心” 模块，禁用了暂时用不到的网卡。</p>
-<p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20210127202917.png" alt="image-20210127202916596"></p>
-<p>确实，装了虚拟机，有很多复杂的网络…… 禁用了之后，微信就没再提示问题了，微信电脑版备份数据成功。这里做一个记录。</p>
-<h2 id="备份速度加速"><a href="#备份速度加速" class="headerlink" title="备份速度加速"></a>备份速度加速</h2><p><img src="https://gitee.com/LYmystery/PicGo/raw/master/image/20210127204657.png" alt="image-20210127204650515"></p>
-<ol>
-<li>把手机跟电脑，用数据线连接起来。</li>
-<li>让电脑通过手机来上网！苹果手机直接用数据线连接即可，电脑拔掉网线或退出 wifi。<br>安卓手机在手机设置里选择无线和网络设置，里面应该有‘绑定与便携式热点’，进入之后选择 USB 绑定，在其后打钩即可。（或自行百度一下）</li>
-<li>这样电脑和手机之间就是不仅在同一个网络，数据传输不是通过 wifi 无线，而是通过数据线有线传输！</li>
-</ol>
-<p>讲到这里就坐等备份完成啦。</p>
-<p>数据恢复也是差不多操作哦！</p>
-
-      
+      <a class="article-more-link" href="/2021/01/27/%E5%BE%AE%E4%BF%A1%E5%A4%87%E4%BB%BD%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E6%8F%90%E7%A4%BA%E5%BD%93%E5%89%8D%E7%BD%91%E7%BB%9C%E7%8A%B6%E5%86%B5%E5%A4%8D%E6%9D%82/">阅读更多...</a>
       <!-- reward -->
-      
     </div>
-    
-    
       <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
-
-
     </footer>
-
   </div>
-
-  
-
-  
-  
-  
-
-  
-
 </article>
-    
     <article id="post-Chrome的Software-Reporter-Tool长时间占用CPU解决办法" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
-
   <div class="article-inner">
-    
     <header class="article-header">
-       
 <h2 itemprop="name">
   <a class="article-title" href="/2020/07/07/Chrome%E7%9A%84Software-Reporter-Tool%E9%95%BF%E6%97%B6%E9%97%B4%E5%8D%A0%E7%94%A8CPU%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"
     >Chrome的Software Reporter Tool长时间占用CPU解决办法</a
   >
 </h2>
-  
-
     </header>
-    
-
-    
     <div class="article-meta">
       <a href="/2020/07/07/Chrome%E7%9A%84Software-Reporter-Tool%E9%95%BF%E6%97%B6%E9%97%B4%E5%8D%A0%E7%94%A8CPU%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="article-date">
   <time datetime="2020-07-07T12:39:43.000Z" itemprop="datePublished">2020-07-07</time>
 </a>
-      
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E4%B8%9A%E4%BD%99%E6%8A%80%E6%9C%AF/">业余技术</a>
   </div>
-
-      
-      
-      
     </div>
-    
-
-    
-
-    
     <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
       <h2 id="什么是Software-Reporter-Tool"><a href="#什么是Software-Reporter-Tool" class="headerlink" title="什么是Software Reporter Tool"></a>什么是Software Reporter Tool</h2><p>Software Reporter Tool是一个Chrome清理工具,用于清理谷歌浏览器中不必要或恶意的扩展，应用程序，劫持开始页面等等。当你安装Chrome时，Software_reporter_tool.exe也j就会被下载在SwReporter文件夹下的Chrome应用数据文件夹中。</p>
-      
       <a class="article-more-link" href="/2020/07/07/Chrome%E7%9A%84Software-Reporter-Tool%E9%95%BF%E6%97%B6%E9%97%B4%E5%8D%A0%E7%94%A8CPU%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">阅读更多...</a>
-      
-      
       <!-- reward -->
-      
     </div>
-    
-    
       <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
-
-
     </footer>
-
   </div>
-
-  
-
-  
-  
-  
-
-  
-
 </article>
-    
     <article id="post-speed-github" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
-
   <div class="article-inner">
-    
     <header class="article-header">
-       
 <h2 itemprop="name">
   <a class="article-title" href="/2020/02/26/speed-github/"
     >加速访问Github</a
   >
 </h2>
-  
-
     </header>
-    
-
-    
     <div class="article-meta">
       <a href="/2020/02/26/speed-github/" class="article-date">
   <time datetime="2020-02-26T07:06:55.000Z" itemprop="datePublished">2020-02-26</time>
 </a>
-      
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E4%B8%9A%E4%BD%99%E6%8A%80%E6%9C%AF/">业余技术</a>
   </div>
-
-      
-      
-      
     </div>
-    
-
-    
-
-    
     <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
       <h1 id="说一下访问慢的原因"><a href="#说一下访问慢的原因" class="headerlink" title="说一下访问慢的原因"></a>说一下访问慢的原因</h1><ol>
 <li>由于 github.com 网站位于美国旧金山,所以初始访问 github.com 时网络寻址会比较耗费时间,这是网站打开速度慢的其中一个原因.</li>
 <li>最初用户从浏览器中输入 github.com 网址时,浏览器并不知道这个域名对应的真实 ip 地址,先问问自己电脑认识不认识这个域名的门牌号,如果本机不认识会接着往上问,当地运行商也不认识这个域名的话,继续问上级,直到问出来 github.com 的门牌号是 192.30.253.113 为止!如此繁琐的问路过程被称之为 DNS 寻址,如果问路的时间都占用很久,那么访问网站的速度自然会很慢.</li>
 </ol>
 <h2 id="主域名和多个子域名"><a href="#主域名和多个子域名" class="headerlink" title="主域名和多个子域名"></a>主域名和多个子域名</h2><p>正常来说,网站的主域名下会存在多个子域名,由这些域名组合在一起提供完整的服务.</p>
 <p>而 github.com 也不例外,其中 github.com是一级域名,也是主域名,其他的域名基本上都是二级域名或者说次域名. 所以我们不仅要告诉本机 github.com 的主域名,还要把相关的子域名也告诉本机,帮人帮到底,送福送到西! 那到哪里去查询域名和 ip 的对应关系呢?</p>
-      
       <a class="article-more-link" href="/2020/02/26/speed-github/">阅读更多...</a>
-      
-      
       <!-- reward -->
-      
     </div>
-    
-    
       <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
-
-
     </footer>
-
   </div>
-
-  
-
-  
-  
-  
-
-  
-
 </article>
-    
   </article>
-  
-
-  
 </section>
 </div>
-
       <footer class="footer">
   <div class="outer">
     <ul class="list-inline">
@@ -400,30 +203,20 @@
         Mystery
       </li>
       <li>
-        
         Powered by
-        
-        
         Hexo Theme Ayer
-        
       </li>
     </ul>
     <ul class="list-inline">
       <li>
-        
-        
         <span>
   <i>PV:<span id="busuanzi_value_page_pv"></span></i>
   <i>UV:<span id="busuanzi_value_site_uv"></span></i>
 </span>
-        
       </li>
-      
       <li>
         <!-- cnzz统计 -->
-        
         <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
       </li>
     </ul>
   </div>
@@ -437,48 +230,36 @@
     <aside class="sidebar">
       <button class="navbar-toggle"></button>
 <nav class="navbar">
-  
   <div class="logo">
     <a href="/"><img src="/images/ayer-side.svg" alt="Mysterious Blog"></a>
   </div>
-  
   <ul class="nav nav-main">
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/">主页</a>
     </li>
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/archives">归档</a>
     </li>
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/categories">分类</a>
     </li>
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
     </li>
-    
     <li class="nav-item">
       <a class="nav-item-link" href="/about">关于我</a>
     </li>
-    
   </ul>
 </nav>
 <nav class="navbar navbar-bottom">
   <ul class="nav">
     <li class="nav-item">
-      
       <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
-      
-      
       <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
         <i class="ri-rss-line"></i>
       </a>
-      
     </li>
   </ul>
 </nav>
@@ -490,36 +271,24 @@
 </div>
     </aside>
     <div id="mask"></div>
-
 <!-- #reward -->
 <div id="reward">
   <span class="close"><i class="ri-close-line"></i></span>
   <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
   <div class="reward-box">
-    
     <div class="reward-item">
       <img class="reward-img" src="/images/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
-    
-    
     <div class="reward-item">
       <img class="reward-img" src="/images/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
-    
   </div>
 </div>
-    
 <script src="/js/jquery-2.0.3.min.js"></script>
-
-
 <script src="/js/share.js"></script>
-
-
 <script src="/js/lazyload.min.js"></script>
-
-
 <script>
   try {
     var typed = new Typed("#subtitle", {
@@ -532,31 +301,18 @@
     });
   } catch (err) {
   }
-
 </script>
-
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
-
 <script src="/js/ayer.js"></script>
-
-
-
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
     <!-- Background of PhotoSwipe. 
          It's a separate element as animating opacity is faster than rgba(). -->
     <div class="pswp__bg"></div>
-
     <!-- Slides wrapper with overflow:hidden. -->
     <div class="pswp__scroll-wrap">
-
         <!-- Container that holds slides. 
             PhotoSwipe keeps only 3 of them in the DOM to save memory.
             Don't modify these 3 pswp__item elements, data is added later on. -->
@@ -565,24 +321,15 @@
             <div class="pswp__item"></div>
             <div class="pswp__item"></div>
         </div>
-
         <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
         <div class="pswp__ui pswp__ui--hidden">
-
             <div class="pswp__top-bar">
-
                 <!--  Controls are self-explanatory. Order can be changed. -->
-
                 <div class="pswp__counter"></div>
-
                 <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
                 <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
                 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
                 <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
                 <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
                 <!-- element will get class pswp__preloader--active when preloader is running -->
                 <div class="pswp__preloader">
@@ -593,37 +340,27 @@
                     </div>
                 </div>
             </div>
-
             <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
                 <div class="pswp__share-tooltip"></div>
             </div>
-
             <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
             </button>
-
             <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
             </button>
-
             <div class="pswp__caption">
                 <div class="pswp__caption__center"></div>
             </div>
-
         </div>
-
     </div>
-
 </div>
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
-
 <script>
     function viewer_init() {
         let pswpElement = document.querySelectorAll('.pswp')[0];
         let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
         $imgArr.forEach(($em, i) => {
             $em.onclick = () => {
                 // slider展开状态
@@ -653,30 +390,14 @@
     }
     viewer_init()
 </script>
-
-
-
-
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
-
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
-
-
-    
     <div id="music">
-    
-    
-    
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
         src="//music.163.com/outchain/player?type=2&id=31134623&auto=0&height=32"></iframe>
 </div>
-
 <style>
     #music {
         position: fixed;
@@ -685,8 +406,6 @@
         z-index: 998;
     }
 </style>
-    
   </div>
 </body>
-
 </html>
