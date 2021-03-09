@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="记录学习生活的点点滴滴" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    C语言面试题1 |  Mysterious Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  <link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/dist/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+<link rel="stylesheet" href="/css/custom.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<link rel="alternate" href="/atom.xml" title="Mysterious Blog" type="application/atom+xml">
+</head>
+</html>
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-C语言面试题1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    <header class="article-header">
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  C语言面试题1
+</h1>
+    </header>
+    <div class="article-meta">
+      <a href="/2021/03/09/C%E8%AF%AD%E8%A8%80%E9%9D%A2%E8%AF%95%E9%A2%981/" class="article-date">
+  <time datetime="2021-03-09T12:39:43.000Z" itemprop="datePublished">2021-03-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+  </div>
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.8k</span>
+        </span>
+    </span>
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">10 min</span>
+        </span>
+    </span>
+</div>
+    </div>
+    <div class="tocbot"></div>
+    <div class="article-entry" itemprop="articleBody">
+  <h3 id="第1题，c语言有哪些核心的特征？"><a href="#第1题，c语言有哪些核心的特征？" class="headerlink" title="第1题，c语言有哪些核心的特征？"></a>第1题，c语言有哪些核心的特征？</h3><p>可移植性很强。</p>
+<p>模块化能力很强。</p>
+<p>灵活性很高。</p>
+<p>加载速度和执行速度都很好。</p>
+<p>可扩展性很强。</p>
+<h3 id="第2题，c语言中有哪些基本的数据类型？"><a href="#第2题，c语言中有哪些基本的数据类型？" class="headerlink" title="第2题，c语言中有哪些基本的数据类型？"></a>第2题，c语言中有哪些基本的数据类型？</h3><p>Int整型。</p>
+<p>Float浮点型。</p>
+<p>Double双浮点型。</p>
+<p>Char单个字符。</p>
+<p>void特殊类型，不包含任何值。</p>
+<h3 id="第3题，-解释一下语义错误。"><a href="#第3题，-解释一下语义错误。" class="headerlink" title="第3题， 解释一下语义错误。"></a>第3题， 解释一下语义错误。</h3><p>在写程序的时候会有很多语义错误，比如说，拼错了命令，一个函数的参数个数错了， 数据类型不匹配，等等。</p>
+<h3 id="第4题，-C语言中如何使用增加和减少语句"><a href="#第4题，-C语言中如何使用增加和减少语句" class="headerlink" title="第4题， C语言中如何使用增加和减少语句?"></a>第4题， C语言中如何使用增加和减少语句?</h3><p>有两种方式:</p>
+<p>++， –</p>
+<p>或者</p>
+<p>传统的加和减。</p>
+<h3 id="第5题，-什么是一个编程语言的保留字"><a href="#第5题，-什么是一个编程语言的保留字" class="headerlink" title="第5题， 什么是一个编程语言的保留字?"></a>第5题， 什么是一个编程语言的保留字?</h3><p>保留字是指语言库中使用的一些关键字。这些关键字不能用来做其他的事情，比如说定义一个变量或者函数等等。</p>
+<h3 id="第6题，-解释一下dangling-pointer。"><a href="#第6题，-解释一下dangling-pointer。" class="headerlink" title="第6题， 解释一下dangling pointer。"></a>第6题， 解释一下dangling pointer。</h3><p>首先我们说有一个指针指向一个变量的内存地址。一段时间以后这个变量被从内存地址的位置删除了。</p>
+<p>这样的指针称之为dangling pointer.</p>
+<h3 id="第7题，描述一下静态函数的用途。"><a href="#第7题，描述一下静态函数的用途。" class="headerlink" title="第7题，描述一下静态函数的用途。"></a>第7题，描述一下静态函数的用途。</h3><p>使用静态static关键字定义的函数称之为静态函数。</p>
+<p>这样的函数需要在相同的代码里调用。</p>
+<h3 id="第8题-abs和fabs的区别是什么"><a href="#第8题-abs和fabs的区别是什么" class="headerlink" title="第8题, abs和fabs的区别是什么?"></a>第8题, abs和fabs的区别是什么?</h3><p>这两个函数都是用来取绝对值的。前者是针对整型的。后者是针对浮点型的。前者位于标准库stdlib.h里面。后者在math.h里面。</p>
+<h3 id="第9题-说一下wild-pointers。"><a href="#第9题-说一下wild-pointers。" class="headerlink" title="第9题, 说一下wild pointers。"></a>第9题, 说一下wild pointers。</h3><p>未初始化的指针称之为wild pointers。这些指针指向一个随意的内存地址。如果访问它们可能会导致很坏的程序行为，甚至导致程序崩溃。</p>
+<h3 id="第10题，-a和a-的区别是什么"><a href="#第10题，-a和a-的区别是什么" class="headerlink" title="第10题， ++a和a++的区别是什么?"></a>第10题， ++a和a++的区别是什么?</h3><p>加加a的意思是先加后取值。</p>
+<p>A加加的意思是先取值后增加。</p>
+<h3 id="第11题，-单等号和双等号的区别是什么"><a href="#第11题，-单等号和双等号的区别是什么" class="headerlink" title="第11题， 单等号和双等号的区别是什么?"></a>第11题， 单等号和双等号的区别是什么?</h3><p>单等号表示赋值运算符。</p>
+<p>双等号是等于条件判断运算符。</p>
+<h3 id="第12题，解释一下c语言的原型函数。"><a href="#第12题，解释一下c语言的原型函数。" class="headerlink" title="第12题，解释一下c语言的原型函数。"></a>第12题，解释一下c语言的原型函数。</h3><p>原型函数是对一个函数的声明。</p>
+<p>它包含函数名，返回值和参数类型列表。</p>
+<p>int sum(int,int)</p>
+<h3 id="第13题，-解释一下数据类型的cyclic-nature。"><a href="#第13题，-解释一下数据类型的cyclic-nature。" class="headerlink" title="第13题， 解释一下数据类型的cyclic nature。"></a>第13题， 解释一下数据类型的cyclic nature。</h3><p>在c语言中，当一个程序员给一个数据类型的变量赋值的时候，有可能会溢出。这种溢出不会产生编译错误。最终的赋值结果会根据数据类型溢出后的剩余而定。这种行为称为cyclic nature. Char, int, long int数据类型有这个特性。Further float, double和long double数据类型没有这个特性。</p>
+<h3 id="第14题-说一下c语言的头文件和用途。"><a href="#第14题-说一下c语言的头文件和用途。" class="headerlink" title="第14题, 说一下c语言的头文件和用途。"></a>第14题, 说一下c语言的头文件和用途。</h3><p>头文件存放了原型函数的定义。这个文件又称为库文件。</p>
+<p>比如说printf和scanf存放在stdio.h里面。</p>
+<h3 id="第15题-解释一下在调试过程中对代码进行注释的做法。"><a href="#第15题-解释一下在调试过程中对代码进行注释的做法。" class="headerlink" title="第15题, 解释一下在调试过程中对代码进行注释的做法。"></a>第15题, 解释一下在调试过程中对代码进行注释的做法。</h3><p>这个做法称为commenting out。通过把一些代码屏蔽掉来判断或排除是否是这些代码造成的错误。</p>
+<h3 id="第16题，-说一下c语言中循环的类型。"><a href="#第16题，-说一下c语言中循环的类型。" class="headerlink" title="第16题， 说一下c语言中循环的类型。"></a>第16题， 说一下c语言中循环的类型。</h3><p>C语言中有4种循环类型。</p>
+<p>while</p>
+<p>for</p>
+<p>do while</p>
+<p>nested loop</p>
+<h3 id="第17题-什么是nested-loop"><a href="#第17题-什么是nested-loop" class="headerlink" title="第17题, 什么是nested loop?"></a>第17题, 什么是nested loop?</h3><p>一个循环包含在另一个循环中称为nested loop。第1个循环成为外循环。里面的循环称为内循环。内循环执行的次数作为总循环的次数。</p>
+<h3 id="第18题，c语言中函数的通常格式是怎样的？"><a href="#第18题，c语言中函数的通常格式是怎样的？" class="headerlink" title="第18题，c语言中函数的通常格式是怎样的？"></a>第18题，c语言中函数的通常格式是怎样的？</h3><p>C语言的函数，包含4个部分。</p>
+<p>返回值， 函数名， 参数， 函数体。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">test</span><span class="params">(imt y, <span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> y+z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第19题-什么是指针的指针"><a href="#第19题-什么是指针的指针" class="headerlink" title="第19题, 什么是指针的指针?"></a>第19题, 什么是指针的指针?</h3><p>指针的指针是指一个指向指针所在地址的指针。</p>
+<p>int a=5, *x=&amp;a, y=&x;</p>
+<h3 id="第20题-Break关键字在哪个地方使用"><a href="#第20题-Break关键字在哪个地方使用" class="headerlink" title="第20题, Break关键字在哪个地方使用?"></a>第20题, Break关键字在哪个地方使用?</h3><p>Break可以用在循环中和switch语句当中。是用来终止当前的循环或跳出switch。</p>
+<h3 id="第21题，-使用头文件时双引号和尖括号的区别是什么"><a href="#第21题，-使用头文件时双引号和尖括号的区别是什么" class="headerlink" title="第21题， 使用头文件时双引号和尖括号的区别是什么?"></a>第21题， 使用头文件时双引号和尖括号的区别是什么?</h3><p>使用双引号时，首先要在当前工作目录中查找这个头文件，如果找不到的话就会在内置的include path里面找。</p>
+<p>使用尖括号时，只会在当前工作目录中查找这个头文件。</p>
+<h3 id="第22题，什么是sequential访问文件"><a href="#第22题，什么是sequential访问文件" class="headerlink" title="第22题，什么是sequential访问文件?"></a>第22题，什么是sequential访问文件?</h3><p>这种文件用来存储数据，在写数据的时候会按照按照一个序列模式。在读取的时候也是按照这个模式往外读取。</p>
+<h3 id="第23题，-如何向栈数据结构里面存储数据"><a href="#第23题，-如何向栈数据结构里面存储数据" class="headerlink" title="第23题， 如何向栈数据结构里面存储数据?"></a>第23题， 如何向栈数据结构里面存储数据?</h3><p>这样的数据是先进后出的。只有顶部的数据才可以被访问到。存储的时候使用push，获取的时候使用pop。</p>
+<h3 id="第24题，C程序算法的意义是什么"><a href="#第24题，C程序算法的意义是什么" class="headerlink" title="第24题，C程序算法的意义是什么?"></a>第24题，C程序算法的意义是什么?</h3><p>算法的意义在于提高程序的执行效率，是注重空间的节省，还是注重时间的节省，是写算法时需要考虑的因素。</p>
+<h3 id="第25题，写一个c程序，输出下面的结果。"><a href="#第25题，写一个c程序，输出下面的结果。" class="headerlink" title="第25题，写一个c程序，输出下面的结果。"></a>第25题，写一个c程序，输出下面的结果。</h3><p>1</p>
+<p>1 2</p>
+<p>1 2 3</p>
+<p>1 2 3 4</p>
+<p>1 2 3 4 5</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line">    <span class="keyword">for</span>(a=<span class="number">1</span>;a&lt;<span class="number">6</span>;a++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(b=<span class="number">1</span>;b&lt;=a;b++)&#123;</span><br><span class="line">        	<span class="built_in">printf</span>(<span class="string">"%d"</span>,b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第26题-如下条件判断运算符哪个在c语言里不可用"><a href="#第26题-如下条件判断运算符哪个在c语言里不可用" class="headerlink" title="第26题, 如下条件判断运算符哪个在c语言里不可用?"></a>第26题, 如下条件判断运算符哪个在c语言里不可用?</h3><p>==, &lt;&gt;, &lt;=, &gt;=</p>
+<p>答案是&lt;&gt;。</p>
+<h3 id="第27题-在c语言中可不可以用大括号包含一行代码"><a href="#第27题-在c语言中可不可以用大括号包含一行代码" class="headerlink" title="第27题, 在c语言中可不可以用大括号包含一行代码?"></a>第27题, 在c语言中可不可以用大括号包含一行代码?</h3><p>是的, 当然可以。很多程序员使用大括号来规范代码结构，不管是一行还是多行。</p>
+<h3 id="第28题-描述一下modifier。"><a href="#第28题-描述一下modifier。" class="headerlink" title="第28题, 描述一下modifier。"></a>第28题, 描述一下modifier。</h3><p>Modifier是数据类型的前置，用来标识存储空间的大小。</p>
+<p>比如说在32位处理器系统中, 整形的长度为4bits。</p>
+<p>如果我们加了如下的modifier:</p>
+<p>Long Int 就可以存8 bits。</p>
+<p>Short Int 占 2 bits。</p>
+<h3 id="第29题-在c语言中有哪些modifiers"><a href="#第29题-在c语言中有哪些modifiers" class="headerlink" title="第29题, 在c语言中有哪些modifiers?"></a>第29题, 在c语言中有哪些modifiers?</h3><p>Short</p>
+<p>Long</p>
+<p>Signed</p>
+<p>Unsigned</p>
+<p>long long</p>
+<h3 id="第30题，-在c语言中如何产生随机数"><a href="#第30题，-在c语言中如何产生随机数" class="headerlink" title="第30题， 在c语言中如何产生随机数?"></a>第30题， 在c语言中如何产生随机数?</h3><p>rand 函数就是用来产生随机数的，它可以产生任意从0开始的整数。</p>
+<h3 id="第31题-能不能在整型中存放32768这个数"><a href="#第31题-能不能在整型中存放32768这个数" class="headerlink" title="第31题, 能不能在整型中存放32768这个数?"></a>第31题, 能不能在整型中存放32768这个数?</h3><p>整数类型可以存放从-32768~32767之间的任何数值。但是32768不在这个范围之内。这个时候modifier是我们需要的东西。Long Int数据类型就可以存放这个数。</p>
+<h3 id="第32题-在c语言中可以自定义头文件吗"><a href="#第32题-在c语言中可以自定义头文件吗" class="headerlink" title="第32题, 在c语言中可以自定义头文件吗?"></a>第32题, 在c语言中可以自定义头文件吗?</h3><p>是的, 当然可以, 定义完头文件以后可以存放函数的原型。</p>
+<p>使用的时候, 用include来包含这个文件的名字。</p>
+<h3 id="第33题，解释一下c语言中的动态数据结构。"><a href="#第33题，解释一下c语言中的动态数据结构。" class="headerlink" title="第33题，解释一下c语言中的动态数据结构。"></a>第33题，解释一下c语言中的动态数据结构。</h3><p>动态数据结构在访问内存方面非常高效。内存的访问，要因程序的需求而定。</p>
+<h3 id="第34题，什么是indirection"><a href="#第34题，什么是indirection" class="headerlink" title="第34题，什么是indirection?"></a>第34题，什么是indirection?</h3><p>如果你定一个指针变量， 它指向一个值变量或者一个内存对象。在这种情况下，对这个值变量和对象来说没有一个直接的引用。这种情况就是indirection.</p>
+<p>但是如果我们声明一个变量，它对值来说就是一个直接的引用。</p>
+<h3 id="第35题，-在c语言中，什么时候会用到空指针"><a href="#第35题，-在c语言中，什么时候会用到空指针" class="headerlink" title="第35题， 在c语言中，什么时候会用到空指针?"></a>第35题， 在c语言中，什么时候会用到空指针?</h3><p>有三种情况，在c语言中会用到空指针。</p>
+<p>作为一个错误值。</p>
+<p>作为一个监测值。</p>
+<p>在一个递归数据结构中终止indirection。</p>
+<h3 id="第36题，-解释一下模块化编程。"><a href="#第36题，-解释一下模块化编程。" class="headerlink" title="第36题， 解释一下模块化编程。"></a>第36题， 解释一下模块化编程。</h3><p>把主程序分成多个小的，可执行的模块称为模块化编程。这个概念是为了增强重用性。同时也提高了程序的可维护性。</p>
+<h3 id="第37题，-Call-by-value和call-by-reference有什么区别"><a href="#第37题，-Call-by-value和call-by-reference有什么区别" class="headerlink" title="第37题， Call by value和call by reference有什么区别?"></a>第37题， Call by value和call by reference有什么区别?</h3><p>call by value传的是值。Call by reference传的是地址。</p>
+<h3 id="第38题，如何在c语言中定义一个字符串变量？"><a href="#第38题，如何在c语言中定义一个字符串变量？" class="headerlink" title="第38题，如何在c语言中定义一个字符串变量？"></a>第38题，如何在c语言中定义一个字符串变量？</h3><p>使用char定义一个字符数组。</p>
+<h3 id="第39题-在函数定义的时候何时用void"><a href="#第39题-在函数定义的时候何时用void" class="headerlink" title="第39题, 在函数定义的时候何时用void?"></a>第39题, 在函数定义的时候何时用void?</h3><p>当函数没有返回值时，可以用void。</p>
+<h3 id="第40题-什么是preprocessor-directives"><a href="#第40题-什么是preprocessor-directives" class="headerlink" title="第40题, 什么是preprocessor directives?"></a>第40题, 什么是preprocessor directives?</h3><p>Preprocessor directives一般放在程序的开头。主要是用来指定调用库文件的。还有一个用途是用来定义一些常值变量，宏定义等等。#开头。</p>
+<h3 id="第41题，-这样赋值对不对？错在哪里"><a href="#第41题，-这样赋值对不对？错在哪里" class="headerlink" title="第41题， 这样赋值对不对？错在哪里?"></a>第41题， 这样赋值对不对？错在哪里?</h3><p>myName=”test”;</p>
+<p>不对。</p>
+<p>我们不能用等号给一个字符串赋值。需要使用strcpy。</p>
+<h3 id="第42题，为什么c语言被认为是中级语言"><a href="#第42题，为什么c语言被认为是中级语言" class="headerlink" title="第42题，为什么c语言被认为是中级语言?"></a>第42题，为什么c语言被认为是中级语言?</h3><p>这是因为c语言既能像高级语言那样编写程序，又可以像低级语言如汇编那样直接操作硬件。</p>
+<h3 id="第43题，-什么是链表"><a href="#第43题，-什么是链表" class="headerlink" title="第43题， 什么是链表?"></a>第43题， 什么是链表?</h3><p>链表是一系列的元素连接在一起形成的数据结构。在c语言中，链表是用指针来构建的。使用链表数据结构是使用内存操作比较的一种方式。</p>
+<h3 id="第44题，什么是fifo？"><a href="#第44题，什么是fifo？" class="headerlink" title="第44题，什么是fifo？"></a>第44题，什么是fifo？</h3><p>First in first out. 队列是典型的first in first out，数据结构。</p>
+<h3 id="第45题-什么是二叉树"><a href="#第45题-什么是二叉树" class="headerlink" title="第45题, 什么是二叉树?"></a>第45题, 什么是二叉树?</h3><p>二叉树是链表的延伸。它的每一个节点都有两个指针，一个指向左，一个指向右。</p>
+<h3 id="第46题，-C语言中有些保留着是大写的对吗"><a href="#第46题，-C语言中有些保留着是大写的对吗" class="headerlink" title="第46题， C语言中有些保留着是大写的对吗?"></a>第46题， C语言中有些保留着是大写的对吗?</h3><p>不对，c语言中的所有保留字必须是小写，否则的话c的编译器会报错。</p>
+<h3 id="第47题，什么是输出重定向？"><a href="#第47题，什么是输出重定向？" class="headerlink" title="第47题，什么是输出重定向？"></a>第47题，什么是输出重定向？</h3><p>输出重定向是指把程序的输出，除了输出在屏幕上以外的另外选择， 比如说，输出到一个文件里。</p>
+<h3 id="第48题，-什么是全局变量，如何定义它们"><a href="#第48题，-什么是全局变量，如何定义它们" class="headerlink" title="第48题， 什么是全局变量，如何定义它们?"></a>第48题， 什么是全局变量，如何定义它们?</h3><p>全局变量是指在程序中任何地方都可以访问到的变量。它一般定义在preprocessor directives的后面。</p>
+<h3 id="第49题-getch和getche-这两个函数的区别是什么？"><a href="#第49题-getch和getche-这两个函数的区别是什么？" class="headerlink" title="第49题, getch和getche, 这两个函数的区别是什么？"></a>第49题, getch和getche, 这两个函数的区别是什么？</h3><p>前者是把用户的输入分配给一个变量。</p>
+<p>后者是把用户的输入打印到屏幕上，同时分配给一个变量。</p>
+<h3 id="第50题，文本文件和二进制文件的区别是什么？"><a href="#第50题，文本文件和二进制文件的区别是什么？" class="headerlink" title="第50题，文本文件和二进制文件的区别是什么？"></a>第50题，文本文件和二进制文件的区别是什么？</h3><p>文本文件存放的是人类可以阅读的内容，它包含字母数字和其他的字符。</p>
+<p>而二进制文件存放的是1和0，只有电脑才能够读懂。</p>
+<h3 id="第51题，如何用随机访问的方法在一个数据文件中搜索数据"><a href="#第51题，如何用随机访问的方法在一个数据文件中搜索数据" class="headerlink" title="第51题，如何用随机访问的方法在一个数据文件中搜索数据?"></a>第51题，如何用随机访问的方法在一个数据文件中搜索数据?</h3><p>fseek</p>
+<p>在文件打开以后提供三个参数给这个函数。一个是文件的指针，一个是要搜索的字节数，再一个是文件中的搜索起点。</p>
+<h3 id="第52题-在c语言中有没有内置的排序函数"><a href="#第52题-在c语言中有没有内置的排序函数" class="headerlink" title="第52题, 在c语言中有没有内置的排序函数?"></a>第52题, 在c语言中有没有内置的排序函数?</h3><p>qsort</p>
+<h3 id="第53题，heap的优点和缺点是什么？"><a href="#第53题，heap的优点和缺点是什么？" class="headerlink" title="第53题，heap的优点和缺点是什么？"></a>第53题，heap的优点和缺点是什么？</h3><p>在heap上存放数据，要比在stack上存放数据要慢。</p>
+<p>但是使用heap的主要优势是灵活性。这是因为内存的访问, 分配以及删除可以按照任意顺序来执行。</p>
+<p>通过好的算法和设计可以规避heap速度慢的问题。</p>
+<h3 id="第54题，如何把字符串变成数字？"><a href="#第54题，如何把字符串变成数字？" class="headerlink" title="第54题，如何把字符串变成数字？"></a>第54题，如何把字符串变成数字？</h3><p>atoi</p>
+<p>atof</p>
+      <!-- reward -->
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+    </div>
+    <!-- copyright -->
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+        </li>
+      </ul>
+    </div>
+    <footer class="article-footer">
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.kangxh.xyz/2021/03/09/C%E8%AF%AD%E8%A8%80%E9%9D%A2%E8%AF%95%E9%A2%981/" alt="微信分享二维码">
+    </div>
+</div>
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
+    </footer>
+  </div>
+  <nav class="article-nav">
+      <a href="/2021/03/09/C%E8%AF%AD%E8%A8%80%E9%9D%A2%E8%AF%95%E9%A2%984/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+            C语言面试题4
+        </div>
+      </a>
+      <a href="/2021/03/09/%E8%93%9D%E5%A5%8F%E4%BA%91%E9%93%BE%E6%8E%A5%E6%89%93%E4%B8%8D%E5%BC%80%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">蓝奏云链接打不开的解决办法</div>
+      </a>
+  </nav>
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "lC7lsHHM0HSqJA3yOqH70saX-gzGzoHsz",
+    app_key: "mCkqEEjUbhRIHjXJ7mtxTgfA",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Mystery
+      </li>
+    </ul>
+    <ul>
+      <li>
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+      </li>
+    </ul>
+    <ul>
+    </ul>
+    <ul>
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Mysterious Blog"></a>
+  </div>
+  <ul class="nav nav-main">
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">影音</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    <div class="reward-item">
+      <img class="reward-img" src="https://gitee.com/LYmystery/PicGo/raw/master/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    <div class="reward-item">
+      <img class="reward-img" src="https://gitee.com/LYmystery/PicGo/raw/master/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+  </div>
+</div>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<!-- Tocbot -->
+<script src="/js/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+<!-- ImageViewer -->
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+<!-- Katex -->
+<!-- busuanzi  -->
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<!-- ClickLove -->
+<!-- ClickBoom1 -->
+<!-- ClickBoom2 -->
+<!-- CodeCopy -->
+<link rel="stylesheet" href="/css/clipboard.css">
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+<!-- CanvasBackground -->
+    <div id="music">
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22707008&auto=0&height=32"></iframe>
+</div>
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+  </div>
+</body>
+</html>

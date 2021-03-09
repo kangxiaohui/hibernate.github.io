@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="记录学习生活的点点滴滴" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    C语言面试题3 |  Mysterious Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  <link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/dist/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+<link rel="stylesheet" href="/css/custom.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<link rel="alternate" href="/atom.xml" title="Mysterious Blog" type="application/atom+xml">
+</head>
+</html>
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-C语言面试题3"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    <header class="article-header">
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  C语言面试题3
+</h1>
+    </header>
+    <div class="article-meta">
+      <a href="/2021/03/09/C%E8%AF%AD%E8%A8%80%E9%9D%A2%E8%AF%95%E9%A2%983/" class="article-date">
+  <time datetime="2021-03-09T14:39:43.000Z" itemprop="datePublished">2021-03-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+  </div>
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2k</span>
+        </span>
+    </span>
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+    </div>
+    <div class="tocbot"></div>
+    <div class="article-entry" itemprop="articleBody">
+  <h3 id="1-用变量a给出下面的定义"><a href="#1-用变量a给出下面的定义" class="headerlink" title="1.用变量a给出下面的定义."></a>1.用变量a给出下面的定义.</h3><p>a) 一个整型数<br>b) 一个指向整型数的指针<br>c) 一个指向指针的的指针，它指向的指针是指向一个整型数<br>d) 一个有10个整型数的数组<br>e) 一个有10个指针的数组，该指针是指向一个整型数的<br>f) 一个指向有10个整型数数组的指针<br>g) 一个指向函数的指针，该函数有一个整型参数并返回一个整型数<br>h) 一个有10个指针的数组，该指针指向一个函数，该函数有一个整型参数并返回一个整型数</p>
+<p>答案是:<br>a) int a;<br>b) int <em>a;<br>c) int *</em>a;<br>d) int a[10];<br>e) int <em>a[10];<br>f) int (</em>a)[10];<br>g) int (<em>a)(int);<br>h) int (</em>a[10])(int);</p>
+<h3 id="2-写一个“标准”宏MIN，这个输入两个参数并返回较小的一个。"><a href="#2-写一个“标准”宏MIN，这个输入两个参数并返回较小的一个。" class="headerlink" title="2.写一个“标准”宏MIN，这个输入两个参数并返回较小的一个。"></a>2.写一个“标准”宏MIN，这个输入两个参数并返回较小的一个。</h3><p>#define Min(a,b) ( ((a)&gt;=(b))?(b):(a))</p>
+<h3 id="3-嵌入式经常用到死循环，你怎么样用C来编写死循环呢"><a href="#3-嵌入式经常用到死循环，你怎么样用C来编写死循环呢" class="headerlink" title="3.嵌入式经常用到死循环，你怎么样用C来编写死循环呢?"></a>3.嵌入式经常用到死循环，你怎么样用C来编写死循环呢?</h3><p>我的首选就是：<br>while(1){}，一些有经验的程序员喜欢用for( ; ; ){} ,还有一种是写汇编语言的程序员常用的写法:<br>Loop:<br>…<br>goto Loop;</p>
+<h3 id="4-引用和指针的区别？"><a href="#4-引用和指针的区别？" class="headerlink" title="4.引用和指针的区别？"></a>4.引用和指针的区别？</h3><p>答：1.引用必须要初始化，指针可以不用初始化；2.不存在指向空值的引用，但是存在指向空值的指针；3.引用初始化后不能改变，但存在指向空值的指针；4.引用是变量的别名，本身不单独分配自己的内存空间，而指针有自己的内存空间;</p>
+<h3 id="5-关键字static的作用是什么"><a href="#5-关键字static的作用是什么" class="headerlink" title="5.关键字static的作用是什么?"></a>5.关键字static的作用是什么?</h3><p>在c语言中static有三个明显的作用:<br>1）static在修饰局部变量的时候，其使得局部变量的生命周期发生改变，使得其放在data段，直到程序运行结束才结束。<br>2）static在修饰全局变量的时候，作用是改变其作用域，使得全局变量只能在定义的文件中使用。<br>3）static在修饰函数的时候，同样也是只能时函数只能在当前的文件中使用。</p>
+<h3 id="6-请填写bool-float-指针变量-与“零值”比较的if语句。"><a href="#6-请填写bool-float-指针变量-与“零值”比较的if语句。" class="headerlink" title="6.请填写bool , float, 指针变量 与“零值”比较的if语句。"></a>6.请填写bool , float, 指针变量 与“零值”比较的if语句。</h3><p>1）if ( flag ) if ( !flag )<br>2）const float EPSINON = 0.00001;<br>if ((x &gt;= - EPSINON) &amp;&amp; (x &lt;= EPSINON)<br>3）if (p == NULL) if (p != NULL)</p>
+<h3 id="7-用预处理指令-define-声明一个常数，用以表明1年中有多少秒（忽略闰年问题）"><a href="#7-用预处理指令-define-声明一个常数，用以表明1年中有多少秒（忽略闰年问题）" class="headerlink" title="7.用预处理指令#define 声明一个常数，用以表明1年中有多少秒（忽略闰年问题）"></a>7.用预处理指令#define 声明一个常数，用以表明1年中有多少秒（忽略闰年问题）</h3><p>#define SECONDS_PER_YEAR (60 * 60 * 24 * 365)UL</p>
+<h3 id="8-extern-c-作用"><a href="#8-extern-c-作用" class="headerlink" title="8.extern c 作用"></a>8.extern c 作用</h3><p>告诉编译器该段代码以C语言进行编译。</p>
+<h3 id="9-头文件中的-ifndef-define-endif-干什么用？"><a href="#9-头文件中的-ifndef-define-endif-干什么用？" class="headerlink" title="9.头文件中的 ifndef/define/endif 干什么用？"></a>9.头文件中的 ifndef/define/endif 干什么用？</h3><p>预处理，防止头文件被重复使用。</p>
+<h3 id="10-do……while和while……do有什么区别？"><a href="#10-do……while和while……do有什么区别？" class="headerlink" title="10.do……while和while……do有什么区别？"></a>10.do……while和while……do有什么区别？</h3><p>前一个循环一遍再判断，后一个判断以后再循环。</p>
+<h3 id="11-C语言链表与数组的区别"><a href="#11-C语言链表与数组的区别" class="headerlink" title="11.C语言链表与数组的区别?"></a>11.C语言链表与数组的区别?</h3><p>链表跟数组都属于一种数据结构。可以分为两个点来看：<br>从逻辑结构来看<br>1)数组必须事先定义固定的长度，不能适应数据动态地增减的情况。当数据增加时，可能超出原先定义的元素个数；当数据减少时，造成内存浪费；数组可以根据下标直接存取。<br>2) 链表动态地进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。链表必须根据next指针找到下一个元素。<br>从内存存储来看<br>1）(静态)数组从栈中分配空间, 对于程序员方便快速,但是自由度小<br>2）链表从堆中分配空间, 自由度大但是申请管理比较麻烦</p>
+<h3 id="12-队列和栈有什么区别？"><a href="#12-队列和栈有什么区别？" class="headerlink" title="12.队列和栈有什么区别？"></a>12.队列和栈有什么区别？</h3><p>队列先进先出，栈后进先出。</p>
+<h3 id="13-const-有什么用途？"><a href="#13-const-有什么用途？" class="headerlink" title="13.const 有什么用途？"></a>13.const 有什么用途？</h3><p>1）可以定义const常量。<br>2）修饰函数的返回值和形参。</p>
+<h3 id="14-include-lt-…h-gt-和-include-“…h”-有什么区别？"><a href="#14-include-lt-…h-gt-和-include-“…h”-有什么区别？" class="headerlink" title="14 . #include &lt;…h&gt; 和#include “…h” 有什么区别？"></a>14 . #include &lt;…h&gt; 和#include “…h” 有什么区别？</h3><p>对于#include &lt;…h&gt; ，编译器从标准库路径开始搜索.h<br>对于#include “…h” ，编译器从用户的工作路径开始搜索.h</p>
+<h3 id="15-请写出下列代码的输出内容"><a href="#15-请写出下列代码的输出内容" class="headerlink" title="15.请写出下列代码的输出内容"></a>15.请写出下列代码的输出内容</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">＃include &lt;stdio.h&gt;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,c,d;</span><br><span class="line">	a=<span class="number">10</span>;</span><br><span class="line">	b=a++;</span><br><span class="line">	c=++a;</span><br><span class="line">	d=<span class="number">10</span>*a++;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"b，c ，d：%d，%d，%d"</span>，b，c，d ）;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>10，12，120</p>
+<h3 id="16-关键字volatile有什么含意？"><a href="#16-关键字volatile有什么含意？" class="headerlink" title="16.关键字volatile有什么含意？"></a>16.关键字volatile有什么含意？</h3><p>提示编译对象的值可能在编译器未检测到的情况改变。</p>
+<h3 id="18-不用标准库函数，写一个字符串拷贝函数strcpy。"><a href="#18-不用标准库函数，写一个字符串拷贝函数strcpy。" class="headerlink" title="18.不用标准库函数，写一个字符串拷贝函数strcpy。"></a>18.不用标准库函数，写一个字符串拷贝函数strcpy。</h3><p>1)不考虑重叠问题：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">strcpy</span><span class="params">(<span class="keyword">char</span>* dst, <span class="keyword">const</span> <span class="keyword">char</span>* src)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		assert((dst != <span class="literal">NULL</span> )&amp;&amp;(src != <span class="literal">NULL</span>));</span><br><span class="line">		<span class="keyword">char</span> * ret = dst;</span><br><span class="line">		<span class="keyword">while</span> ((*dst ++ = *src ++) != <span class="string">'\0'</span>);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2)strcpy考虑重叠与不重叠问题:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strcpy</span><span class="params">(<span class="keyword">char</span> *dst, <span class="keyword">const</span> <span class="keyword">char</span> *src)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		assert((dst != <span class="literal">NULL</span>) &amp;&amp; (src != <span class="literal">NULL</span>));</span><br><span class="line">		<span class="keyword">char</span> *ret = dst;</span><br><span class="line">		<span class="keyword">int</span> <span class="built_in">size</span> = <span class="built_in">strlen</span>(src) + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (dst &gt; src  || dst &lt; src + szie)</span><br><span class="line">		&#123;</span><br><span class="line">				dst = dst + <span class="built_in">size</span> <span class="number">-1</span>;</span><br><span class="line">				  src = src + <span class="built_in">size</span> <span class="number">-1</span>;</span><br><span class="line">				<span class="keyword">while</span> (<span class="built_in">size</span> -- )</span><br><span class="line">				&#123;</span><br><span class="line">					*dst ++ = *src ++;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">				<span class="keyword">while</span> (<span class="built_in">size</span> --)</span><br><span class="line">				&#123;</span><br><span class="line">					*dst ++ = *src ++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="19-在下面语句中-fd的具体含义"><a href="#19-在下面语句中-fd的具体含义" class="headerlink" title="19.在下面语句中,fd的具体含义?"></a>19.在下面语句中,fd的具体含义?</h3><p>void <em>(</em>(<em>fp)(int))[10];<br>1).（）的优先级最高所以先看（</em>fp），fp是个指针；<br>2). 假设 func=(*fp); func(void ) 是个指针函数返回值是个指针，参数是（void），所以fp是指向指针函数的函数指针；</p>
+<h3 id="20-有一个16位整数，每4位为一个数，写函数求他们的和。"><a href="#20-有一个16位整数，每4位为一个数，写函数求他们的和。" class="headerlink" title="20.有一个16位整数，每4位为一个数，写函数求他们的和。"></a>20.有一个16位整数，每4位为一个数，写函数求他们的和。</h3><p>解析:<br>整数1101010110110111<br>和 1101+0101+1011+0111</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">SumOfQuaters</span><span class="params">(<span class="keyword">unsigned</span> short n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> c = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">do</span>&#123;</span><br><span class="line">		c += n &amp; <span class="number">15</span>;</span><br><span class="line">		n = n &gt;&gt;<span class="number">4</span>;</span><br><span class="line">	&#125;<span class="keyword">while</span>(--i);</span><br><span class="line">	<span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="21-用c语言写一个冒泡排序函数。"><a href="#21-用c语言写一个冒泡排序函数。" class="headerlink" title="21.用c语言写一个冒泡排序函数。"></a>21.用c语言写一个冒泡排序函数。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">冒泡排序: 比较相邻的元素，如果第一个比第二个大，交换他们两个；</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> *arr,<span class="keyword">int</span> <span class="built_in">size</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,temp;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="built_in">size</span> - <span class="number">1</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;<span class="built_in">size</span> -i <span class="number">-1</span>; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[j] &gt; arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">				temp = arr[j];</span><br><span class="line">				arr[j] = arr[j+<span class="number">1</span>];</span><br><span class="line">				arr[j+<span class="number">1</span>] =temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="22-堆栈溢出一般是由什么原因导致的？"><a href="#22-堆栈溢出一般是由什么原因导致的？" class="headerlink" title="22.堆栈溢出一般是由什么原因导致的？"></a>22.堆栈溢出一般是由什么原因导致的？</h3><p>1）.内存泄露，比如某一数组原先已定义好大小，但是在后续操作中存放的个数超出这一既定长度，会导致堆栈溢出。<br>2）.由于程序员动态申请的内存块使用后未立即释放，导致内存区不够用，也会导致堆栈溢出 。</p>
+<h3 id="23-请用指针实现一个函数，函数的功能是交换2个整数，并要求写出如何调用这个函数。"><a href="#23-请用指针实现一个函数，函数的功能是交换2个整数，并要求写出如何调用这个函数。" class="headerlink" title="23.请用指针实现一个函数，函数的功能是交换2个整数，并要求写出如何调用这个函数。"></a>23.请用指针实现一个函数，函数的功能是交换2个整数，并要求写出如何调用这个函数。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span>  *x,<span class="keyword">int</span>  *y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	t=*x;</span><br><span class="line">	*x=*y;</span><br><span class="line">	*y=t;		</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入a和b："</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">	fun(&amp;a,&amp;b);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n = %d ,b = %d\n"</span>,a,b);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="24-c语言程序运行的时候内存分布？"><a href="#24-c语言程序运行的时候内存分布？" class="headerlink" title="24.c语言程序运行的时候内存分布？"></a>24.c语言程序运行的时候内存分布？</h3><p>1）.堆区：在动态申请内存的时候，在堆里开辟内存。<br>2）.栈区： 主要存放局部变量（在函数内部，或复合语句内部定义的变量）。<br>3）.静态/全局区<br>3.1）：未初始化的静态全局区 （bss区）：<br>静态变量（定义的时候，前面加 static 修饰），或全局变量 ，没有初始化的。<br>3.2）：初始化的静态全局区 全局变量、静态变量，赋过初值的，存放在此区 。</p>
+<p>4.代码区：存放咱们的程序代码<br>5.文字常量区 ：存放常量的。</p>
+<h3 id="25-写一个链表逆序？"><a href="#25-写一个链表逆序？" class="headerlink" title="25.写一个链表逆序？"></a>25.写一个链表逆序？</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">link</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    link* next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">link* <span class="title">reverse</span><span class="params">(link *head)</span></span>&#123;</span><br><span class="line">    link *p,*q,*r;</span><br><span class="line">    <span class="keyword">if</span> (head ==<span class="literal">NULL</span> ||head -&gt;next ==<span class="literal">NULL</span>)</span><br><span class="line">    	<span class="keyword">return</span> head;</span><br><span class="line">    p = head;</span><br><span class="line">    q = head-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(q != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        r = q -&gt;next;</span><br><span class="line">        q-&gt;next = p;</span><br><span class="line">        p = q;</span><br><span class="line">        q = r;</span><br><span class="line">    &#125;</span><br><span class="line">    head -&gt;next =<span class="literal">NULL</span>;</span><br><span class="line">    head = p;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="26-怎么判断链表中是否有环？"><a href="#26-怎么判断链表中是否有环？" class="headerlink" title="26.怎么判断链表中是否有环？"></a>26.怎么判断链表中是否有环？</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">分析：用两个指针来遍历这个单向链表，第一个指针p1，每次走一步；第二个指针p2，每次走两步；当p2 指针追上p1的时候，就表明链表当中有环路了。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">link</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	link* next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Isloop</span><span class="params">(link* head)</span></span>&#123;</span><br><span class="line">	link *p1;</span><br><span class="line">	link *p2;</span><br><span class="line">	p1 = head;</span><br><span class="line">	p2 = head;</span><br><span class="line">	<span class="keyword">if</span> (head == <span class="literal">NULL</span> || head -&gt; next == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">do</span>&#123;</span><br><span class="line">		p1 = p1 -&gt;next;</span><br><span class="line">		p2 = p2 -&gt;next-&gt;next;</span><br><span class="line">	&#125;<span class="keyword">while</span>(p2&amp;&amp;p2-&gt;next&amp;&amp;p1!=p2);</span><br><span class="line">	<span class="keyword">if</span> (p1 == p2)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+    </div>
+    <!-- copyright -->
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+        </li>
+      </ul>
+    </div>
+    <footer class="article-footer">
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.kangxh.xyz/2021/03/09/C%E8%AF%AD%E8%A8%80%E9%9D%A2%E8%AF%95%E9%A2%983/" alt="微信分享二维码">
+    </div>
+</div>
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
+    </footer>
+  </div>
+  <nav class="article-nav">
+      <a href="/2021/12/14/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E5%BF%85%E9%97%AE%E4%B9%9D%E4%B8%AA%E9%97%AE%E9%A2%98/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+            考研复试必问九个问题
+        </div>
+      </a>
+      <a href="/2021/03/09/%E9%92%89%E9%92%89%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">钉钉视频下载</div>
+      </a>
+  </nav>
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "lC7lsHHM0HSqJA3yOqH70saX-gzGzoHsz",
+    app_key: "mCkqEEjUbhRIHjXJ7mtxTgfA",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Mystery
+      </li>
+    </ul>
+    <ul>
+      <li>
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+      </li>
+    </ul>
+    <ul>
+    </ul>
+    <ul>
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Mysterious Blog"></a>
+  </div>
+  <ul class="nav nav-main">
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">影音</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    <div class="reward-item">
+      <img class="reward-img" src="https://gitee.com/LYmystery/PicGo/raw/master/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    <div class="reward-item">
+      <img class="reward-img" src="https://gitee.com/LYmystery/PicGo/raw/master/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+  </div>
+</div>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<!-- Tocbot -->
+<script src="/js/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+<!-- ImageViewer -->
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+<!-- Katex -->
+<!-- busuanzi  -->
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<!-- ClickLove -->
+<!-- ClickBoom1 -->
+<!-- ClickBoom2 -->
+<!-- CodeCopy -->
+<link rel="stylesheet" href="/css/clipboard.css">
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+<!-- CanvasBackground -->
+    <div id="music">
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22707008&auto=0&height=32"></iframe>
+</div>
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+  </div>
+</body>
+</html>
