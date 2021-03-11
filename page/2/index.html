@@ -386,7 +386,7 @@
   </div>
 </article>
     <article
-  id="post-vscode快捷键"
+  id="post-springMVC常用注解"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -395,37 +395,32 @@
   <div class="article-inner">
     <header class="article-header">
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/02/14/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/"
-    >VSCode的快捷键</a> 
+  <a class="article-title" href="/2021/02/14/springMVC%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/"
+    >springMVC常用注解标签</a> 
 </h2>
     </header>
     <div class="article-meta">
-      <a href="/2021/02/14/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="article-date">
+      <a href="/2021/02/14/springMVC%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" class="article-date">
   <time datetime="2021-02-14T12:39:43.000Z" itemprop="datePublished">2021-02-14</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
   </div>
     </div>
     <div class="article-entry" itemprop="articleBody">
-  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>VSCode的快捷键继承了一些IDE风格，有VS Studio的身影，也有Emacs的身影,</p>
-<p>简言之，内置快捷键玩熟了，效率提高不是一点两点。</p>
-<h2 id="快捷键有五种组合方式-科普"><a href="#快捷键有五种组合方式-科普" class="headerlink" title="快捷键有五种组合方式(科普)"></a>快捷键有五种组合方式(科普)</h2><ol>
-<li><code>Ctrl + Shift + ?</code> : 这种常规组合按钮</li>
-<li><code>Ctrl + C Ctrl +V</code> : 同时依赖一个按键的组合</li>
-<li><code>Shift + V C</code> : 先组合后单键的输入</li>
-<li><code>Ctrl + Click</code>: 键盘 + 鼠标点击</li>
-<li><code>Ctrl + DragMouse</code> : 键盘 + 鼠标拖动</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">macos&#96;下大多键位等同，&#96;Ctrl&#96;换成&#96;Command</span><br></pre></td></tr></table></figure> 
-      <a class="article-more-link" href="/2021/02/14/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/"
+  <h1 id="springmvc常用注解标签详解-https-www-cnblogs-com-leskang-p-5445698-html"><a href="#springmvc常用注解标签详解-https-www-cnblogs-com-leskang-p-5445698-html" class="headerlink" title="springmvc常用注解标签详解](https://www.cnblogs.com/leskang/p/5445698.html)"></a>springmvc常用注解标签详解](<a href="https://www.cnblogs.com/leskang/p/5445698.html" target="_blank" rel="noopener">https://www.cnblogs.com/leskang/p/5445698.html</a>)</h1><h2 id="1-Controller"><a href="#1-Controller" class="headerlink" title="1.@Controller"></a>1.@Controller</h2><p>在SpringMVC 中，控制器Controller 负责处理由DispatcherServlet 分发的请求，它把用户请求的数据经过业务处理层处理之后封装成一个Model ，然后再把该Model 返回给对应的View 进行展示。在SpringMVC 中提供了一个非常简便的定义Controller 的方法，你无需继承特定的类或实现特定的接口，只需使用@Controller 标记一个类是Controller ，然后使用@RequestMapping 和@RequestParam 等一些注解用以定义URL 请求和Controller 方法之间的映射，这样的Controller 就能被外界访问到。此外Controller 不会直接依赖于HttpServletRequest 和HttpServletResponse 等HttpServlet 对象，它们可以通过Controller 的方法参数灵活的获取到。</p>
+<p>@Controller 用于标记在一个类上，使用它标记的类就是一个SpringMVC Controller 对象。分发处理器将会扫描使用了该注解的类的方法，并检测该方法是否使用了@RequestMapping 注解。@Controller 只是定义了一个控制器类，而使用@RequestMapping 注解的方法才是真正处理请求的处理器。单单使用@Controller 标记在一个类上还不能真正意义上的说它就是SpringMVC 的一个控制器类，因为这个时候Spring 还不认识它。那么要如何做Spring 才能认识它呢？这个时候就需要我们把这个控制器类交给Spring 来管理。有两种方式：</p>
+<p>　　（1）在SpringMVC 的配置文件中定义MyController 的bean 对象。</p>
+<p>　　（2）在SpringMVC 的配置文件中告诉Spring 该到哪里去找标记为@Controller 的Controller 控制器。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--方式一--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.host.app.web.controller.MyController"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--方式二--&gt;</span></span><br><span class="line"><span class="tag">&lt; <span class="attr">context:component-scan</span> <span class="attr">base-package</span> = <span class="string">"com.host.app.web"</span> /&gt;</span>//路径写到controller的上一层(扫描包详解见下面浅析)</span><br></pre></td></tr></table></figure> 
+      <a class="article-more-link" href="/2021/02/14/springMVC%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/"
         >阅读更多...</a
       >
       <!-- reward -->
     </div>
     <!-- copyright -->
     <footer class="article-footer">
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/" rel="tag">spring</a></li></ul>
     </footer>
   </div>
 </article>
